@@ -1,10 +1,13 @@
 <script lang="ts">
-	export let name: string;
+	//export let name: string;
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<div class="instructions">
+    <p><span class="instructions-select">Select a shape.</span></p>
+    <p>Click the <span class="instructions-shape">shape</span>.</p>
+    <p>Click it again when it's twice the size.</p>
+  </div>
 </main>
 
 <style lang="scss">
@@ -15,7 +18,7 @@
 		margin: 0 auto;
 	}
 
-	h1 {
+	/* h1 {
 		color: #ff3e00;
 		text-transform: uppercase;
 		font-size: 4em;
@@ -29,5 +32,5 @@
 		main {
 			max-width: none;
 		}
-	}
+	} */
 </style>
