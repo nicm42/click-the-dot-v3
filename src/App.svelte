@@ -1,22 +1,24 @@
 <script lang="ts">
-	import Instructions from './components/Instructions.svelte'
+  import Instructions from './components/Instructions.svelte';
+  import Select from './components/Select.svelte';
 
   let shape = 'shape';
 </script>
 
 <main>
-  <Instructions shape={shape} />
+  <Instructions {shape} />
+  <Select />
 </main>
 
 <style lang="scss">
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
+  main {
+    text-align: center;
+    padding: 1em;
+    max-width: 240px;
+    margin: 0 auto;
+  }
 
-	/* h1 {
+  /* h1 {
 		color: #ff3e00;
 		text-transform: uppercase;
 		font-size: 4em;
