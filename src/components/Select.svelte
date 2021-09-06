@@ -10,11 +10,13 @@
     class="select-shape"
     aria-label="Select a shape"
     bind:value
-    on:change="{() => selectedShape = value}"
+    on:change={() => (selectedShape = value)}
   >
     <option disabled selected value aria-hidden="true">Select a shape</option>
     {#each shapes as shape}
-      <option value={shape}>{shape.charAt(0).toUpperCase() + shape.slice(1)}</option>
+      <option value={shape}
+        >{shape.charAt(0).toUpperCase() + shape.slice(1)}</option
+      >
     {/each}
   </select>
 </div>
