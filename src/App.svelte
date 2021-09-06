@@ -2,7 +2,7 @@
   import Instructions from './components/Instructions.svelte';
   import Select from './components/Select.svelte';
 
-  let shape = 'shape';
+  let shape: string = 'shape';
 </script>
 
 <main>

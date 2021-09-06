@@ -1,6 +1,6 @@
 <script lang="ts">
   export let selectedShape: string;
-  let value = '';
+  let value: string = '';
   let shapes: string[] = ['Circle', 'Square', 'Triangle'];
 </script>
 
