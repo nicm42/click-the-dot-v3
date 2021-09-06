@@ -1,9 +1,11 @@
 <script lang="ts">
 	import Instructions from './components/Instructions.svelte'
+
+  let shape = 'shape';
 </script>
 
 <main>
-  <Instructions shape={'shape'} />
+  <Instructions shape={shape} />
 </main>
 
 <style lang="scss">
