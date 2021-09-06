@@ -6,6 +6,6 @@
   {#if shape === 'shape'}
     <p>Select a shape.</p>
   {/if}
-  <p>Click the {shape}.</p>
+  <p>Click the {shape.toLowerCase()}.</p>
   <p>Click it again when it's twice the size.</p>
 </div>
