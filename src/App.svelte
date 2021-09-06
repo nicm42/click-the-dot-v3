@@ -7,7 +7,7 @@
 
 <main>
   <Instructions {shape} />
-  <Select />
+  <Select bind:selectedShape={shape} />
 </main>
 
 <style lang="scss">
