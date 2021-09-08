@@ -21,7 +21,7 @@
     <desc id="shape-desc">A shape that grows when you click on it</desc>
     {#if shape === 'Circle'}
       <Circle isShape={true} />
-    {/if} 
+    {/if}
     {#if shape === 'Square'}
       <Square isShape={true} />
     {/if}
@@ -40,7 +40,10 @@
     aria-describedby="helper-desc"
   >
     <title id="helper-title">Helper shape</title>
-    <desc id="helper-desc">The original size of the shape to show you how close you got to twice the size</desc>
+    <desc id="helper-desc"
+      >The original size of the shape to show you how close you got to twice the
+      size</desc
+    >
     {#if shape === 'Circle'}
       <Circle isShape={false} />
     {/if}
@@ -52,4 +55,3 @@
     {/if}
   </svg>
 </div>
-
