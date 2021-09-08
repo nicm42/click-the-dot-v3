@@ -1,6 +1,7 @@
 <script lang="ts">
   import Instructions from './components/Instructions.svelte';
   import Select from './components/Select.svelte';
+  import Shape from './components/Shape.svelte';
 
   let shape: string = 'shape';
 </script>
@@ -8,6 +9,7 @@
 <main>
   <Instructions {shape} />
   <Select bind:selectedShape={shape} />
+  <Shape {shape} />
 </main>
 
 <style lang="scss">
