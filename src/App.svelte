@@ -2,14 +2,17 @@
   import Instructions from './components/Instructions.svelte';
   import Select from './components/Select.svelte';
   import Shape from './components/Shape.svelte';
+  import Closest from './components/Closest.svelte';
 
+  const shapes: string[] = ['Circle', 'Square', 'Triangle'];
   let shape: string = 'shape';
 </script>
 
 <main>
   <Instructions {shape} />
-  <Select bind:selectedShape={shape} />
+  <Select {shapes} bind:selectedShape={shape} />
   <Shape {shape} />
+  <Closest {shapes} />
 </main>
 
 <style lang="scss">

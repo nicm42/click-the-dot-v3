@@ -1,7 +1,7 @@
 <script lang="ts">
   export let selectedShape: string;
+  export let shapes: string[];
   let value: string = '';
-  let shapes: string[] = ['Circle', 'Square', 'Triangle'];
 </script>
 
 <div class="select-shape-container">
