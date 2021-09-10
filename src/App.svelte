@@ -16,26 +16,35 @@
 </main>
 
 <style lang="scss">
-  main {
-    //text-align: center;
-    padding: 1em;
-    //max-width: 240px;
-    //margin: 0 auto;
-  }
+  @import './styles';
 
-  /* h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-    @media (min-width: 640px) {
-      color: purple;
-    }
+:global(*) {
+  padding: 0;
+  margin: 0;
+}
+
+:global(body) {
+	height: 100%;
+	//@include set-text;
+	text-align: center;
+	background-color: $background-colour;
+
+	@media (min-width: $breakpoint-medium) {
+		display: grid;
+		grid-template-areas:
+											"instructions instructions"
+											"options container"
+											"highscores container"
+											"result result";
+		grid-template-columns: 1fr, 2fr;
 	}
 
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	} */
+	@media (min-width: $breakpoint-big) {
+		grid-template-areas:
+											". instructions ."
+											"options container highscores"
+											". result .";
+		grid-template-columns: 1fr, 2fr, 1fr;
+	}
+}
 </style>

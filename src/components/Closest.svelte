@@ -39,3 +39,62 @@
     <button class="clear">Clear scores</button>
   </div>
 </div>
+
+<style lang="scss">
+  @import '../styles';
+
+.highscores-container {
+	grid-area: highscores;
+	display: flex;
+	flex-direction: column;;
+	align-items: center;
+	@include top-bottom-padding(1rem);
+	color: $secondary-colour;
+	text-align: left;
+
+	@media (min-width: $breakpoint-medium) {
+		align-self: center;
+	}
+}
+
+.highscore {
+	padding-top: 0.2rem;
+	padding-bottom: 0.2rem;
+}
+
+.highscore-icon {
+	padding-right: 0.2rem;
+	fill: $secondary-colour;
+}
+
+.score {
+	visibility: hidden; //we've put dummy numbers in here so they line up, but need to hide them to start with
+}
+
+.clear-container {
+	padding-top: 0.5rem;
+}
+
+.clear {
+	@include button;
+	padding: 0.5em 1em;
+	font-size: $smaller-text;
+	color: $primary-colour;
+	background-color: $background-colour;
+	border: $background-colour;
+
+	&:hover, &:active {
+		background-color: darken($background-colour, 10%);
+	}
+
+	&:active {
+		top: 2px;
+	}
+
+	&:disabled {
+		cursor: auto;
+		pointer-events: none;
+		opacity: 0.5;		
+	}
+}
+</style>

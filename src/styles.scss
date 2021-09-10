@@ -1,0 +1,238 @@
+@charset 'utf-8';
+
+/* 
+	variables 
+*/
+$breakpoint-medium: 600px;
+$breakpoint-big: 900px;
+
+$fonts: ('Sunflower', sans-serif);
+$normal-text: 1em;
+$big-text: 1.3rem;
+$small-text: 0.9rem;
+$smaller-text: 0.8rem;
+
+/* Colour palette: https://colorhunt.co/palette/118591 */
+$lightGrey: #f9f9f9;
+$pink: #ff7a8a;
+$lightBlue: lighten(#113a5d, 20%); //According to specs should use scale-color instead, but gulp-sass doesn't like it
+$darkBlue: #062743;
+
+$primary-colour: $darkBlue;
+$secondary-colour: $lightBlue;
+$standout-colour: $pink;
+$background-colour: $lightGrey;
+
+/*
+	mixins
+*/
+@mixin button {
+	box-shadow: 0 5px 12px -5px rgba(0,0,0,.5);
+	border-radius: 0.2em;
+	cursor: pointer;	
+}
+@mixin top-bottom-padding($amount) {
+	padding-top: $amount;
+	padding-bottom: $amount;
+}
+@mixin set-text {
+	font-family: $fonts;
+	font-size: $normal-text;
+	color: $primary-colour;
+
+}
+
+/*
+	basic set up
+*/
+
+/*
+	instructions - we want them to be read first, so need to be top of herarchy visually
+*/
+
+/*
+	select dropdown - making it prettier than the default
+	https://www.filamentgroup.com/lab/select-css.html
+*/
+
+/*
+	the shape itself
+*/
+
+/*
+	result text and reset button
+*/
+.result {
+	grid-area: result;
+	display: flex;
+	flex-direction: column;
+	@include top-bottom-padding(1rem);
+	font-weight: bold;
+}
+
+.reset-container {
+	@include top-bottom-padding(1rem);
+}
+
+.reset {
+	@include button;
+	padding: 0.5em 1.5em;
+	font-size: $small-text;
+	color: $background-colour;
+	background-color: $secondary-colour;
+	border: $secondary-colour;
+	visibility: hidden; //hide reset button until transition has finished
+
+	&:hover, &:active {
+		background-color: darken($secondary-colour, 10%);	
+	}
+
+	&:active {
+		top: 2px;
+	}
+}
+
+/*
+	high scores
+*/
+
+/*
+	Confetti
+*/
+/*Downloaded from https://www.codeseek.co/moonglows76/css-confetti-BRVrgZ */
+/* .confetti-container {
+  display: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.confetti {
+  width: 15px;
+  height: 15px;
+  background-color: #f2d74e;
+  position: absolute;
+  left: 50%;
+  -webkit-animation: confetti 5s ease-in-out -2s infinite;
+          animation: confetti 5s ease-in-out -2s infinite;
+  -webkit-transform-origin: left top;
+          transform-origin: left top;
+}
+
+.confetti:nth-child(1) {
+  background-color: #f2d74e;
+  left: 10%;
+  -webkit-animation-delay: 0;
+          animation-delay: 0;
+}
+
+.confetti:nth-child(2) {
+  background-color: #95c3de;
+  left: 20%;
+  -webkit-animation-delay: -5s;
+          animation-delay: -5s;
+}
+
+.confetti:nth-child(3) {
+  background-color: #ff9a91;
+  left: 30%;
+  -webkit-animation-delay: -3s;
+          animation-delay: -3s;
+}
+
+.confetti:nth-child(4) {
+  background-color: #f2d74e;
+  left: 40%;
+  -webkit-animation-delay: -2.5s;
+          animation-delay: -2.5s;
+}
+
+.confetti:nth-child(5) {
+  background-color: #95c3de;
+  left: 50%;
+  -webkit-animation-delay: -4s;
+          animation-delay: -4s;
+}
+
+.confetti:nth-child(6) {
+  background-color: #ff9a91;
+  left: 60%;
+  -webkit-animation-delay: -6s;
+          animation-delay: -6s;
+}
+
+.confetti:nth-child(7) {
+  background-color: #f2d74e;
+  left: 70%;
+  -webkit-animation-delay: -1.5s;
+          animation-delay: -1.5s;
+}
+
+.confetti:nth-child(8) {
+  background-color: #95c3de;
+  left: 80%;
+  -webkit-animation-delay: -2s;
+          animation-delay: -2s;
+}
+
+.confetti:nth-child(9) {
+  background-color: #ff9a91;
+  left: 90%;
+  -webkit-animation-delay: -3.5s;
+          animation-delay: -3.5s;
+}
+
+.confetti:nth-child(10) {
+  background-color: #f2d74e;
+  left: 100%;
+  -webkit-animation-delay: -2.5s;
+          animation-delay: -2.5s;
+}
+
+@-webkit-keyframes confetti {
+  0% {
+    -webkit-transform: rotateZ(15deg) rotateY(0deg) translate(0, 0);
+            transform: rotateZ(15deg) rotateY(0deg) translate(0, 0);
+  }
+  25% {
+    -webkit-transform: rotateZ(5deg) rotateY(360deg) translate(-5vw, 20vh);
+            transform: rotateZ(5deg) rotateY(360deg) translate(-5vw, 20vh);
+  }
+  50% {
+    -webkit-transform: rotateZ(15deg) rotateY(720deg) translate(5vw, 60vh);
+            transform: rotateZ(15deg) rotateY(720deg) translate(5vw, 60vh);
+  }
+  75% {
+    -webkit-transform: rotateZ(5deg) rotateY(1080deg) translate(-10vw, 80vh);
+            transform: rotateZ(5deg) rotateY(1080deg) translate(-10vw, 80vh);
+  }
+  100% {
+    -webkit-transform: rotateZ(15deg) rotateY(1440deg) translate(10vw, 110vh);
+            transform: rotateZ(15deg) rotateY(1440deg) translate(10vw, 110vh);
+  }
+}
+
+@keyframes confetti {
+  0% {
+    -webkit-transform: rotateZ(15deg) rotateY(0deg) translate(0, 0);
+            transform: rotateZ(15deg) rotateY(0deg) translate(0, 0);
+  }
+  25% {
+    -webkit-transform: rotateZ(5deg) rotateY(360deg) translate(-5vw, 20vh);
+            transform: rotateZ(5deg) rotateY(360deg) translate(-5vw, 20vh);
+  }
+  50% {
+    -webkit-transform: rotateZ(15deg) rotateY(720deg) translate(5vw, 60vh);
+            transform: rotateZ(15deg) rotateY(720deg) translate(5vw, 60vh);
+  }
+  75% {
+    -webkit-transform: rotateZ(5deg) rotateY(1080deg) translate(-10vw, 80vh);
+            transform: rotateZ(5deg) rotateY(1080deg) translate(-10vw, 80vh);
+  }
+  100% {
+    -webkit-transform: rotateZ(15deg) rotateY(1440deg) translate(10vw, 110vh);
+            transform: rotateZ(15deg) rotateY(1440deg) translate(10vw, 110vh);
+  }
+}
+ */
