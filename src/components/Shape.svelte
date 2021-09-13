@@ -4,6 +4,20 @@
   import Triangle from './shapes/Triangle.svelte';
 
   export let shape: string;
+  let clicked = false;
+
+  const growShape = () => {
+    console.log('growing shape')
+  }
+
+  const stopShape = () => {
+    console.log('stopping shape')
+  }
+
+  const shapeHandler = () => {
+    clicked = !clicked;
+    clicked  ? growShape() : stopShape();
+  }
 </script>
 
 <div class="shape-container">
@@ -16,6 +30,7 @@
     role="img"
     aria-labelledby="shape-title"
     aria-describedby="shape-desc"
+     on:click={shapeHandler}
   >
     <title id="shape-title">Shape</title>
     <desc id="shape-desc">A shape that grows when you click on it</desc>
@@ -77,6 +92,7 @@
 	//visibility: hidden;
 	stroke: none;
 	fill: $standout-colour;
+  cursor: pointer;
 }
 
 .helper-svg {
