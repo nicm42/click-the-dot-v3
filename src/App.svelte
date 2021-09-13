@@ -3,6 +3,7 @@
   import Select from './components/Select.svelte';
   import Shape from './components/Shape.svelte';
   import Closest from './components/Closest.svelte';
+  import Result from './components/Result.svelte';
 
   const shapes: string[] = ['Circle', 'Square', 'Triangle'];
   let shape: string = 'shape';
@@ -13,6 +14,7 @@
   <Select {shapes} bind:selectedShape={shape} />
   <Shape {shape} />
   <Closest {shapes} />
+  <Result />
 </main>
 
 <style lang="scss">
