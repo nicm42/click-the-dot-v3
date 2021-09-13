@@ -6,23 +6,11 @@
   export let shape: string;
   let clicked = false;
 
-  const growShape = () => {
-    console.log('growing shape')
-  }
-
-  const stopShape = () => {
-    console.log('stopping shape')
-  }
-
-  const shapeHandler = () => {
-    clicked = !clicked;
-    clicked  ? growShape() : stopShape();
-  }
 </script>
 
 <div class="shape-container">
   <svg
-    class="shape-svg"
+    class="shape-svg" class:grow={clicked}
     width="100px"
     height="100px"
     viewBox="0 0 100 100"
@@ -30,7 +18,7 @@
     role="img"
     aria-labelledby="shape-title"
     aria-describedby="shape-desc"
-     on:click={shapeHandler}
+    on:click={() => clicked = !clicked}
   >
     <title id="shape-title">Shape</title>
     <desc id="shape-desc">A shape that grows when you click on it</desc>
@@ -88,11 +76,19 @@
 	padding-right: 1rem;
 }
 
+.shape-svg {
+  cursor: pointer;
+  transform: scale(1);
+
+  &.grow {
+    transform: scale(2);
+  }
+}
+
 :global(.shape) {
 	//visibility: hidden;
 	stroke: none;
 	fill: $standout-colour;
-  cursor: pointer;
 }
 
 .helper-svg {
