@@ -1,4 +1,7 @@
 <script lang="ts">
+  import { tweened } from 'svelte/motion';
+  import { linear } from 'svelte/easing';
+
   import Circle from './shapes/Circle.svelte';
   import Square from './shapes/Square.svelte';
   import Triangle from './shapes/Triangle.svelte';
@@ -6,11 +9,23 @@
   export let shape: string;
   let clicked = false;
 
+  const size = tweened(1, {
+		duration: 300,
+		easing: linear
+	});
+
+  const handleShapeClick = () => {
+    clicked = !clicked;
+    if(clicked) {
+      $size *= 3;
+    }
+  }
+
 </script>
 
 <div class="shape-container">
   <svg
-    class="shape-svg" class:grow={clicked}
+    class="shape-svg"
     width="100px"
     height="100px"
     viewBox="0 0 100 100"
@@ -18,7 +33,8 @@
     role="img"
     aria-labelledby="shape-title"
     aria-describedby="shape-desc"
-    on:click={() => clicked = !clicked}
+    on:click={handleShapeClick}
+    style="transform: scale({$size});"
   >
     <title id="shape-title">Shape</title>
     <desc id="shape-desc">A shape that grows when you click on it</desc>
@@ -78,11 +94,6 @@
 
 .shape-svg {
   cursor: pointer;
-  transform: scale(1);
-
-  &.grow {
-    transform: scale(2);
-  }
 }
 
 :global(.shape) {
