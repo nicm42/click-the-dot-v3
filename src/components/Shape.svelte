@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { tweened } from 'svelte/motion';
+  import { tweened } from '../utils/pausableTween';
   import { linear } from 'svelte/easing';
 
   import Circle from './shapes/Circle.svelte';
@@ -10,14 +10,16 @@
   let clicked = false;
 
   const size = tweened(1, {
-		duration: 300,
+		duration: 3000,
 		easing: linear
 	});
 
   const handleShapeClick = () => {
     clicked = !clicked;
-    if(clicked) {
-      $size *= 3;
+    if (clicked) {
+      size.set(3);
+    } else {
+      size.pause();
     }
   }
 
