@@ -7,7 +7,7 @@
   import Triangle from './shapes/Triangle.svelte';
 
   export let shape: string;
-  let clicked: number = 0;
+  let clickCount: number = 0;
 
   const size = tweened(1, {
 		duration: 3000,
@@ -15,11 +15,13 @@
 	});
 
   const handleShapeClick = ():void => {
-    clicked += 1
-    if (clicked === 1) {
+    if (clickCount <= 1) {
+      clickCount += 1
+    }
+    if (clickCount === 1) {
       size.set(3);
     }
-    if (clicked === 2) {
+    if (clickCount === 2) {
       size.pause();
     }
   }
@@ -28,7 +30,7 @@
 
 <div class="shape-container">
   <svg
-    class="shape-svg"
+    class="shape-svg {clickCount === 2 ? 'clicked' : ''}"
     width="100px"
     height="100px"
     viewBox="0 0 100 100"
@@ -52,7 +54,7 @@
     {/if}
   </svg>
   <svg
-    class="helper-svg {clicked === 2 ? 'show' : ''}"
+    class="helper-svg {clickCount === 2 ? 'show' : ''}"
     width="100px"
     height="100px"
     viewBox="0 0 100 100"
@@ -95,9 +97,13 @@
 	padding-right: 1rem;
 }
 
-/* .shape-svg {
+.shape-svg {
   cursor: pointer;
-} */
+
+  &.clicked {
+    cursor: auto;
+  }
+}
 
 :global(.shape) {
 	//visibility: hidden;
