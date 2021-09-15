@@ -7,7 +7,7 @@
   import Triangle from './shapes/Triangle.svelte';
 
   export let shape: string;
-  let clicked: boolean = false;
+  let clicked: number = 0;
 
   const size = tweened(1, {
 		duration: 3000,
@@ -15,10 +15,11 @@
 	});
 
   const handleShapeClick = ():void => {
-    clicked = !clicked;
-    if (clicked) {
+    clicked += 1
+    if (clicked === 1) {
       size.set(3);
-    } else {
+    }
+    if (clicked === 2) {
       size.pause();
     }
   }
@@ -51,7 +52,7 @@
     {/if}
   </svg>
   <svg
-    class="helper-svg"
+    class="helper-svg {clicked === 2 ? 'show' : ''}"
     width="100px"
     height="100px"
     viewBox="0 0 100 100"
@@ -66,7 +67,7 @@
       size</desc
     >
     {#if shape === 'Circle'}
-      <Circle isShape={false} />
+      <Circle isShape={false}/>
     {/if}
     {#if shape === 'Square'}
       <Square isShape={false} />
@@ -94,9 +95,9 @@
 	padding-right: 1rem;
 }
 
-.shape-svg {
+/* .shape-svg {
   cursor: pointer;
-}
+} */
 
 :global(.shape) {
 	//visibility: hidden;
@@ -105,17 +106,21 @@
 }
 
 .helper-svg {
-	display: none; //hiding this here so we can click on the shape without the helper getting in the way 
+	display: none; //hiding this here so we can click on the shape without the helper getting in the way
 	position: absolute;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
 	margin: auto;
+
+  &.show {
+    display: block;
+  }
 }
 
 :global(.helper) {
-	visibility: hidden; //and then we have to hide this so we an unhide just the relevant one
+	//visibility: hidden; //and then we have to hide this so we an unhide just the relevant one
 	fill: $primary-colour;
 }
 </style>
