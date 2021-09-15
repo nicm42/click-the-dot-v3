@@ -7,14 +7,14 @@
   import Triangle from './shapes/Triangle.svelte';
 
   export let shape: string;
-  let clicked = false;
+  let clicked: boolean = false;
 
   const size = tweened(1, {
 		duration: 3000,
 		easing: linear
 	});
 
-  const handleShapeClick = () => {
+  const handleShapeClick = ():void => {
     clicked = !clicked;
     if (clicked) {
       size.set(3);
