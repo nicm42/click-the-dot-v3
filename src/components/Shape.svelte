@@ -7,12 +7,15 @@
   import Triangle from './shapes/Triangle.svelte';
 
   export let shape: string;
-  export let clickCount: number;
+  export let finishedGrowing: boolean;
 
-  const initialSize = 100;
+  let clickCount: number = 0;
+  let initialSize: number = 100;
+  let ratio: number;
+  let tweenDuration = 3000;
 
   const grow = tweened(1, {
-		duration: 3000,
+		duration: tweenDuration,
 		easing: linear
 	});
 
@@ -22,9 +25,22 @@
     }
     if (clickCount === 1) {
       grow.set(3);
-    }
-    if (clickCount === 2) {
+
+      // When it's finished, we want to do the same thing as we do when we click again,
+      // but we can't just listen to $grow becoming 3.
+      // So instead we'll set a timer for the same time as the duration of the tween
+      // as it doesn't matter too much when this happens, as they've definitely missed 2.0
+      const timer = setTimeout(() => {
+        finishedGrowing = true;
+        ratio = $grow;
+        clearInterval(timer);
+      }, tweenDuration);
+      }
+    if (clickCount >= 2) {
       grow.pause();
+      finishedGrowing = true;
+      ratio = $grow;
+      console.log(ratio)
     }
   }
 
@@ -32,16 +48,14 @@
 
 <div class="shape-container">
   <svg
-    class="shape-svg {clickCount === 2 ? 'clicked' : ''}"
-    width={initialSize}
-    height={initialSize}
+    class="shape-svg {finishedGrowing ? 'clicked' : ''}"
     viewBox="0 0 100 100"
     xmlns="http://www.w3.org/2000/svg"
     role="img"
     aria-labelledby="shape-title"
     aria-describedby="shape-desc"
     on:click={handleShapeClick}
-    style="transform: scale({$grow});"
+    style="transform: scale({$grow}); width: {initialSize}px; height: {initialSize}px;"
   >
     <title id="shape-title">Shape</title>
     <desc id="shape-desc">A shape that grows when you click on it</desc>
@@ -56,9 +70,9 @@
     {/if}
   </svg>
   <svg
-    class="helper-svg {clickCount === 2 ? 'show' : ''}"
-    width="100px"
-    height="100px"
+    class="helper-svg {finishedGrowing ? 'show' : ''}"
+    width="200px"
+    height="200px"
     viewBox="0 0 100 100"
     xmlns="http://www.w3.org/2000/svg"
     role="img"
@@ -103,6 +117,7 @@
   cursor: pointer;
 
   &.clicked {
+    pointer-events: none;
     cursor: auto;
   }
 }
