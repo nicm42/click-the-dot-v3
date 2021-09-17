@@ -39,8 +39,18 @@
   }
 
   const finishedShapeTween = () => {
-      finishedGrowing = true;
-      ratio = parseFloat($grow.toFixed(1));
+    finishedGrowing = true;
+    ratio = parseFloat($grow.toFixed(1));
+
+    // First get the current high score for this shape
+    // Then check if this is closer to 2.0
+    // If it is, then add it to localStorage
+    let highScore: number = parseFloat(localStorage.getItem(shape));
+    let highestScore = ratio.toString();
+    if (highScore){
+      highestScore = (Math.abs(ratio-2) < Math.abs(highScore-2)) ? ratio.toString() : highScore.toString();
+    }
+    localStorage.setItem(shape, highestScore);
   }
 
 </script>
