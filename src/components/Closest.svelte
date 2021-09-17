@@ -1,6 +1,6 @@
 <script lang="ts">
   export let shapes: string[];
-  export let ratio: number;
+  export let ratio: string;
 
   type ScoresType = {
     [key: string]: string

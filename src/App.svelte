@@ -8,7 +8,11 @@
   const shapes: string[] = ['Circle', 'Square', 'Triangle'];
   let shape: string = 'shape';
   let finishedGrowing: boolean = false;
-  let ratio: number = 3;
+  // ratio needs to be a string so it'll keep the 0 after the decimal point if there is one
+  // and will be a string from localStorage,
+  // so might as well make it a string
+  // and only convert it to a number if we need to do maths on it
+  let ratio: string = '3.0';
 </script>
 
 <main>
@@ -17,7 +21,7 @@
   <Shape {shape} bind:finishedGrowing={finishedGrowing} bind:ratio={ratio}/>
   <Closest {shapes} {ratio} />
   {#if finishedGrowing}
-    <Result bind:ratio={ratio} />
+    <Result {ratio} />
   {/if}
 </main>
 

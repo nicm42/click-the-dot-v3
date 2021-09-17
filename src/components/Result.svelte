@@ -1,11 +1,11 @@
 <script lang="ts">
-  export let ratio: number;
+  export let ratio: string;
 
   let resultTextStart = "Missed!";
-	if(ratio >= 1.9 && ratio <= 2.1){
+	if(parseFloat(ratio) >= 1.9 && parseFloat(ratio) <= 2.1){
 		resultTextStart = "Close!";
 	}
-  if(ratio === 2) {
+  if(ratio === '2.0') {
     resultTextStart = "Well done!";
   }
 
