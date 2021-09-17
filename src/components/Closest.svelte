@@ -2,6 +2,9 @@
   export let shapes: string[];
   export let ratio: number;
 
+  let scores = shapes.reduce((score, shape) => Object.assign(score, {[shape]: localStorage.getItem(shape)}), {});
+  console.log(scores);
+  
   const clearScores = () => {
     if (confirm("Are you sure you want to clear the closest scores?")) {
       localStorage.clear();
@@ -38,7 +41,9 @@
             <polygon points="50, 0, 100, 100, 0, 100" />
           {/if}
         </svg>
-        <span class="score" id="score-circle">4.0</span>
+        {#if scores[shape]}
+          <span class="score" id="score-circle">{scores[shape]}</span>
+        {/if}
       </div>
     {/each}
   </div>
@@ -75,7 +80,7 @@
 }
 
 .score {
-	visibility: hidden; //we've put dummy numbers in here so they line up, but need to hide them to start with
+	//visibility: hidden; //we've put dummy numbers in here so they line up, but need to hide them to start with
 }
 
 .clear-container {
