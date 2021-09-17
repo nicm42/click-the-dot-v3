@@ -21,7 +21,6 @@
 
   const handleShapeClick = ():void => {
     if (!clicked) {
-      console.log(clicked)
       clicked = true;
       grow.set(3);
 
@@ -35,11 +34,9 @@
         clearInterval(timer);
       }, tweenDuration);
     } else {
-      console.log(clicked)
       grow.pause();
       finishedGrowing = true;
       ratio = $grow;
-      console.log(ratio)
     }
   }
 
