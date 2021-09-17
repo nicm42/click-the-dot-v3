@@ -2,12 +2,11 @@
   export let ratio: string;
 
   let resultTextStart = "Missed!";
-	if(parseFloat(ratio) >= 1.9 && parseFloat(ratio) <= 2.1){
-		resultTextStart = "Close!";
-	}
   if(ratio === '2.0') {
     resultTextStart = "Well done!";
-  }
+  } else if(parseFloat(ratio) >= 1.9 && parseFloat(ratio) <= 2.1){
+		resultTextStart = "Close!";
+	}
 
 </script>
 
