@@ -7,15 +7,15 @@
 
   const shapes: string[] = ['Circle', 'Square', 'Triangle'];
   let shape: string = 'shape';
-  let clickCount: number = 0;
+  let finishedGrowing: boolean = false;
 </script>
 
 <main>
   <Instructions {shape} />
   <Select {shapes} bind:selectedShape={shape} />
-  <Shape {shape} bind:clickCount={clickCount}/>
+  <Shape {shape} bind:finishedGrowing={finishedGrowing}/>
   <Closest {shapes} />
-  {#if clickCount >= 2}
+  {#if finishedGrowing}
     <Result />
   {/if}
 </main>
