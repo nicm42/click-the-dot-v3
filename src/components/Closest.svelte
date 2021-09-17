@@ -2,7 +2,11 @@
   export let shapes: string[];
   export let ratio: number;
 
-  let scores = shapes.reduce((score, shape) => Object.assign(score, {[shape]: localStorage.getItem(shape)}), {});
+  type ScoresType = {
+    [key: string]: string
+  }
+
+  let scores: ScoresType = shapes.reduce((score, shape) => Object.assign(score, {[shape]: localStorage.getItem(shape)}), {});
   console.log(scores);
   
   const clearScores = () => {
