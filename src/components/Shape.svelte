@@ -7,7 +7,7 @@
   import Triangle from './shapes/Triangle.svelte';
 
   export let shape: string;
-  let clickCount: number = 0;
+  export let clickCount: number;
 
   const size = tweened(1, {
 		duration: 3000,

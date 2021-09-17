@@ -7,14 +7,17 @@
 
   const shapes: string[] = ['Circle', 'Square', 'Triangle'];
   let shape: string = 'shape';
+  let clickCount: number = 0;
 </script>
 
 <main>
   <Instructions {shape} />
   <Select {shapes} bind:selectedShape={shape} />
-  <Shape {shape} />
+  <Shape {shape} bind:clickCount={clickCount}/>
   <Closest {shapes} />
-  <Result />
+  {#if clickCount >= 2}
+    <Result />
+  {/if}
 </main>
 
 <style lang="scss">
