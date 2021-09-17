@@ -40,7 +40,7 @@
 
   const finishedShapeTween = () => {
       finishedGrowing = true;
-      ratio = parseFloat($grow.toFixed(2));
+      ratio = parseFloat($grow.toFixed(1));
   }
 
 </script>
