@@ -9,7 +9,9 @@
   export let shape: string;
   export let clickCount: number;
 
-  const size = tweened(1, {
+  const initialSize = 100;
+
+  const grow = tweened(1, {
 		duration: 3000,
 		easing: linear
 	});
@@ -19,10 +21,10 @@
       clickCount += 1
     }
     if (clickCount === 1) {
-      size.set(3);
+      grow.set(3);
     }
     if (clickCount === 2) {
-      size.pause();
+      grow.pause();
     }
   }
 
@@ -31,15 +33,15 @@
 <div class="shape-container">
   <svg
     class="shape-svg {clickCount === 2 ? 'clicked' : ''}"
-    width="100px"
-    height="100px"
+    width={initialSize}
+    height={initialSize}
     viewBox="0 0 100 100"
     xmlns="http://www.w3.org/2000/svg"
     role="img"
     aria-labelledby="shape-title"
     aria-describedby="shape-desc"
     on:click={handleShapeClick}
-    style="transform: scale({$size});"
+    style="transform: scale({$grow});"
   >
     <title id="shape-title">Shape</title>
     <desc id="shape-desc">A shape that grows when you click on it</desc>
