@@ -4,7 +4,8 @@
   let resultTextStart = "Missed!";
 	if(ratio >= 1.9 && ratio <= 2.1){
 		resultTextStart = "Close!";
-	} else if(ratio === 2.0) {
+	}
+  if(ratio === 2) {
     resultTextStart = "Well done!";
   }
 
