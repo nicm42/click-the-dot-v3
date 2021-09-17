@@ -71,13 +71,12 @@
   </svg>
   <svg
     class="helper-svg {finishedGrowing ? 'show' : ''}"
-    width="200px"
-    height="200px"
     viewBox="0 0 100 100"
     xmlns="http://www.w3.org/2000/svg"
     role="img"
     aria-labelledby="helper-title"
     aria-describedby="helper-desc"
+    style="{initialSize}px; height: {initialSize}px;"
   >
     <title id="helper-title">Helper shape</title>
     <desc id="helper-desc"
