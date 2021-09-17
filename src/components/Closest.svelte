@@ -1,6 +1,12 @@
 <script lang="ts">
   export let shapes: string[];
   export let ratio: number;
+
+  const clearScores = () => {
+    if (confirm("Are you sure you want to clear the closest scores?")) {
+      localStorage.clear();
+    }
+  }
 </script>
 
 <div class="highscores-container">
@@ -37,7 +43,7 @@
     {/each}
   </div>
   <div id="clear-container">
-    <button class="clear">Clear scores</button>
+    <button on:click={clearScores} class="clear">Clear scores</button>
   </div>
 </div>
 
