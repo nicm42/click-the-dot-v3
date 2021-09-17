@@ -30,13 +30,13 @@
       // as it doesn't matter too much when this happens, as they've definitely missed 2.0
       const timer = setTimeout(() => {
         finishedGrowing = true;
-        ratio = $grow;
+        ratio = parseFloat($grow.toFixed(2));
         clearInterval(timer);
       }, tweenDuration);
     } else {
       grow.pause();
       finishedGrowing = true;
-      ratio = $grow;
+      ratio = parseFloat($grow.toFixed(2));
     }
   }
 
