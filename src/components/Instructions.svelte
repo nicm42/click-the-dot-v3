@@ -14,9 +14,8 @@
   @import '../styles';
 
   .instructions {
-	grid-area: instructions;
-	@include top-bottom-padding(1rem);
-	font-size: $big-text;
-}
-
+    grid-area: instructions;
+    @include top-bottom-padding(1rem);
+    font-size: $big-text;
+  }
 </style>

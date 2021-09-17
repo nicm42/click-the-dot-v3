@@ -15,11 +15,11 @@
   let tweenDuration = 3000;
 
   const grow = tweened(1, {
-		duration: tweenDuration,
-		easing: linear
-	});
+    duration: tweenDuration,
+    easing: linear,
+  });
 
-  const handleShapeClick = ():void => {
+  const handleShapeClick = (): void => {
     if (!clicked) {
       clicked = true;
       grow.set(3);
@@ -36,7 +36,7 @@
       grow.pause();
       finishedShapeTween();
     }
-  }
+  };
 
   const finishedShapeTween = () => {
     finishedGrowing = true;
@@ -47,12 +47,14 @@
     // If it is, then add it to localStorage
     let highScore: string = localStorage.getItem(shape);
     let highestScore = ratio;
-    if (highScore){
-      highestScore = (Math.abs(parseFloat(ratio)-2) < Math.abs(parseFloat(highScore)-2)) ? ratio : highScore;
+    if (highScore) {
+      highestScore =
+        Math.abs(parseFloat(ratio) - 2) < Math.abs(parseFloat(highScore) - 2)
+          ? ratio
+          : highScore;
     }
     localStorage.setItem(shape, highestScore);
-  }
-
+  };
 </script>
 
 <div class="shape-container">
@@ -93,7 +95,7 @@
       size</desc
     >
     {#if shape === 'Circle'}
-      <Circle isShape={false}/>
+      <Circle isShape={false} />
     {/if}
     {#if shape === 'Square'}
       <Square isShape={false} />
@@ -107,51 +109,51 @@
 <style lang="scss">
   @import '../styles';
 
-.shape-container {
-	grid-area: container;
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 300px; // biggest shape when 3 times the size
-	min-width: 300px; // biggest shape when 3 times the size
-	margin-top: 1rem;
-	margin-bottom: 1rem;
-	padding-left: 1rem;
-	padding-right: 1rem;
-}
-
-.shape-svg {
-  cursor: pointer;
-
-  &.clicked {
-    pointer-events: none;
-    cursor: auto;
+  .shape-container {
+    grid-area: container;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px; // biggest shape when 3 times the size
+    min-width: 300px; // biggest shape when 3 times the size
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
-}
 
-:global(.shape) {
-	//visibility: hidden;
-	stroke: none;
-	fill: $standout-colour;
-}
+  .shape-svg {
+    cursor: pointer;
 
-.helper-svg {
-	display: none; //hiding this here so we can click on the shape without the helper getting in the way
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	margin: auto;
-
-  &.show {
-    display: block;
+    &.clicked {
+      pointer-events: none;
+      cursor: auto;
+    }
   }
-}
 
-:global(.helper) {
-	//visibility: hidden; //and then we have to hide this so we an unhide just the relevant one
-	fill: $primary-colour;
-}
+  :global(.shape) {
+    //visibility: hidden;
+    stroke: none;
+    fill: $standout-colour;
+  }
+
+  .helper-svg {
+    display: none; //hiding this here so we can click on the shape without the helper getting in the way
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+
+    &.show {
+      display: block;
+    }
+  }
+
+  :global(.helper) {
+    //visibility: hidden; //and then we have to hide this so we an unhide just the relevant one
+    fill: $primary-colour;
+  }
 </style>
