@@ -7,7 +7,6 @@
   }
 
   let scores: ScoresType = shapes.reduce((score, shape) => Object.assign(score, {[shape]: localStorage.getItem(shape)}), {});
-  console.log(scores);
   
   const clearScores = () => {
     if (confirm("Are you sure you want to clear the closest scores?")) {
