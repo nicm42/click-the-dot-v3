@@ -9,7 +9,7 @@
   export let shape: string;
   export let finishedGrowing: boolean;
 
-  let clickCount: number = 0;
+  let clicked: boolean = false;
   let initialSize: number = 100;
   let ratio: number;
   let tweenDuration = 3000;
@@ -20,10 +20,9 @@
 	});
 
   const handleShapeClick = ():void => {
-    if (clickCount <= 1) {
-      clickCount += 1
-    }
-    if (clickCount === 1) {
+    if (!clicked) {
+      console.log(clicked)
+      clicked = true;
       grow.set(3);
 
       // When it's finished, we want to do the same thing as we do when we click again,
@@ -35,8 +34,8 @@
         ratio = $grow;
         clearInterval(timer);
       }, tweenDuration);
-      }
-    if (clickCount >= 2) {
+    } else {
+      console.log(clicked)
       grow.pause();
       finishedGrowing = true;
       ratio = $grow;
