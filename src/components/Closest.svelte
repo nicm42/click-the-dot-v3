@@ -1,5 +1,6 @@
 <script lang="ts">
   export let shapes: string[];
+  export let ratio: number;
 </script>
 
 <div class="highscores-container">

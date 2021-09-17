@@ -15,7 +15,7 @@
   <Instructions {shape} />
   <Select {shapes} bind:selectedShape={shape} />
   <Shape {shape} bind:finishedGrowing={finishedGrowing} bind:ratio={ratio}/>
-  <Closest {shapes} />
+  <Closest {shapes} {ratio} />
   {#if finishedGrowing}
     <Result bind:ratio={ratio} />
   {/if}
