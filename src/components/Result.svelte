@@ -1,12 +1,26 @@
 <script lang="ts">
+  export let ratio: number;
+
+  let resultTextStart = "Missed!";
+	if(ratio >= 1.9 && ratio <= 2.1){
+		resultTextStart = "Close!";
+	} else if(ratio === 2.0) {
+    resultTextStart = "Well done!";
+  }
+
 </script>
 
-	<div class="result">Some text here<span class="result-text"></span>
+	<div class="result">
+    <span class="result-text">
+      {resultTextStart}
+    </span>
+    <span class="result-text">
+      The shape is now {ratio} times its original size
+    </span>
 		<div class=reset-container>
 			<button class="reset">Try again</button>
 		</div>
 	</div>
-
 
 <style lang="scss">
   @import '../styles';

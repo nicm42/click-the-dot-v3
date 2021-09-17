@@ -8,15 +8,16 @@
   const shapes: string[] = ['Circle', 'Square', 'Triangle'];
   let shape: string = 'shape';
   let finishedGrowing: boolean = false;
+  let ratio: number = 3;
 </script>
 
 <main>
   <Instructions {shape} />
   <Select {shapes} bind:selectedShape={shape} />
-  <Shape {shape} bind:finishedGrowing={finishedGrowing}/>
+  <Shape {shape} bind:finishedGrowing={finishedGrowing} bind:ratio={ratio}/>
   <Closest {shapes} />
   {#if finishedGrowing}
-    <Result />
+    <Result bind:ratio={ratio} />
   {/if}
 </main>
 

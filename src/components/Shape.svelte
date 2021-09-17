@@ -8,10 +8,10 @@
 
   export let shape: string;
   export let finishedGrowing: boolean;
+  export let ratio: number;
 
   let clicked: boolean = false;
   let initialSize: number = 100;
-  let ratio: number;
   let tweenDuration = 3000;
 
   const grow = tweened(1, {
