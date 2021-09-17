@@ -29,15 +29,18 @@
       // So instead we'll set a timer for the same time as the duration of the tween
       // as it doesn't matter too much when this happens, as they've definitely missed 2.0
       const timer = setTimeout(() => {
-        finishedGrowing = true;
-        ratio = parseFloat($grow.toFixed(2));
+        finishedShapeTween();
         clearInterval(timer);
       }, tweenDuration);
     } else {
       grow.pause();
+      finishedShapeTween();
+    }
+  }
+
+  const finishedShapeTween = () => {
       finishedGrowing = true;
       ratio = parseFloat($grow.toFixed(2));
-    }
   }
 
 </script>
