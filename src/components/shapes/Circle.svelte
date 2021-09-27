@@ -1,12 +1,12 @@
 <script lang="ts">
-  export let isShape: Boolean;
+  export let shapeType: string;
 
   let shapeClass: string;
   let shapeID: string;
-  if (isShape) {
+  if (shapeType === 'shape') {
     shapeClass = 'shape';
     shapeID = 'circle';
-  } else {
+  } else if (shapeType === 'helper') {
     shapeClass = 'helper';
     shapeID = 'helper-circle';
   }
