@@ -20,7 +20,7 @@
   };
 
   let clicked: boolean = false;
-  let tweenDuration = 3000;
+  let tweenDuration = getRandomIntInclusive(2000, 7000);
 
   const grow = tweened(1, {
     duration: tweenDuration,
@@ -70,10 +70,12 @@
   // we can use the pausableTween to set transform scale back to original
   $: if (reset) {
     grow.reset();
-    initialSize = getRandomIntInclusive(50, 100);
     // Now shape will be unlicked and helper won't be shown
     finishedGrowing = false;
     clicked = false;
+    // Update these so they'll be different each time
+    initialSize = getRandomIntInclusive(50, 100);
+    tweenDuration = getRandomIntInclusive(2000, 7000);
   }
 </script>
 
