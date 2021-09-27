@@ -32,7 +32,7 @@
   <Instructions {shape} />
   <Select {shapes} bind:selectedShape={shape} bind:reset bind:initialSize />
   <Shape {shape} bind:finishedGrowing bind:ratio bind:scores bind:reset bind:initialSize />
-  <Closest {shapes} {ratio} {scores} />
+  <Closest {shapes} {scores} />
   {#if finishedGrowing}
     <Result {ratio} bind:reset />
   {/if}
