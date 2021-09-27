@@ -4,8 +4,8 @@
   export let reset: Boolean;
   let value: string = '';
 
-  const setShape = (e) => {
-    selectedShape = e.currentTarget.value;
+  const setShape = (event: any):void => {
+    selectedShape = event.currentTarget.value;
     reset = true;
   }
 </script>
