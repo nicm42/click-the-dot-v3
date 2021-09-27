@@ -9,6 +9,11 @@
   export let shape: string;
   export let finishedGrowing: boolean;
   export let ratio: string;
+  export let scores: ScoresType;
+
+  type ScoresType = {
+    [key: string]: string;
+  };
 
   let clicked: boolean = false;
   let initialSize: number = 100;
@@ -54,6 +59,7 @@
           : highScore;
     }
     localStorage.setItem(shape, highestScore);
+    scores[shape] = highestScore;
   };
 </script>
 
