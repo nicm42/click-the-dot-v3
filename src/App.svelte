@@ -4,7 +4,6 @@
   import Shape from './components/Shape.svelte';
   import Closest from './components/Closest.svelte';
   import Result from './components/Result.svelte';
-  import getRandomIntInclusive from './utils/getRandomIntInclusive';
 
   const shapes: string[] = ['Circle', 'Square', 'Triangle'];
   let shape: string = 'shape';
@@ -14,7 +13,7 @@
   // so might as well make it a string
   // and only convert it to a number if we need to do maths on it
   let ratio: string = '3.0';
-  let initialSize: number = getRandomIntInclusive(50, 100);
+  let initialSize: number = 100;
   let reset: Boolean = false;
 
   type ScoresType = {
@@ -31,7 +30,7 @@
 
 <main>
   <Instructions {shape} />
-  <Select {shapes} bind:selectedShape={shape} bind:reset />
+  <Select {shapes} bind:selectedShape={shape} bind:reset bind:initialSize />
   <Shape {shape} {initialSize} bind:finishedGrowing bind:ratio bind:scores bind:reset />
   <Closest {shapes} {ratio} {scores} />
   {#if finishedGrowing}

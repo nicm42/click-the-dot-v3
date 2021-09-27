@@ -1,11 +1,15 @@
 <script lang="ts">
+  import getRandomIntInclusive from '../utils/getRandomIntInclusive';
+
   export let selectedShape: string;
   export let shapes: string[];
   export let reset: Boolean;
+  export let initialSize: number;
   let value: string = '';
 
   const setShape = (event: any):void => {
     selectedShape = event.currentTarget.value;
+    initialSize = getRandomIntInclusive(50, 100);
     reset = true;
   }
 </script>
