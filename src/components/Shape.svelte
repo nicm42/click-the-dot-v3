@@ -7,6 +7,9 @@
   import Triangle from './shapes/Triangle.svelte';
 
   export let shape: string;
+  export let initialSize: number;
+  export let reset: Boolean;
+
   export let finishedGrowing: boolean;
   export let ratio: string;
   export let scores: ScoresType;
@@ -16,7 +19,6 @@
   };
 
   let clicked: boolean = false;
-  let initialSize: number = 100;
   let tweenDuration = 3000;
 
   const grow = tweened(1, {
@@ -61,6 +63,13 @@
     localStorage.setItem(shape, highestScore);
     scores[shape] = highestScore;
   };
+
+  // If reset is true, then it means something has been pressed to reset the shape
+  // we can use the pausableTween to set transform scale back to original
+  $: if (reset) {
+    console.log('resetting')
+    grow.reset();
+  }
 </script>
 
 <div class="shape-container">

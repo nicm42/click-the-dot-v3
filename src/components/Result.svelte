@@ -1,11 +1,16 @@
 <script lang="ts">
   export let ratio: string;
+  export let reset: Boolean;
 
   let resultTextStart = 'Missed!';
   if (ratio === '2.0') {
     resultTextStart = 'Well done!';
   } else if (parseFloat(ratio) >= 1.9 && parseFloat(ratio) <= 2.1) {
     resultTextStart = 'Close!';
+  }
+
+  const resetShape = () => {
+    reset = true;
   }
 </script>
 
@@ -17,7 +22,7 @@
     The shape is now {ratio} times its original size
   </span>
   <div class="reset-container">
-    <button class="reset">Try again</button>
+    <button class="reset" on:click={resetShape}>Try again</button>
   </div>
 </div>
 

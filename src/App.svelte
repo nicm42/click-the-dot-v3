@@ -13,6 +13,8 @@
   // so might as well make it a string
   // and only convert it to a number if we need to do maths on it
   let ratio: string = '3.0';
+  let initialSize: number = 100;
+  let reset: Boolean = false;
 
   type ScoresType = {
     [key: string]: string;
@@ -24,16 +26,15 @@
     {}
   );
 
-
 </script>
 
 <main>
   <Instructions {shape} />
   <Select {shapes} bind:selectedShape={shape} />
-  <Shape {shape} bind:finishedGrowing bind:ratio bind:scores />
+  <Shape {shape} {initialSize} {reset} bind:finishedGrowing bind:ratio bind:scores />
   <Closest {shapes} {ratio} {scores} />
   {#if finishedGrowing}
-    <Result {ratio} />
+    <Result {ratio} bind:reset />
   {/if}
 </main>
 
