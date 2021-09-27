@@ -68,7 +68,6 @@
   // If reset is true, then it means something has been pressed to reset the shape
   // we can use the pausableTween to set transform scale back to original
   $: if (reset) {
-    console.log('resetting')
     grow.reset();
     // Now shape will be unlicked and helper won't be shown
     finishedGrowing = false;
