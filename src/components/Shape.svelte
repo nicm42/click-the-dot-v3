@@ -27,6 +27,7 @@
   });
 
   const handleShapeClick = (): void => {
+    reset = false;
     if (!clicked) {
       clicked = true;
       grow.set(3);
