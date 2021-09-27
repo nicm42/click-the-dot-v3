@@ -5,14 +5,15 @@
   import Circle from './shapes/Circle.svelte';
   import Square from './shapes/Square.svelte';
   import Triangle from './shapes/Triangle.svelte';
+  import getRandomIntInclusive from '../utils/getRandomIntInclusive';
 
   export let shape: string;
-  export let initialSize: number;
   export let reset: Boolean;
 
   export let finishedGrowing: boolean;
   export let ratio: string;
   export let scores: ScoresType;
+  export let initialSize: number;
 
   type ScoresType = {
     [key: string]: string;
@@ -69,6 +70,7 @@
   // we can use the pausableTween to set transform scale back to original
   $: if (reset) {
     grow.reset();
+    initialSize = getRandomIntInclusive(50, 100);
     // Now shape will be unlicked and helper won't be shown
     finishedGrowing = false;
     clicked = false;
