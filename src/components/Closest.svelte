@@ -1,16 +1,12 @@
 <script lang="ts">
+  
   export let shapes: string[];
   export let ratio: string;
+  export let scores: ScoresType;
 
   type ScoresType = {
     [key: string]: string;
   };
-
-  let scores: ScoresType = shapes.reduce(
-    (score, shape) =>
-      Object.assign(score, { [shape]: localStorage.getItem(shape) }),
-    {}
-  );
 
   const clearScores = () => {
     if (confirm('Are you sure you want to clear the closest scores?')) {
@@ -48,7 +44,7 @@
             <polygon points="50, 0, 100, 100, 0, 100" />
           {/if}
         </svg>
-        {#if scores[shape]}
+        {#if scores[shape] !== null && scores[shape] !== '3.0'}
           <span class="score" id="score-circle">{scores[shape]}</span>
         {/if}
       </div>

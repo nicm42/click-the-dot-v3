@@ -13,13 +13,25 @@
   // so might as well make it a string
   // and only convert it to a number if we need to do maths on it
   let ratio: string = '3.0';
+
+  type ScoresType = {
+    [key: string]: string;
+  };
+
+  let scores: ScoresType = shapes.reduce(
+    (score, shape) =>
+      Object.assign(score, { [shape]: localStorage.getItem(shape) }),
+    {}
+  );
+
+
 </script>
 
 <main>
   <Instructions {shape} />
   <Select {shapes} bind:selectedShape={shape} />
   <Shape {shape} bind:finishedGrowing bind:ratio />
-  <Closest {shapes} {ratio} />
+  <Closest {shapes} {ratio} {scores} />
   {#if finishedGrowing}
     <Result {ratio} />
   {/if}
