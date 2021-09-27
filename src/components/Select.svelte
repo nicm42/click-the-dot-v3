@@ -1,11 +1,12 @@
 <script lang="ts">
   export let selectedShape: string;
-  export let reset: Boolean;
   export let shapes: string[];
+  export let reset: Boolean;
   let value: string = '';
 
   const setShape = (e) => {
     selectedShape = e.currentTarget.value;
+    reset = true;
   }
 </script>
 
