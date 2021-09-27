@@ -1,4 +1,7 @@
 <script lang="ts">
+  import Circle from './shapes/Circle.svelte';
+  import Square from './shapes/Square.svelte';
+  import Triangle from './shapes/Triangle.svelte';
   
   export let shapes: string[];
   export let scores: ScoresType;
@@ -34,13 +37,13 @@
             >Icon for the score for the {shape.toLowerCase()}</desc
           >
           {#if shape === 'Circle'}
-            <circle cx="50%" cy="50%" r="50%" />
+            <Circle shapeType={'closest'} />
           {/if}
           {#if shape === 'Square'}
-            <rect x="0" y="0" width="100%" height="100%" />
+            <Square shapeType={'closest'} />
           {/if}
           {#if shape === 'Triangle'}
-            <polygon points="50, 0, 100, 100, 0, 100" />
+            <Triangle shapeType={'closest'} />
           {/if}
         </svg>
         {#if scores[shape] !== null && scores[shape] !== '3.0'}

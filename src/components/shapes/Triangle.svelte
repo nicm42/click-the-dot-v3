@@ -9,6 +9,9 @@
   } else if (shapeType === 'helper') {
     shapeClass = 'helper';
     shapeID = 'helper-triangle';
+  } else {
+    shapeClass = '';
+    shapeID = '';
   }
 </script>
 
