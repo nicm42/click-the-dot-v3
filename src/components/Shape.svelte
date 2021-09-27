@@ -69,6 +69,9 @@
   $: if (reset) {
     console.log('resetting')
     grow.reset();
+    // Now shape will be unlicked and helper won't be shown
+    finishedGrowing = false;
+    clicked = false;
   }
 </script>
 
