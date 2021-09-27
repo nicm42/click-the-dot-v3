@@ -1,7 +1,12 @@
 <script lang="ts">
   export let selectedShape: string;
+  export let reset: Boolean;
   export let shapes: string[];
   let value: string = '';
+
+  const setShape = (e) => {
+    selectedShape = e.currentTarget.value;
+  }
 </script>
 
 <div class="select-shape-container">
@@ -10,7 +15,7 @@
     class="select-shape"
     aria-label="Select a shape"
     bind:value
-    on:change={() => (selectedShape = value)}
+    on:change={setShape}
   >
     <option disabled selected value aria-hidden="true">Select a shape</option>
     {#each shapes as shape}

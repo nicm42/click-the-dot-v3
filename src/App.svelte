@@ -30,7 +30,7 @@
 
 <main>
   <Instructions {shape} />
-  <Select {shapes} bind:selectedShape={shape} />
+  <Select {shapes} {reset} bind:selectedShape={shape} />
   <Shape {shape} {initialSize} {reset} bind:finishedGrowing bind:ratio bind:scores />
   <Closest {shapes} {ratio} {scores} />
   {#if finishedGrowing}
