@@ -15,4 +15,4 @@
   }
 </script>
 
-<polygon class={shapeClass} id={shapeID} points="50, 0, 100, 100, 0, 100" />
+<polygon data-testid="triangle" class={shapeClass} id={shapeID} points="50, 0, 100, 100, 0, 100" />

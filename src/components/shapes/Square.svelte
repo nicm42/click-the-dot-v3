@@ -15,4 +15,4 @@
   }
 </script>
 
-<rect class={shapeClass} id={shapeID} x="0" y="0" width="100%" height="100%" />
+<rect data-testid="square" class={shapeClass} id={shapeID} x="0" y="0" width="100%" height="100%" />
