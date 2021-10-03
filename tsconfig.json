@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "noImplicitAny": true,
+    "types": ["jest"]
   },
 
   "extends": "@tsconfig/svelte/tsconfig.json",
