@@ -15,4 +15,4 @@
   }
 </script>
 
-<circle class={shapeClass} id={shapeID} cx="50%" cy="50%" r="50%" />
+<circle data-testid="circle" class={shapeClass} id={shapeID} cx="50%" cy="50%" r="50%" />
