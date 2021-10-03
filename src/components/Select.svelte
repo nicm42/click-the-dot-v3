@@ -16,6 +16,7 @@
 
 <div class="select-shape-container">
   <select
+    data-testid="select"
     name="select-shape"
     class="select-shape"
     aria-label="Select a shape"
