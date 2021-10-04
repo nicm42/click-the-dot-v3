@@ -6,6 +6,8 @@ import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/svelte'
 import Shape from './Shape.svelte';
 
+jest.setTimeout(8000); // Tween takes max 7 seconds
+
 test('Circles are there', () => {
   const scores = {'Circle': 1.2, 'Square': 1.8, 'Triangle': 3.0};
   render(Shape, {shape: 'Circle', finishedGrowing: false, ratio: 2.0, scores: scores, reset: false, initialSize: '100px'});
@@ -30,25 +32,28 @@ test('Triangles are there', () => {
   expect(screen.getAllByTestId('triangle')[1]).toHaveClass('helper');
 })
 
-test.only('Initial set up', () => {
+test('Initial set up', () => {
   const scores = {'Circle': 1.2, 'Square': 1.8, 'Triangle': 3.0};
   render(Shape, {shape: 'Circle', finishedGrowing: false, ratio: 2.0, scores: scores, reset: false, initialSize: '100px'});
   expect(screen.getByTestId('shape-svg')).not.toHaveClass('clicked');
   expect(screen.getByTestId('helper-svg')).not.toBeVisible();
 })
 
-test.only('State after finished growing', () => {
+test('State after finished growing', () => {
   const scores = {'Circle': 1.2, 'Square': 1.8, 'Triangle': 3.0};
   render(Shape, {shape: 'Circle', finishedGrowing: true, ratio: 2.0, scores: scores, reset: false, initialSize: '100px'});
   expect(screen.getByTestId('shape-svg')).toHaveClass('clicked');
   expect(screen.getByTestId('helper-svg')).toBeVisible();
 })
 
-test('Shape grows on click', () => {
+test.only('Shape grows on click', async () => {
   const scores = {'Circle': 1.2, 'Square': 1.8, 'Triangle': 3.0};
   render(Shape, {shape: 'Circle', finishedGrowing: false, ratio: 2.0, scores: scores, reset: false, initialSize: '100px'});
   expect(screen.getByTestId('shape-svg')).toHaveStyle('transform: scale(1)');
   fireEvent.click(screen.getAllByTestId('circle')[0]);
-  //expect(screen.getByTestId('shape-svg')).toHaveClass('clicked');
+  // Wait for max tween time before checking it's done anything
+  await new Promise((r) => setTimeout(r, 7000));
+  expect(screen.getByTestId('shape-svg')).toHaveClass('clicked');
+  expect(screen.getByTestId('shape-svg')).toHaveStyle('transform: scale(3)');
 })
 
