@@ -10,7 +10,8 @@
     "fix": "npx eslint --fix \"{,!(node_modules|public)/**/}*.{ts,svelte}\"",
     "format": "npx prettier --write \"{,!(node_modules|public)/**/}*.{ts,svelte}\"",
     "test": "jest",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "test:cov": "npx jest --coverage"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
