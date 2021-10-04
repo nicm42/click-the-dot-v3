@@ -81,6 +81,7 @@
 
 <div class="shape-container">
   <svg
+    data-testid="shape-svg"
     class="shape-svg {finishedGrowing ? 'clicked' : ''}"
     viewBox="0 0 100 100"
     xmlns="http://www.w3.org/2000/svg"
@@ -103,6 +104,7 @@
     {/if}
   </svg>
   <svg
+    data-testid="helper-svg"
     class="helper-svg {finishedGrowing ? 'show' : ''}"
     viewBox="0 0 100 100"
     xmlns="http://www.w3.org/2000/svg"
