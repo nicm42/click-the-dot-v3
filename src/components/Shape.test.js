@@ -74,3 +74,11 @@ test('Shape stops growing on second click', async () => {
   expect(localStorage.getItem('Circle')).not.toBe('3.0');
 })
 
+test('localStorage is only updated if new score is closer to 2.0', async () => {
+  const scores = {'Circle': 1.2, 'Square': 1.8, 'Triangle': 3.0};
+  render(Shape, {shape: 'Circle', finishedGrowing: false, ratio: 2.0, scores: scores, reset: false, initialSize: '100px'});
+  fireEvent.click(screen.getAllByTestId('circle')[0]);
+  // Wait for max tween time before checking it's done anything
+  await new Promise((r) => setTimeout(r, 7000));
+  expect(localStorage.getItem('Circle')).not.toBe('3.0');
+})
