@@ -7,7 +7,6 @@ import { render, screen } from '@testing-library/svelte'
 import Result from './Result.svelte';
 
 test('Text is all there', () => {
-  const resultTextStart = 'Missed!';
   render(Result, {ratio: 1.2, reset: false});
   expect(screen.getByText('Missed!')).toBeInTheDocument();
   expect(screen.getByText('The shape is now 1.2 times its original size')).toBeInTheDocument();
