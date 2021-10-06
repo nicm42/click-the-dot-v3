@@ -16,7 +16,7 @@ test('All the elements are there on load', () => {
   expect(screen.getByText('Closest scores')).toBeInTheDocument(); // Closest
   expect(localStorage.getItem('Circle')).toBeFalsy;
   expect(screen.queryByText('3.0')).not.toBeInTheDocument();
-  expect(screen.queryByText('Missed!')).not.toBeInTheDocument(); //Results
+  expect(screen.queryByRole('button', {name: /Try again/i})).not.toBeInTheDocument(); //Results
 })
 
 test('Shape and instructions are changed when select changes', async () => {
@@ -50,7 +50,7 @@ test('Closest text is updated after shape grows', async () => {
   expect(screen.getByTestId('closest-score')).toBeInTheDocument();
 })
 
-test.only('After clicking shape, selecting another shape resets everything', async () => {
+test('After clicking shape, selecting another shape resets everything', async () => {
   render(App);
   fireEvent.change(screen.getByTestId('select'), { target: { value: 'Square' } });
   await new Promise((r) => setTimeout(r, 1000));
@@ -61,4 +61,19 @@ test.only('After clicking shape, selecting another shape resets everything', asy
   await new Promise((r) => setTimeout(r, 1000));
   expect(screen.getByText('Click the triangle.')).toBeInTheDocument();
   expect(screen.getAllByTestId('triangle')).toHaveLength(3); //Two in Shape and one in Closest
+})
+
+test('Clicking try again resets everything', async () => {
+  render(App);
+  fireEvent.change(screen.getByTestId('select'), { target: { value: 'Square' } });
+  await new Promise((r) => setTimeout(r, 1000));
+  fireEvent.click(screen.getAllByTestId('square')[0]);
+  // Wait for long enough for shape to have stopped growing
+  await new Promise((r) => setTimeout(r, 7000));
+  fireEvent.click(screen.getByRole('button', {name: /Try again/i}));
+  await new Promise((r) => setTimeout(r, 1000));
+  // Shape should be original size
+  expect(screen.getByTestId('shape-svg')).toHaveStyle('transform: scale(1)');
+  // And results text shouldn't be there
+  expect(screen.queryByRole('button', {name: /Try again/i})).not.toBeInTheDocument();
 })
