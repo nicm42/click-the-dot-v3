@@ -16,7 +16,7 @@ test('Text is all there', () => {
   expect(screen.getByRole('button', {name: /Clear scores/i})).toBeInTheDocument();
 })
 
-test.only('Shapes are all there', () => {
+test('Shapes are all there', () => {
   const shapes = ['Circle', 'Square', 'Triangle'];
   const scores = {'Circle': 1.2, 'Square': 1.8, 'Triangle': 3.0};
   render(Closest, {shapes: shapes, scores: scores});
@@ -31,7 +31,7 @@ test.only('Shapes are all there', () => {
   expect(screen.getByText('Icon for the score for the triangle')).toBeInTheDocument();
 })
 
-test('Local storage is cleared on button click', () => {  
+test('Local storage is cleared on button click', async () => {  
   // Mock window.confirm
   let confirmSpy;
   confirmSpy = jest.spyOn(window, 'confirm');
@@ -46,9 +46,12 @@ test('Local storage is cleared on button click', () => {
   const scores = {'Circle': 1.2, 'Square': 1.8, 'Triangle': 3.0};
   render(Closest, {shapes: shapes, scores: scores});
   fireEvent.click(screen.getByRole('button', {name: /Clear scores/i}));
+  await new Promise((r) => setTimeout(r, 1000));
   expect(confirmSpy).toBeCalledWith('Are you sure you want to clear the closest scores?');
   expect(localStorage.getItem('Circle')).toBeFalsy;
   expect(localStorage.getItem('Square')).toBeFalsy;
   expect(localStorage.getItem('Triangle')).toBeFalsy;
-  expect(screen.getByTestId('closest-score')).not.toBeInTheDocument();
+  expect(screen.queryByText('1.2')).not.toBeInTheDocument();
+  expect(screen.queryByText('1.8')).not.toBeInTheDocument();
+  expect(screen.queryByText('2.0')).not.toBeInTheDocument();
 })
