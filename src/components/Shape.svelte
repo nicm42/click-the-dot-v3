@@ -27,29 +27,37 @@
     easing: linear,
   });
 
-  const handleShapeClick = (): void => {
-    reset = false;
-    if (!clicked) {
-      clicked = true;
-      grow.set(3);
+  let timer: ReturnType<typeof setTimeout>;
 
-      // When it's finished, we want to do the same thing as we do when we click again,
-      // but we can't just listen to $grow becoming 3.
-      // So instead we'll set a timer for the same time as the duration of the tween
-      // as it doesn't matter too much when this happens, as they've definitely missed 2.0
-      const timer = setTimeout(() => {
+  const handleShapeClick = (): void => {
+    console.log('Running handleShapeClick')
+    reset = false;
+    if (!finishedGrowing) {
+      if (!clicked) {
+        clicked = true;
+        grow.set(3);
+
+        // When it's finished, we want to do the same thing as we do when we click again,
+        // but we can't just listen to $grow becoming 3.
+        // So instead we'll set a timer for the same time as the duration of the tween
+        // as it doesn't matter too much when this happens, as they've definitely missed 2.0
+        timer = setTimeout(() => {
+          console.log('In timer')
+          finishedShapeTween();
+        }, tweenDuration);
+      } else {
+        grow.pause();
         finishedShapeTween();
-        clearInterval(timer);
-      }, tweenDuration);
-    } else {
-      grow.pause();
-      finishedShapeTween();
+      }
     }
   };
 
   const finishedShapeTween = () => {
+    console.log('Running finishedShapeTween')
+    clearInterval(timer);
     finishedGrowing = true;
     ratio = $grow.toFixed(1);
+    console.log(finishedGrowing, $grow, ratio)
 
     // First get the current high score for this shape
     // Then check if this is closer to 2.0
