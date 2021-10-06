@@ -37,15 +37,16 @@ test('Results text is shown after shape grows', async () => {
   expect(screen.getByText('Missed!')).toBeInTheDocument();
 })
 
-test.only('Closest text is updated after shape grows', async () => {
+test('Closest text is updated after shape grows', async () => {
   render(App);
   fireEvent.change(screen.getByTestId('select'), { target: { value: 'Square' } });
   await new Promise((r) => setTimeout(r, 1000));
   fireEvent.click(screen.getAllByTestId('square')[0]);
-  // Wait for long enough for shape to have stopped growing
-  await new Promise((r) => setTimeout(r, 7000));
-  expect(screen.getByText('3.0')).toBeInTheDocument();
+  // Wait for a bit before clicking again
+  await new Promise((r) => setTimeout(r, 1000));
+  fireEvent.click(screen.getAllByTestId('square')[0]);
+  await new Promise((r) => setTimeout(r, 1000));
+  // There will only be run because we've only run Square
+  expect(screen.getByTestId('closest-score')).toBeInTheDocument();
 })
 
-//TODO try again
-//TODO reset when change shape in Select

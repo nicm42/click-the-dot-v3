@@ -50,7 +50,7 @@
           {/if}
         </svg>
         {#if scores[shape] !== null && scores[shape] !== '3.0'}
-          <span class="score" id="score-circle">{scores[shape]}</span>
+          <span data-testid="closest-score" class="score" id="score-circle">{scores[shape]}</span>
         {/if}
       </div>
     {/each}
