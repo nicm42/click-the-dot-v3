@@ -50,3 +50,15 @@ test('Closest text is updated after shape grows', async () => {
   expect(screen.getByTestId('closest-score')).toBeInTheDocument();
 })
 
+test.only('After clicking shape, selecting another shape resets everything', async () => {
+  render(App);
+  fireEvent.change(screen.getByTestId('select'), { target: { value: 'Square' } });
+  await new Promise((r) => setTimeout(r, 1000));
+  fireEvent.click(screen.getAllByTestId('square')[0]);
+  // Wait for long enough for shape to have stopped growing
+  await new Promise((r) => setTimeout(r, 7000));
+  fireEvent.change(screen.getByTestId('select'), { target: { value: 'Triangle' } });  
+  await new Promise((r) => setTimeout(r, 1000));
+  expect(screen.getByText('Click the triangle.')).toBeInTheDocument();
+  expect(screen.getAllByTestId('triangle')).toHaveLength(3); //Two in Shape and one in Closest
+})
