@@ -16,13 +16,19 @@ test('Text is all there', () => {
   expect(screen.getByRole('button', {name: /Clear scores/i})).toBeInTheDocument();
 })
 
-test('Shapes are all there', () => {
+test.only('Shapes are all there', () => {
   const shapes = ['Circle', 'Square', 'Triangle'];
   const scores = {'Circle': 1.2, 'Square': 1.8, 'Triangle': 3.0};
   render(Closest, {shapes: shapes, scores: scores});
   expect(screen.getByTestId('circle')).toBeInTheDocument();
   expect(screen.getByTestId('square')).toBeInTheDocument();
   expect(screen.getByTestId('triangle')).toBeInTheDocument();
+  expect(screen.getByTitle('Circle icon')).toBeInTheDocument();
+  expect(screen.getByTitle('Square icon')).toBeInTheDocument();
+  expect(screen.getByTitle('Triangle icon')).toBeInTheDocument();
+  expect(screen.getByText('Icon for the score for the circle')).toBeInTheDocument();
+  expect(screen.getByText('Icon for the score for the square')).toBeInTheDocument();
+  expect(screen.getByText('Icon for the score for the triangle')).toBeInTheDocument();
 })
 
 test('Local storage is cleared on button click', () => {  
@@ -44,4 +50,5 @@ test('Local storage is cleared on button click', () => {
   expect(localStorage.getItem('Circle')).toBeFalsy;
   expect(localStorage.getItem('Square')).toBeFalsy;
   expect(localStorage.getItem('Triangle')).toBeFalsy;
+  expect(screen.getByTestId('closest-score')).not.toBeInTheDocument();
 })
