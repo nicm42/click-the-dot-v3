@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 // From https://svelte.dev/repl/abce342ed248428ab6d67d4ee64033b9?version=3.35.0
 
 import { tweened as nativeTweened } from 'svelte/motion'
