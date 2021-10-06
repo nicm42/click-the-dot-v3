@@ -30,7 +30,6 @@
   let timer: ReturnType<typeof setTimeout>;
 
   const handleShapeClick = (): void => {
-    console.log('Running handleShapeClick')
     reset = false;
     if (!finishedGrowing) {
       if (!clicked) {
@@ -42,7 +41,6 @@
         // So instead we'll set a timer for the same time as the duration of the tween
         // as it doesn't matter too much when this happens, as they've definitely missed 2.0
         timer = setTimeout(() => {
-          console.log('In timer')
           finishedShapeTween();
         }, tweenDuration);
       } else {
@@ -53,11 +51,9 @@
   };
 
   const finishedShapeTween = () => {
-    console.log('Running finishedShapeTween')
     clearInterval(timer);
     finishedGrowing = true;
     ratio = $grow.toFixed(1);
-    console.log(finishedGrowing, $grow, ratio)
 
     // First get the current high score for this shape
     // Then check if this is closer to 2.0
