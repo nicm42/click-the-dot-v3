@@ -46,7 +46,7 @@ test('Closest text is updated after shape grows', async () => {
   await new Promise((r) => setTimeout(r, 1000));
   fireEvent.click(screen.getAllByTestId('square')[0]);
   await new Promise((r) => setTimeout(r, 1000));
-  // There will only be run because we've only run Square
+  // There will only be one because we've only run Square
   expect(screen.getByTestId('closest-score')).toBeInTheDocument();
 })
 
