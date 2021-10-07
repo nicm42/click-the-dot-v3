@@ -28,6 +28,12 @@
 
 </script>
 
+<svelte:head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet"> 
+</svelte:head>
+
 <main>
   <Instructions {shape} />
   <Select {shapes} bind:selectedShape={shape} bind:reset bind:initialSize />
@@ -41,16 +47,18 @@
 <style lang="scss">
   @import './styles';
 
-  :global(*) {
-    padding: 0;
-    margin: 0;
+  :root {
+    --darkBlue: hsl(208, 84%, 14%);
   }
 
   :global(body) {
     height: 100%;
-    //@include set-text;
-    text-align: center;
+    padding: 1em;
     background-color: $background-colour;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 100%;
+    line-height: 1.5;
+    text-align: center;
 
     @media (min-width: $breakpoint-medium) {
       display: grid;
