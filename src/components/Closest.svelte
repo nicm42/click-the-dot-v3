@@ -63,7 +63,7 @@
     color: var(--secondaryColour);
 
     & h2 {
-      margin-block: 0.5em;
+      margin-block: 1em 0.5em;
       font-size: 1.2rem;
       font-weight: 400;
     }
