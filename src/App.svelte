@@ -52,6 +52,7 @@
     --secondaryColour: hsl(208, 69%, 42%);
     --activeColour: hsl(208, 69%, 32%);
     --backgroundColour: hsl(0, 0%, 98%);
+    --darkerBackgroundColour: hsl(0, 0%, 88%);
     --shapeColour: hsl(353, 100%, 74%);
   }
 

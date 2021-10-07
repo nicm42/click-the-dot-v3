@@ -20,13 +20,12 @@
   };
 </script>
 
-<div class="highscores-container">
-  Closest scores
-  <div class="highscores">
+<div class="highscores">
+  <h2>Closest scores</h2>
     {#each shapes as shape}
-      <div class="highscore">
+      <div class="highscores__table">
         <svg
-          class="highscore-icon"
+          class="highscores__icon"
           width="1em"
           height="1em"
           viewBox="0 0 100 100"
@@ -50,72 +49,55 @@
           {/if}
         </svg>
         {#if scores[shape] !== null && scores[shape] !== '3.0'}
-          <span data-testid="closest-score" class="score" id="score-circle">{scores[shape]}</span>
+          <span data-testid="closest-score" class="highscores__score" id="score-circle">{scores[shape]}</span>
         {/if}
-      </div>
+    </div>
     {/each}
-  </div>
-  <div id="clear-container">
-    <button on:click={clearScores} class="clear">Clear scores</button>
-  </div>
+    <button on:click={clearScores} class="highscores__clear">Clear scores</button>
 </div>
 
 <style lang="scss">
   @import '../styles';
 
-  .highscores-container {
-    grid-area: highscores;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    @include top-bottom-padding(1rem);
-    color: $secondary-colour;
-    text-align: left;
+  .highscores {
+    color: var(--secondaryColour);
 
-    @media (min-width: $breakpoint-medium) {
-      align-self: center;
-    }
-  }
-
-  .highscore {
-    padding-top: 0.2rem;
-    padding-bottom: 0.2rem;
-  }
-
-  .highscore-icon {
-    padding-right: 0.2rem;
-    fill: $secondary-colour;
-  }
-
-  .score {
-    //visibility: hidden; //we've put dummy numbers in here so they line up, but need to hide them to start with
-  }
-
-  .clear-container {
-    padding-top: 0.5rem;
-  }
-
-  .clear {
-    @include button;
-    padding: 0.5em 1em;
-    font-size: $smaller-text;
-    color: $primary-colour;
-    background-color: $background-colour;
-    border: $background-colour;
-
-    &:hover,
-    &:active {
-      background-color: darken($background-colour, 10%);
+    & h2 {
+      margin-block: 0.5em;
+      font-size: 1.2rem;
+      font-weight: 400;
     }
 
-    &:active {
-      top: 2px;
+    &__table {
+
     }
 
-    &:disabled {
-      cursor: auto;
-      pointer-events: none;
-      opacity: 0.5;
+    &__icon {
+      padding-inline-end: 0.2rem;
+      fill: var(--secondaryColour);
+    }
+
+    &__clear {
+      position: relative;
+      margin-block-start: 0.5em;
+      padding: 0.5em 1em;
+      border: 0;
+      border-radius: 0.2em;
+      font-size: 0.9rem;
+      color: var(--primaryColour);
+      background-color: var(--backgroundColour);
+      box-shadow: 0 0.3em 0.75em -0.3em rgba(0,0,0,0.5);
+	    cursor: pointer;	
+
+      &:hover,
+      &:active {
+        background-color: var(--darkerBackgroundColour);
+      }
+
+      &:active {
+        top: 0.125rem;
+        box-shadow: none;
+      }
     }
   }
 </style>

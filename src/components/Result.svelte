@@ -53,7 +53,7 @@
       }
 
       &:active {
-        top: 2px;
+        top: 0.125rem;
         box-shadow: none;
       }
     }
