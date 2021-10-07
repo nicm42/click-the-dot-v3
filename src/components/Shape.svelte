@@ -27,7 +27,8 @@
     easing: linear,
   });
 
-  let timer: ReturnType<typeof setTimeout>;
+  // Watch for it to have finished growing without another click
+  $: if ($grow.toFixed(1) === '3.0') finishedShapeTween();
 
   const handleShapeClick = (): void => {
     reset = false;
@@ -35,14 +36,6 @@
       if (!clicked) {
         clicked = true;
         grow.set(3);
-
-        // When it's finished, we want to do the same thing as we do when we click again,
-        // but we can't just listen to $grow becoming 3.
-        // So instead we'll set a timer for the same time as the duration of the tween
-        // as it doesn't matter too much when this happens, as they've definitely missed 2.0
-        timer = setTimeout(() => {
-          finishedShapeTween();
-        }, tweenDuration);
       } else {
         grow.pause();
         finishedShapeTween();
@@ -51,7 +44,6 @@
   };
 
   const finishedShapeTween = () => {
-    clearInterval(timer);
     finishedGrowing = true;
     ratio = $grow.toFixed(1);
 
