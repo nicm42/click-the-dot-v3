@@ -90,13 +90,13 @@
     <title id="shape-title">Shape</title>
     <desc id="shape-desc">A shape that grows when you click on it</desc>
     {#if shape === 'Circle'}
-      <Circle shapeType={'shape'} />
+      <Circle />
     {/if}
     {#if shape === 'Square'}
-      <Square shapeType={'shape'} />
+      <Square />
     {/if}
     {#if shape === 'Triangle'}
-      <Triangle shapeType={'shape'} />
+      <Triangle />
     {/if}
   </svg>
   <svg
@@ -115,13 +115,13 @@
       size</desc
     >
     {#if shape === 'Circle'}
-      <Circle shapeType={'helper'} />
+      <Circle />
     {/if}
     {#if shape === 'Square'}
-      <Square shapeType={'helper'} />
+      <Square />
     {/if}
     {#if shape === 'Triangle'}
-      <Triangle shapeType={'helper'} />
+      <Triangle />
     {/if}
   </svg>
 </div>

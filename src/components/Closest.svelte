@@ -40,13 +40,13 @@
             >Icon for the score for the {shape.toLowerCase()}</desc
           >
           {#if shape === 'Circle'}
-            <Circle shapeType={'closest'} />
+            <Circle />
           {/if}
           {#if shape === 'Square'}
-            <Square shapeType={'closest'} />
+            <Square />
           {/if}
           {#if shape === 'Triangle'}
-            <Triangle shapeType={'closest'} />
+            <Triangle />
           {/if}
         </svg>
         {#if scores[shape] !== null && scores[shape] !== '3.0'}
