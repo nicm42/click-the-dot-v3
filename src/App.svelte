@@ -31,7 +31,7 @@
 <svelte:head>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
 </svelte:head>
 
 <main>
@@ -49,13 +49,16 @@
 
   :root {
     --primaryColour: hsl(208, 84%, 14%);
+    --secondaryColour: hsl(208, 69%, 42%);
+    --activeColour: hsl(208, 69%, 32%);
+    --backgroundColour: hsl(0, 0%, 98%);
     --shapeColour: hsl(353, 100%, 74%);
   }
 
   :global(body) {
     height: 100%;
     padding: 1em;
-    background-color: $background-colour;
+    background-color: var(--backgroundColour);
     font-family: 'Ubuntu', sans-serif;
     font-size: 100%;
     line-height: 1.5;

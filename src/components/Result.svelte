@@ -15,48 +15,47 @@
 </script>
 
 <div class="result">
-  <span class="result-text">
+  <p>
     {resultTextStart}
-  </span>
-  <span class="result-text">
+  </p>
+  <p>
     The shape is now {ratio} times its original size
-  </span>
-  <div class="reset-container">
-    <button class="reset" on:click={resetShape}>Try again</button>
-  </div>
+  </p>
+  <button on:click={resetShape}>Try again</button>
 </div>
 
 <style lang="scss">
   @import '../styles';
 
   .result {
-    grid-area: result;
-    display: flex;
-    flex-direction: column;
-    @include top-bottom-padding(1rem);
-    font-weight: bold;
-  }
+    margin-block: 0.33em;
+    font-weight: 700;
 
-  .reset-container {
-    @include top-bottom-padding(1rem);
-  }
-
-  .reset {
-    @include button;
-    padding: 0.5em 1.5em;
-    font-size: $small-text;
-    color: $background-colour;
-    background-color: $secondary-colour;
-    border: $secondary-colour;
-    //visibility: hidden; //hide reset button until transition has finished
-
-    &:hover,
-    &:active {
-      background-color: darken($secondary-colour, 10%);
+    & p {
+      margin-block: 0em;
     }
 
-    &:active {
-      top: 2px;
+    & button {
+      position: relative;
+      margin-block-start: 0.5em;
+      padding: 0.5em 1.5em;
+      background-color: var(--secondaryColour);
+      color: var(--backgroundColour);
+      border: 0;
+      border-radius: 0.2em;
+      box-shadow: 0 0.3em 0.75em -0.3em rgba(0,0,0,0.5);
+	    cursor: pointer;	
+
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: var(--activeColour);
+      }
+
+      &:active {
+        top: 2px;
+        box-shadow: none;
+      }
     }
   }
 </style>
