@@ -32,10 +32,10 @@
   <Instructions {shape} />
   <Select {shapes} bind:selectedShape={shape} bind:reset bind:initialSize />
   <Shape {shape} bind:finishedGrowing bind:ratio bind:scores bind:reset bind:initialSize />
-  <Closest {shapes} {scores} />
   {#if finishedGrowing}
     <Result {ratio} bind:reset />
   {/if}
+  <Closest {shapes} {scores} />
 </main>
 
 <style lang="scss">
