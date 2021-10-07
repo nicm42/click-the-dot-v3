@@ -14,11 +14,10 @@
   }
 </script>
 
-<div class="select-shape-container">
   <select
     data-testid="select"
     name="select-shape"
-    class="select-shape"
+    class="select"
     aria-label="Select a shape"
     bind:value
     on:change={setShape}
@@ -30,21 +29,18 @@
       >
     {/each}
   </select>
-</div>
 
 <style lang="scss">
   @import '../styles';
 
-  .select-shape-container {
-    grid-area: options;
-  }
-
-  .select-shape {
-    padding: 0.2rem;
-    padding-right: 1.6rem; //make sure there's space for the dropdown arrow
-    @include set-text; //for some reason it doesn't pick up the font from the body
-    box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
-    border: 1px solid $primary-colour;
+  .select {
+    padding: 0.2em;
+    padding-inline-end: 1.6rem; //make sure there's space for the dropdown arrow
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1em;
+    color: var(--darkBlue);
+    box-shadow: 0.15em 0.15em 0.5em 0 rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--darkBlue);
     border-radius: 0.2em;
     background-color: $background-colour;
     background: url('../images/chevron-down-outline.svg');
@@ -54,13 +50,8 @@
     appearance: none; //hides native dropdown arrow so we don't get both
   }
 
-  //So it hides the dropdown arrow in IE
-  .select-shape::-ms-expand {
-    display: none;
-  }
-
   //To make sure it's not so massive in Firefox that the dropdown is wider than the select
   option {
-    font-size: $small-text;
+    font-size: 0.9rem;
   }
 </style>
