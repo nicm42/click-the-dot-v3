@@ -22,7 +22,7 @@
       font-size: 1.3rem;
       font-weight: 400;
       line-height: 1.1;
-      color: var(--darkBlue);
+      color: var(--primaryColour);
     }
   }
 </style>

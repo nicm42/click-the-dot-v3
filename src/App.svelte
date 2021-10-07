@@ -48,7 +48,8 @@
   @import './styles';
 
   :root {
-    --darkBlue: hsl(208, 84%, 14%);
+    --primaryColour: hsl(208, 84%, 14%);
+    --shapeColour: hsl(353, 100%, 74%);
   }
 
   :global(body) {

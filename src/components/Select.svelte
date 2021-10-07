@@ -40,7 +40,7 @@
     font-size: 1em;
     color: var(--darkBlue);
     box-shadow: 0.15em 0.15em 0.5em 0 rgba(0, 0, 0, 0.05);
-    border: 1px solid var(--darkBlue);
+    border: 1px solid var(--primaryColour);
     border-radius: 0.2em;
     background-color: $background-colour;
     background: url('../images/chevron-down-outline.svg');

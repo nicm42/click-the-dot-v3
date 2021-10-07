@@ -75,10 +75,10 @@
   }
 </script>
 
-<div class="shape-container">
+<div class="shape">
   <svg
     data-testid="shape-svg"
-    class="shape-svg {finishedGrowing ? 'clicked' : ''}"
+    class="shape__svg {finishedGrowing ? 'clicked' : ''}"
     viewBox="0 0 100 100"
     xmlns="http://www.w3.org/2000/svg"
     role="img"
@@ -100,8 +100,8 @@
     {/if}
   </svg>
   <svg
-    data-testid="helper-svg"
-    class="helper-svg {finishedGrowing ? 'show' : ''}"
+    data-testid="shape__helper"
+    class="shape__helper {finishedGrowing ? 'show' : ''}"
     viewBox="0 0 100 100"
     xmlns="http://www.w3.org/2000/svg"
     role="img"
@@ -129,51 +129,45 @@
 <style lang="scss">
   @import '../styles';
 
-  .shape-container {
-    grid-area: container;
+  .shape {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 300px; // biggest shape when 3 times the size
+    min-height: 300px; // biggest shape when 3 times the size
     min-width: 300px; // biggest shape when 3 times the size
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
+    margin-block: 1em;
 
-  .shape-svg {
-    cursor: pointer;
+    &__svg {
+      cursor: pointer;
 
-    &.clicked {
-      pointer-events: none;
-      cursor: auto;
+      &.clicked {
+        pointer-events: none;
+        cursor: auto;
+      }
+    }
+
+      &__helper {
+      display: none; //hiding this here so we can click on the shape without the helper getting in the way
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+
+      &.show {
+        display: block;
+      }
     }
   }
 
-  :global(.shape) {
-    //visibility: hidden;
+  :global(.shape__svg) {
     stroke: none;
-    fill: $standout-colour;
+    fill: var(--shapeColour);
   }
 
-  .helper-svg {
-    display: none; //hiding this here so we can click on the shape without the helper getting in the way
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-
-    &.show {
-      display: block;
-    }
-  }
-
-  :global(.helper) {
-    //visibility: hidden; //and then we have to hide this so we an unhide just the relevant one
-    fill: $primary-colour;
+  :global(.shape__helper) {
+    fill: var(--primaryColour);
   }
 </style>
