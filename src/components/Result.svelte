@@ -15,45 +15,34 @@
 </script>
 
 <div class="result">
-  <p>
+  <p class="result__text">
     {resultTextStart}
   </p>
-  <p>
+  <p class="result__text">
     The shape is now {ratio} times its original size
   </p>
-  <button on:click={resetShape}>Try again</button>
+  <button class="result__button" on:click={resetShape}>Try again</button>
 </div>
 
 <style lang="scss">
   .result {
     grid-area: result;
-    margin-block: 0.33em;
+    margin-block: var(--elementGap);
     font-weight: 700;
 
-    & p {
+    &__text {
       margin-block: 0em;
     }
 
-    & button {
-      position: relative;
-      margin-block-start: 0.5em;
+    &__button {
       padding: 0.5em 1.5em;
       background-color: var(--secondaryColour);
       color: var(--backgroundColour);
-      border: 0;
-      border-radius: 0.2em;
-      box-shadow: 0 0.3em 0.75em -0.3em rgba(0,0,0,0.5);
-	    cursor: pointer;	
 
       &:hover,
       &:focus,
       &:active {
         background-color: var(--activeColour);
-      }
-
-      &:active {
-        top: 0.125rem;
-        box-shadow: none;
       }
     }
   }

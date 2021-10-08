@@ -82,25 +82,14 @@
     }
 
     &__clear {
-      position: relative;
-      margin-block-start: 0.5em;
       padding: 0.5em 1em;
-      border: 0;
-      border-radius: 0.2em;
+      background-color: var(--backgroundColour);
       font-size: 0.9rem;
       color: var(--primaryColour);
-      background-color: var(--backgroundColour);
-      box-shadow: 0 0.3em 0.75em -0.3em rgba(0,0,0,0.5);
-	    cursor: pointer;	
 
       &:hover,
       &:active {
         background-color: var(--darkerBackgroundColour);
-      }
-
-      &:active {
-        top: 0.125rem;
-        box-shadow: none;
       }
     }
   }

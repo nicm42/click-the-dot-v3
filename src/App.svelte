@@ -52,6 +52,8 @@
     --backgroundColour: hsl(0, 0%, 98%);
     --darkerBackgroundColour: hsl(0, 0%, 88%);
     --shapeColour: hsl(353, 100%, 74%);
+
+    --elementGap: 0.33em;
   }
 
   :global(body) {
@@ -77,6 +79,20 @@
     }
     place-content: center;
     column-gap: 4em;
+  }
+
+  :global(button) {
+    position: relative;
+    margin-block-start: 0.5em;
+    border: 0;
+    border-radius: 0.2em;
+    box-shadow: 0 0.3em 0.75em -0.3em rgba(0,0,0,0.5);
+	  cursor: pointer;	
+    
+    &:active {
+      inset-block-start: 0.125rem;
+      box-shadow: none;
+    }
   }
 
 </style>

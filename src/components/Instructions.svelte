@@ -17,7 +17,7 @@
 
     & h1,
     & p {
-      margin-block: 0.33em;
+      margin-block: var(--elementGap);
       font-size: 1.3rem;
       font-weight: 400;
       line-height: 1.1;
