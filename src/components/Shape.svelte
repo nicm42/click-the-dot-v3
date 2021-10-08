@@ -146,7 +146,7 @@
       }
     }
 
-      &__helper {
+    &__helper {
       display: none; //hiding this here so we can click on the shape without the helper getting in the way
       position: absolute;
       inset: 0;

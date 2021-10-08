@@ -2,7 +2,7 @@
   import Circle from './shapes/Circle.svelte';
   import Square from './shapes/Square.svelte';
   import Triangle from './shapes/Triangle.svelte';
-  
+
   export let shapes: string[];
   export let scores: ScoresType;
 
@@ -18,7 +18,7 @@
       localStorage.clear();
       // Also need to clear the scores displayed, with uses the object
       // which picked them up from localStorage at the start
-      Object.keys(scores).forEach(key => scores[key] = '' );
+      Object.keys(scores).forEach((key) => (scores[key] = ''));
     }
   };
 </script>
@@ -29,37 +29,45 @@
     {#each shapes as shape}
       <tr class="highscores__table">
         <td class="highscores__icon">
-        <svg
-          width="1em"
-          height="1em"
-          viewBox="0 0 100 100"
-          xmlns="http://www.w3.org/2000/svg"
-          role="img"
-          aria-labelledby="highscore-circle-title"
-          aria-describedby="highscore-circle-desc"
-        >
-          <title id="highscore-circle-title">{shape} icon</title>
-          <desc id="highscore-circle-desc"
-            >Icon for the score for the {shape.toLowerCase()}</desc
+          <svg
+            width="1em"
+            height="1em"
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-labelledby="highscore-circle-title"
+            aria-describedby="highscore-circle-desc"
           >
-          {#if shape === 'Circle'}
-            <Circle />
-          {/if}
-          {#if shape === 'Square'}
-            <Square />
-          {/if}
-          {#if shape === 'Triangle'}
-            <Triangle />
-          {/if}
-        </svg>
+            <title id="highscore-circle-title">{shape} icon</title>
+            <desc id="highscore-circle-desc"
+              >Icon for the score for the {shape.toLowerCase()}</desc
+            >
+            {#if shape === 'Circle'}
+              <Circle />
+            {/if}
+            {#if shape === 'Square'}
+              <Square />
+            {/if}
+            {#if shape === 'Triangle'}
+              <Triangle />
+            {/if}
+          </svg>
         </td>
         {#if scores[shape] !== null && scores[shape] !== '3.0'}
-          <td data-testid="closest-score" class="highscores__score" id="score-circle">{scores[shape]}</td>
+          <td
+            data-testid="closest-score"
+            class="highscores__score"
+            id="score-circle">{scores[shape]}</td
+          >
         {/if}
-    </tr>
+      </tr>
     {/each}
-    </table>
-    <button on:click={clearScores} class="highscores__clear {isScores ? '' : 'disabled'}" disabled={!isScores}>Clear scores</button>
+  </table>
+  <button
+    on:click={clearScores}
+    class="highscores__clear {isScores ? '' : 'disabled'}"
+    disabled={!isScores}>Clear scores</button
+  >
 </div>
 
 <style lang="scss">
@@ -99,7 +107,7 @@
       &.disabled {
         pointer-events: none;
         opacity: 0.5;
-        cursor: auto;        
+        cursor: auto;
       }
     }
   }

@@ -25,13 +25,15 @@
       Object.assign(score, { [shape]: localStorage.getItem(shape) }),
     {}
   );
-
 </script>
 
 <svelte:head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
 
   <title>Click the Shape</title>
 </svelte:head>
@@ -39,7 +41,14 @@
 <main>
   <Instructions {shape} />
   <Select {shapes} bind:selectedShape={shape} bind:reset bind:initialSize />
-  <Shape {shape} bind:finishedGrowing bind:ratio bind:scores bind:reset bind:initialSize />
+  <Shape
+    {shape}
+    bind:finishedGrowing
+    bind:ratio
+    bind:scores
+    bind:reset
+    bind:initialSize
+  />
   {#if finishedGrowing}
     <Result {ratio} bind:reset />
   {/if}
@@ -70,14 +79,14 @@
 
   main {
     @media (min-width: 37.5rem) {
-    display: grid;
-    grid-template-columns: min-content, auto;
-    grid-template-rows: repeat(4, auto);
-    grid-template-areas:
-      '. instructions'
-      'select shape'
-      'closest shape'
-      '. result'
+      display: grid;
+      grid-template-columns: min-content, auto;
+      grid-template-rows: repeat(4, auto);
+      grid-template-areas:
+        '. instructions'
+        'select shape'
+        'closest shape'
+        '. result';
     }
     place-content: center;
     column-gap: 4em;
@@ -88,13 +97,12 @@
     margin-block-start: 0.5em;
     border: 0;
     border-radius: 0.2em;
-    box-shadow: 0 0.3em 0.75em -0.3em rgba(0,0,0,0.5);
-	  cursor: pointer;	
-    
+    box-shadow: 0 0.3em 0.75em -0.3em rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+
     &:active {
       inset-block-start: 0.125rem;
       box-shadow: none;
     }
   }
-
 </style>

@@ -7,11 +7,11 @@
   export let initialSize: number;
   let value: string = '';
 
-  const setShape = (event: any):void => {
+  const setShape = (event: any): void => {
     selectedShape = event.currentTarget.value;
     initialSize = getRandomIntInclusive(50, 100);
     reset = true;
-  }
+  };
 </script>
 
 <div class="select">
@@ -30,7 +30,7 @@
       >
     {/each}
   </select>
-  </div>
+</div>
 
 <style lang="scss">
   .select {

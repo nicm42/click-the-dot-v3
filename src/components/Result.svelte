@@ -11,7 +11,7 @@
 
   const resetShape = () => {
     reset = true;
-  }
+  };
 </script>
 
 <div class="result">
