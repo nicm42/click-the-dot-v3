@@ -31,8 +31,6 @@
   </select>
 
 <style lang="scss">
-  @import '../styles';
-
   .select {
     padding: 0.2em;
     padding-inline-end: 1.6rem; //make sure there's space for the dropdown arrow
@@ -42,7 +40,7 @@
     box-shadow: 0.15em 0.15em 0.5em 0 rgba(0, 0, 0, 0.05);
     border: 1px solid var(--primaryColour);
     border-radius: 0.2em;
-    background-color: $background-colour;
+    background-color: var(--backgroundColour);
     background: url('../images/chevron-down-outline.svg');
     background-size: 1.5rem 1.5rem;
     background-position: right center;

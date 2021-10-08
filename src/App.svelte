@@ -45,8 +45,6 @@
 </main>
 
 <style lang="scss">
-  @import './styles';
-
   :root {
     --primaryColour: hsl(208, 84%, 14%);
     --secondaryColour: hsl(208, 69%, 42%);
@@ -65,7 +63,7 @@
     line-height: 1.5;
     text-align: center;
 
-    @media (min-width: $breakpoint-medium) {
+    /* @media (min-width: $breakpoint-medium) {
       display: grid;
       grid-template-areas:
         'instructions instructions'
@@ -81,6 +79,6 @@
         'options container highscores'
         '. result .';
       grid-template-columns: 1fr, 2fr, 1fr;
-    }
+    } */
   }
 </style>

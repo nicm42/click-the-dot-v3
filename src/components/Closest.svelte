@@ -60,8 +60,6 @@
 </div>
 
 <style lang="scss">
-  @import '../styles';
-
   .highscores {
     color: var(--secondaryColour);
 
@@ -72,16 +70,10 @@
     }
 
     table {
-      //display: table;
       position: relative;
       inset-inline-start: 50%;
       transform: translateX(-50%);
     }
-
-    /* &__icon,
-    &__score {
-      display: table-cell;
-    } */
 
     &__icon {
       padding-inline-end: 0.2rem;

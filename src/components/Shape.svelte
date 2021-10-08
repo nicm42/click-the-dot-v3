@@ -127,8 +127,6 @@
 </div>
 
 <style lang="scss">
-  @import '../styles';
-
   .shape {
     position: relative;
     display: flex;

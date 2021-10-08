@@ -25,8 +25,6 @@
 </div>
 
 <style lang="scss">
-  @import '../styles';
-
   .result {
     margin-block: 0.33em;
     font-weight: 700;

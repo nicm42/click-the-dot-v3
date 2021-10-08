@@ -11,8 +11,6 @@
 </div>
 
 <style lang="scss">
-  @import '../styles';
-
   .instructions {
     padding-block-end: 1em;
 
