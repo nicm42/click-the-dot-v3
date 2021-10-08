@@ -10,12 +10,15 @@
     [key: string]: string;
   };
 
+  // Check the scores - if they're all blank, then disable the button
+  $: isScores = Object.values(scores).some(Boolean);
+
   const clearScores = () => {
     if (confirm('Are you sure you want to clear the closest scores?')) {
       localStorage.clear();
       // Also need to clear the scores displayed, with uses the object
       // which picked them up from localStorage at the start
-      Object.keys(scores).forEach(function(key){ scores[key] = '' });
+      Object.keys(scores).forEach(key => scores[key] = '' );
     }
   };
 </script>
@@ -56,7 +59,7 @@
     </tr>
     {/each}
     </table>
-    <button on:click={clearScores} class="highscores__clear">Clear scores</button>
+    <button on:click={clearScores} class="highscores__clear {isScores ? '' : 'disabled'}" disabled={!isScores}>Clear scores</button>
 </div>
 
 <style lang="scss">
@@ -90,6 +93,13 @@
       &:hover,
       &:active {
         background-color: var(--darkerBackgroundColour);
+      }
+
+      // Although button is disabled, it doesn't look it, so we need to add some CSS for that
+      &.disabled {
+        pointer-events: none;
+        opacity: 0.5;
+        cursor: auto;        
       }
     }
   }
