@@ -128,6 +128,7 @@
 
 <style lang="scss">
   .shape {
+    grid-area: shape;
     position: relative;
     display: flex;
     justify-content: center;

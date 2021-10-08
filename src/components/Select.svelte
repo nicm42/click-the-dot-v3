@@ -14,10 +14,11 @@
   }
 </script>
 
+<div class="select">
   <select
     data-testid="select"
     name="select-shape"
-    class="select"
+    class="select__select"
     aria-label="Select a shape"
     bind:value
     on:change={setShape}
@@ -29,23 +30,28 @@
       >
     {/each}
   </select>
+  </div>
 
 <style lang="scss">
   .select {
-    padding: 0.2em;
-    padding-inline-end: 1.6rem; //make sure there's space for the dropdown arrow
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 1em;
-    color: var(--darkBlue);
-    box-shadow: 0.15em 0.15em 0.5em 0 rgba(0, 0, 0, 0.05);
-    border: 1px solid var(--primaryColour);
-    border-radius: 0.2em;
-    background-color: var(--backgroundColour);
-    background: url('../images/chevron-down-outline.svg');
-    background-size: 1.5rem 1.5rem;
-    background-position: right center;
-    background-repeat: no-repeat;
-    appearance: none; //hides native dropdown arrow so we don't get both
+    grid-area: select;
+
+    &__select {
+      padding: 0.2em;
+      padding-inline-end: 1.6rem; //make sure there's space for the dropdown arrow
+      font-family: 'Ubuntu', sans-serif;
+      font-size: 1em;
+      color: var(--darkBlue);
+      box-shadow: 0.15em 0.15em 0.5em 0 rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--primaryColour);
+      border-radius: 0.2em;
+      background-color: var(--backgroundColour);
+      background: url('../images/chevron-down-outline.svg');
+      background-size: 1.5rem 1.5rem;
+      background-position: right center;
+      background-repeat: no-repeat;
+      appearance: none; //hides native dropdown arrow so we don't get both
+    }
   }
 
   //To make sure it's not so massive in Firefox that the dropdown is wider than the select

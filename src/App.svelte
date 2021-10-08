@@ -62,23 +62,21 @@
     font-size: 100%;
     line-height: 1.5;
     text-align: center;
-
-    /* @media (min-width: $breakpoint-medium) {
-      display: grid;
-      grid-template-areas:
-        'instructions instructions'
-        'options container'
-        'highscores container'
-        'result result';
-      grid-template-columns: 1fr, 2fr;
-    }
-
-    @media (min-width: $breakpoint-big) {
-      grid-template-areas:
-        '. instructions .'
-        'options container highscores'
-        '. result .';
-      grid-template-columns: 1fr, 2fr, 1fr;
-    } */
   }
+
+  main {
+    @media (min-width: 37.5rem) {
+    display: grid;
+    grid-template-columns: min-content, auto;
+    grid-template-rows: repeat(4, auto);
+    grid-template-areas:
+      '. instructions'
+      'select shape'
+      'closest shape'
+      '. result'
+    }
+    place-content: center;
+    column-gap: 4em;
+  }
+
 </style>

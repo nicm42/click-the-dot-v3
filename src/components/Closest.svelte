@@ -61,6 +61,7 @@
 
 <style lang="scss">
   .highscores {
+    grid-area: closest;
     color: var(--secondaryColour);
 
     & h2 {

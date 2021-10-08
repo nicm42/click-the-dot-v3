@@ -12,6 +12,7 @@
 
 <style lang="scss">
   .instructions {
+    grid-area: instructions;
     padding-block-end: 1em;
 
     & h1,

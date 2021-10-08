@@ -26,6 +26,7 @@
 
 <style lang="scss">
   .result {
+    grid-area: result;
     margin-block: 0.33em;
     font-weight: 700;
 
