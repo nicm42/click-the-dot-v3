@@ -13,10 +13,10 @@
   const clearScores = () => {
     if (confirm('Are you sure you want to clear the closest scores?')) {
       localStorage.clear();
+      // Also need to clear the scores displayed, with uses the object
+      // which picked them up from localStorage at the start
+      Object.keys(scores).forEach(function(key){ scores[key] = '' });
     }
-    // Also need to clear the scores displayed, with uses the object
-    // which picked them up from localStorage at the start
-    Object.keys(scores).forEach(function(key){ scores[key] = '' });
   };
 </script>
 
