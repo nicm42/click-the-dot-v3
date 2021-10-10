@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 /// <reference types="@testing-library/cypress" />
 
-describe('Post tests', () => {
+describe('Select tests', () => {
   beforeEach(() => {
     cy.visit(Cypress.config('baseUrl'));
   });
