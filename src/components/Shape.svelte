@@ -100,7 +100,7 @@
     {/if}
   </svg>
   <svg
-    data-testid="shape__helper"
+    data-testid="helper-svg"
     class="shape__helper {finishedGrowing ? 'show' : ''}"
     viewBox="0 0 100 100"
     xmlns="http://www.w3.org/2000/svg"
