@@ -35,11 +35,11 @@
             viewBox="0 0 100 100"
             xmlns="http://www.w3.org/2000/svg"
             role="img"
-            aria-labelledby="highscore-circle-title"
-            aria-describedby="highscore-circle-desc"
+            aria-labelledby="highscore-{shape.toLowerCase()}-title"
+            aria-describedby="highscore-{shape.toLowerCase()}-desc"
           >
-            <title id="highscore-circle-title">{shape} icon</title>
-            <desc id="highscore-circle-desc"
+            <title id="highscore-{shape.toLowerCase()}-title">{shape} icon</title>
+            <desc id="highscore-{shape.toLowerCase()}-desc"
               >Icon for the score for the {shape.toLowerCase()}</desc
             >
             {#if shape === 'Circle'}
