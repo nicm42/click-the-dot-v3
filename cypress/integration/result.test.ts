@@ -23,11 +23,10 @@ describe('Instructions tests', () => {
       
       // Now check that clicking the button means everything is reset
       cy.findByRole('button', {name: /Try again/i}).click();
-      cy.findByText('Missed!').should('not.exist');
-      cy.findByText('The shape is now', {exact: false}).should('not.exist');
-      cy.findByText('times its original size', {exact: false}).should('not.exist');
-      cy.findByRole('button', {name: /Try again/i}).should('not.exist');
-      cy.findAllByTestId('circle').first().invoke('width').should('be.lte', 100);
+    cy.findByText('Missed!').should('not.exist');
+    cy.findByText('The shape is now', {exact: false}).should('not.exist');
+    cy.findByText('times its original size', {exact: false}).should('not.exist');
+    cy.findByRole('button', {name: /Try again/i}).should('not.exist');
     })
   });
 });
