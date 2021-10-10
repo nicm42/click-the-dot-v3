@@ -38,9 +38,9 @@ test('Local storage is cleared on button click', async () => {
   confirmSpy.mockImplementation(jest.fn(() => true));
 
   // First need to add to localStorage to check it's been cleared
-  localStorage.setItem('Circle', 1.2);
-  localStorage.setItem('Square', 1.8);
-  localStorage.setItem('Triangle', 2.0);
+  localStorage.setItem('Circle', '1.2');
+  localStorage.setItem('Square', '1.8');
+  localStorage.setItem('Triangle', '2.0');
 
   const shapes = ['Circle', 'Square', 'Triangle'];
   const scores = {'Circle': 1.2, 'Square': 1.8, 'Triangle': 3.0};
