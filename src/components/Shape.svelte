@@ -36,23 +36,23 @@
       e.preventDefault();
       growShape();
     }
-  }
+  };
 
   const handleShapeClick = (e: MouseEvent): void => {
     growShape();
-  }
+  };
 
   const growShape = (): void => {
     if (!isFinishedGrowing) {
-        isReset = false;
-        if (!clicked) {
-          clicked = true;
-          grow.set(3);
-        } else {
-          grow.pause();
-          finishedShapeTween();
-        }
+      isReset = false;
+      if (!clicked) {
+        clicked = true;
+        grow.set(3);
+      } else {
+        grow.pause();
+        finishedShapeTween();
       }
+    }
   };
 
   const finishedShapeTween = () => {

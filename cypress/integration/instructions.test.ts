@@ -10,38 +10,40 @@ describe('Instructions tests', () => {
   it('Instructions change when select changes to circle', () => {
     cy.findByText('Select a shape.').should('exist');
     cy.findByText('Click or press spacebar on the shape.').should('exist');
-    cy.findByText('Click or press spacebar again when it\'s twice the size.').should('exist');
-    
+    cy.findByText(
+      "Click or press spacebar again when it's twice the size."
+    ).should('exist');
+
     // Circle
-    cy.findByTestId('select')
-    .select('Circle')
-    .should('have.value', 'Circle');
+    cy.findByTestId('select').select('Circle').should('have.value', 'Circle');
     cy.findByText('Select a shape.').should('not.exist');
     cy.findByText('Click or press spacebar on the circle.').should('exist');
   });
 
-it('Instructions change when select changes to square', () => {
+  it('Instructions change when select changes to square', () => {
     cy.findByText('Select a shape.').should('exist');
     cy.findByText('Click or press spacebar on the shape.').should('exist');
-    cy.findByText('Click or press spacebar again when it\'s twice the size.').should('exist');
-    
+    cy.findByText(
+      "Click or press spacebar again when it's twice the size."
+    ).should('exist');
+
     // Square
-    cy.findByTestId('select')
-    .select('Square')
-    .should('have.value', 'Square');
+    cy.findByTestId('select').select('Square').should('have.value', 'Square');
     cy.findByText('Select a shape.').should('not.exist');
     cy.findByText('Click or press spacebar on the square.').should('exist');
   });
 
-it('Instructions change when select changes to triangle', () => {
+  it('Instructions change when select changes to triangle', () => {
     cy.findByText('Select a shape.').should('exist');
     cy.findByText('Click or press spacebar on the shape.').should('exist');
-    cy.findByText('Click or press spacebar again when it\'s twice the size.').should('exist');
-    
+    cy.findByText(
+      "Click or press spacebar again when it's twice the size."
+    ).should('exist');
+
     // Triangle
     cy.findByTestId('select')
-    .select('Triangle')
-    .should('have.value', 'Triangle');
+      .select('Triangle')
+      .should('have.value', 'Triangle');
     cy.findByText('Select a shape.').should('not.exist');
     cy.findByText('Click or press spacebar on the triangle.').should('exist');
   });

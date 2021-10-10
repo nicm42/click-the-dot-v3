@@ -63,10 +63,8 @@
       </tr>
     {/each}
   </table>
-  <button
-    on:click={clearScores}
-    class="highscores__clear"
-    disabled={!isScores}>Clear scores</button
+  <button on:click={clearScores} class="highscores__clear" disabled={!isScores}
+    >Clear scores</button
   >
 </div>
 

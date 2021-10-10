@@ -3,35 +3,43 @@
  */
 
 import '@testing-library/jest-dom';
-import { render, screen, fireEvent, waitFor } from '@testing-library/svelte'
+import { render, screen, fireEvent, waitFor } from '@testing-library/svelte';
 import Closest from './Closest.svelte';
 
 test('Text is all there', () => {
   const shapes = ['Circle', 'Square', 'Triangle'];
-  const scores = {'Circle': 1.2, 'Square': 1.8, 'Triangle': 3.0};
-  render(Closest, {shapes: shapes, scores: scores});
+  const scores = { Circle: 1.2, Square: 1.8, Triangle: 3.0 };
+  render(Closest, { shapes: shapes, scores: scores });
   expect(screen.getByText('1.2')).toBeInTheDocument();
   expect(screen.getByText('1.8')).toBeInTheDocument();
   expect(screen.queryByText('3.0')).not.toBeInTheDocument();
-  expect(screen.getByRole('button', {name: /Clear scores/i})).toBeInTheDocument();
-})
+  expect(
+    screen.getByRole('button', { name: /Clear scores/i })
+  ).toBeInTheDocument();
+});
 
 test('Shapes are all there', () => {
   const shapes = ['Circle', 'Square', 'Triangle'];
-  const scores = {'Circle': 1.2, 'Square': 1.8, 'Triangle': 3.0};
-  render(Closest, {shapes: shapes, scores: scores});
+  const scores = { Circle: 1.2, Square: 1.8, Triangle: 3.0 };
+  render(Closest, { shapes: shapes, scores: scores });
   expect(screen.getByTestId('circle')).toBeInTheDocument();
   expect(screen.getByTestId('square')).toBeInTheDocument();
   expect(screen.getByTestId('triangle')).toBeInTheDocument();
   expect(screen.getByTitle('Circle icon')).toBeInTheDocument();
   expect(screen.getByTitle('Square icon')).toBeInTheDocument();
   expect(screen.getByTitle('Triangle icon')).toBeInTheDocument();
-  expect(screen.getByText('Icon for the score for the circle')).toBeInTheDocument();
-  expect(screen.getByText('Icon for the score for the square')).toBeInTheDocument();
-  expect(screen.getByText('Icon for the score for the triangle')).toBeInTheDocument();
-})
+  expect(
+    screen.getByText('Icon for the score for the circle')
+  ).toBeInTheDocument();
+  expect(
+    screen.getByText('Icon for the score for the square')
+  ).toBeInTheDocument();
+  expect(
+    screen.getByText('Icon for the score for the triangle')
+  ).toBeInTheDocument();
+});
 
-test('Local storage is cleared on button click', async () => {  
+test('Local storage is cleared on button click', async () => {
   // Mock window.confirm
   let confirmSpy: jest.SpyInstance<boolean, [message?: string]>;
   confirmSpy = jest.spyOn(window, 'confirm');
@@ -43,11 +51,13 @@ test('Local storage is cleared on button click', async () => {
   localStorage.setItem('Triangle', '2.0');
 
   const shapes = ['Circle', 'Square', 'Triangle'];
-  const scores = {'Circle': 1.2, 'Square': 1.8, 'Triangle': 3.0};
-  render(Closest, {shapes: shapes, scores: scores});
-  fireEvent.click(screen.getByRole('button', {name: /Clear scores/i}));
+  const scores = { Circle: 1.2, Square: 1.8, Triangle: 3.0 };
+  render(Closest, { shapes: shapes, scores: scores });
+  fireEvent.click(screen.getByRole('button', { name: /Clear scores/i }));
   waitFor(() => {
-    expect(confirmSpy).toBeCalledWith('Are you sure you want to clear the closest scores?');
+    expect(confirmSpy).toBeCalledWith(
+      'Are you sure you want to clear the closest scores?'
+    );
     expect(localStorage.getItem('Circle')).toBeFalsy;
     expect(localStorage.getItem('Square')).toBeFalsy;
     expect(localStorage.getItem('Triangle')).toBeFalsy;
