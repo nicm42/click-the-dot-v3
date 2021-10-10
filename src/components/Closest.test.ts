@@ -3,7 +3,7 @@
  */
 
 import '@testing-library/jest-dom';
-import { render, screen, fireEvent } from '@testing-library/svelte'
+import { render, screen, fireEvent, waitFor } from '@testing-library/svelte'
 import Closest from './Closest.svelte';
 
 test('Text is all there', () => {
@@ -33,7 +33,7 @@ test('Shapes are all there', () => {
 
 test('Local storage is cleared on button click', async () => {  
   // Mock window.confirm
-  let confirmSpy;
+  let confirmSpy: jest.SpyInstance<boolean, [message?: string]>;
   confirmSpy = jest.spyOn(window, 'confirm');
   confirmSpy.mockImplementation(jest.fn(() => true));
 
@@ -46,12 +46,13 @@ test('Local storage is cleared on button click', async () => {
   const scores = {'Circle': 1.2, 'Square': 1.8, 'Triangle': 3.0};
   render(Closest, {shapes: shapes, scores: scores});
   fireEvent.click(screen.getByRole('button', {name: /Clear scores/i}));
-  await new Promise((r) => setTimeout(r, 1000));
-  expect(confirmSpy).toBeCalledWith('Are you sure you want to clear the closest scores?');
-  expect(localStorage.getItem('Circle')).toBeFalsy;
-  expect(localStorage.getItem('Square')).toBeFalsy;
-  expect(localStorage.getItem('Triangle')).toBeFalsy;
-  expect(screen.queryByText('1.2')).not.toBeInTheDocument();
-  expect(screen.queryByText('1.8')).not.toBeInTheDocument();
-  expect(screen.queryByText('2.0')).not.toBeInTheDocument();
-})
+  waitFor(() => {
+    expect(confirmSpy).toBeCalledWith('Are you sure you want to clear the closest scores?');
+    expect(localStorage.getItem('Circle')).toBeFalsy;
+    expect(localStorage.getItem('Square')).toBeFalsy;
+    expect(localStorage.getItem('Triangle')).toBeFalsy;
+    expect(screen.queryByText('1.2')).not.toBeInTheDocument();
+    expect(screen.queryByText('1.8')).not.toBeInTheDocument();
+    expect(screen.queryByText('2.0')).not.toBeInTheDocument();
+  });
+});
