@@ -25,16 +25,15 @@
 
 <div class="highscores">
   <h2>Closest scores</h2>
-  <table>
+  <div class="highscores__table">
     {#each shapes as shape}
-      <tr class="highscores__table">
-        <td class="highscores__icon">
           <svg
             width="1em"
             height="1em"
             viewBox="0 0 100 100"
             xmlns="http://www.w3.org/2000/svg"
             role="img"
+            class="highscores__icon"
             aria-labelledby="highscore-{shape.toLowerCase()}-title"
             aria-describedby="highscore-{shape.toLowerCase()}-desc"
           >
@@ -52,17 +51,15 @@
               <Triangle />
             {/if}
           </svg>
-        </td>
         {#if scores[shape] !== null && scores[shape] !== '3.0'}
-          <td
+          <div
             data-testid="closest-score"
             class="highscores__score"
-            id="score-circle">{scores[shape]}</td
+            id="score-circle">{scores[shape]}</div
           >
         {/if}
-      </tr>
     {/each}
-  </table>
+  </div>
   <button on:click={clearScores} class="highscores__clear" disabled={!isScores}
     >Clear scores</button
   >
@@ -79,8 +76,14 @@
       font-weight: 400;
     }
 
-    table {
+    &__table {
       position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      justify-content: center;
+      align-items: center;
+      row-gap: 0.5em;
+      column-gap: 0.25em;
       inset-inline-start: 50%;
       transform: translateX(-50%);
     }
