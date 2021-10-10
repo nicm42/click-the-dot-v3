@@ -8,9 +8,9 @@
   import getRandomIntInclusive from '../utils/getRandomIntInclusive';
 
   export let shape: string;
-  export let reset: Boolean;
+  export let isReset: Boolean;
 
-  export let finishedGrowing: boolean;
+  export let isFinishedGrowing: boolean;
   export let ratio: string;
   export let scores: ScoresType;
   export let initialSize: number;
@@ -31,8 +31,8 @@
   $: if ($grow.toFixed(1) === '3.0') finishedShapeTween();
 
   const handleShapeClick = (): void => {
-    reset = false;
-    if (!finishedGrowing) {
+    isReset = false;
+    if (!isFinishedGrowing) {
       if (!clicked) {
         clicked = true;
         grow.set(3);
@@ -44,7 +44,7 @@
   };
 
   const finishedShapeTween = () => {
-    finishedGrowing = true;
+    isFinishedGrowing = true;
     ratio = $grow.toFixed(1);
 
     // First get the current high score for this shape
@@ -62,12 +62,12 @@
     scores[shape] = highestScore;
   };
 
-  // If reset is true, then it means something has been pressed to reset the shape
+  // If isReset is true, then it means something has been pressed to isReset the shape
   // we can use the pausableTween to set transform scale back to original
-  $: if (reset) {
+  $: if (isReset) {
     grow.reset();
     // Now shape will be unlicked and helper won't be shown
-    finishedGrowing = false;
+    isFinishedGrowing = false;
     clicked = false;
     // Update these so they'll be different each time
     initialSize = getRandomIntInclusive(50, 100);
@@ -78,7 +78,7 @@
 <div class="shape">
   <svg
     data-testid="shape-svg"
-    class="shape__svg {finishedGrowing ? 'clicked' : ''}"
+    class="shape__svg {isFinishedGrowing ? 'clicked' : ''}"
     viewBox="0 0 100 100"
     xmlns="http://www.w3.org/2000/svg"
     role="img"
@@ -101,7 +101,7 @@
   </svg>
   <svg
     data-testid="helper-svg"
-    class="shape__helper {finishedGrowing ? 'show' : ''}"
+    class="shape__helper {isFinishedGrowing ? 'show' : ''}"
     viewBox="0 0 100 100"
     xmlns="http://www.w3.org/2000/svg"
     role="img"

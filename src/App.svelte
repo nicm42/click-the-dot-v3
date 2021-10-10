@@ -7,14 +7,14 @@
 
   const shapes: string[] = ['Circle', 'Square', 'Triangle'];
   let shape: string = 'shape';
-  let finishedGrowing: boolean = false;
+  let isFinishedGrowing: boolean = false;
   // ratio needs to be a string so it'll keep the 0 after the decimal point if there is one
   // and will be a string from localStorage,
   // so might as well make it a string
   // and only convert it to a number if we need to do maths on it
   let ratio: string = '3.0';
   let initialSize: number = 100;
-  let reset: Boolean = false;
+  let isReset: Boolean = false;
 
   type ScoresType = {
     [key: string]: string;
@@ -40,17 +40,17 @@
 
 <main>
   <Instructions {shape} />
-  <Select {shapes} bind:selectedShape={shape} bind:reset bind:initialSize />
+  <Select {shapes} bind:selectedShape={shape} bind:isReset bind:initialSize />
   <Shape
     {shape}
-    bind:finishedGrowing
+    bind:isFinishedGrowing
     bind:ratio
     bind:scores
-    bind:reset
+    bind:isReset
     bind:initialSize
   />
-  {#if finishedGrowing}
-    <Result {ratio} bind:reset />
+  {#if isFinishedGrowing}
+    <Result {ratio} bind:isReset />
   {/if}
   <Closest {shapes} {scores} />
 </main>
