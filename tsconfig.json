@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "noImplicitAny": true,
-    "types": ["jest"]
+    "types": ["jest","cypress", "@testing-library/cypress"]
   },
 
   "extends": "@tsconfig/svelte/tsconfig.json",
