@@ -65,7 +65,7 @@
   </table>
   <button
     on:click={clearScores}
-    class="highscores__clear {isScores ? '' : 'disabled'}"
+    class="highscores__clear"
     disabled={!isScores}>Clear scores</button
   >
 </div>
@@ -104,7 +104,7 @@
       }
 
       // Although button is disabled, it doesn't look it, so we need to add some CSS for that
-      &.disabled {
+      &:disabled {
         pointer-events: none;
         opacity: 0.5;
         cursor: auto;
