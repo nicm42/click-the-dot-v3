@@ -30,17 +30,29 @@
   // Watch for it to have finished growing without another click
   $: if ($grow.toFixed(1) === '3.0') finishedShapeTween();
 
-  const handleShapeClick = (): void => {
-    isReset = false;
-    if (!isFinishedGrowing) {
-      if (!clicked) {
-        clicked = true;
-        grow.set(3);
-      } else {
-        grow.pause();
-        finishedShapeTween();
-      }
+  const handleShapeKeyPress = (e: KeyboardEvent): void => {
+    if (e.key === ' ') {
+      // Don't want pressing space to page down
+      e.preventDefault();
+      growShape();
     }
+  }
+
+  const handleShapeClick = (e: MouseEvent): void => {
+    growShape();
+  }
+
+  const growShape = (): void => {
+    if (!isFinishedGrowing) {
+        isReset = false;
+        if (!clicked) {
+          clicked = true;
+          grow.set(3);
+        } else {
+          grow.pause();
+          finishedShapeTween();
+        }
+      }
   };
 
   const finishedShapeTween = () => {
@@ -84,7 +96,9 @@
     role="img"
     aria-labelledby="shape-title"
     aria-describedby="shape-desc"
+    tabindex="0"
     on:click={handleShapeClick}
+    on:keypress={handleShapeKeyPress}
     style="transform: scale({$grow}); width: {initialSize}px; height: {initialSize}px;"
   >
     <title id="shape-title">Shape</title>
