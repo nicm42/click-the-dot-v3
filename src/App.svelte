@@ -39,6 +39,7 @@
 </svelte:head>
 
 <main>
+  <h1>Click the Shape</h1>
   <Instructions {shape} />
   <Select {shapes} bind:selectedShape={shape} bind:isReset bind:initialSize />
   <Shape
@@ -81,8 +82,9 @@
     @media (min-width: 37.5rem) {
       display: grid;
       grid-template-columns: min-content, auto;
-      grid-template-rows: repeat(4, auto);
+      grid-template-rows: repeat(5, auto);
       grid-template-areas:
+        '. header'
         '. instructions'
         'select shape'
         'closest shape'
@@ -90,6 +92,10 @@
     }
     place-content: center;
     column-gap: 4em;
+
+    h1 {
+      grid-area: header;
+    }
   }
 
   :global(button) {
