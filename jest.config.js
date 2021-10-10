@@ -15,4 +15,5 @@ module.exports = {
     "ts",
     "svelte"
   ],
+  testPathIgnorePatterns: ["<rootDir>/cypress/"],
 }
