@@ -6,8 +6,8 @@
   {#if shape === 'shape'}
     <h1>Select a shape.</h1>
   {/if}
-  <p>Click the {shape.toLowerCase()}.</p>
-  <p>Click it again when it's twice the size.</p>
+  <p>Click or press spacebar on the {shape.toLowerCase()}.</p>
+  <p>Click or press spacebar again when it's twice the size.</p>
 </div>
 
 <style lang="scss">
