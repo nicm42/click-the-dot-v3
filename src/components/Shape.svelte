@@ -3,6 +3,7 @@
   import { linear } from 'svelte/easing';
 
   import Circle from './shapes/Circle.svelte';
+  import Hexagon from './shapes/Hexagon.svelte';
   import Square from './shapes/Square.svelte';
   import Triangle from './shapes/Triangle.svelte';
   import getRandomIntInclusive from '../utils/getRandomIntInclusive';
@@ -106,6 +107,9 @@
     {#if shape === 'Circle'}
       <Circle />
     {/if}
+    {#if shape === 'Hexagon'}
+      <Hexagon />
+    {/if}
     {#if shape === 'Square'}
       <Square />
     {/if}
@@ -130,6 +134,9 @@
     >
     {#if shape === 'Circle'}
       <Circle />
+    {/if}
+    {#if shape === 'Hexagon'}
+      <Hexagon />
     {/if}
     {#if shape === 'Square'}
       <Square />

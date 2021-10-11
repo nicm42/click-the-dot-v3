@@ -5,7 +5,7 @@
   import Closest from './components/Closest.svelte';
   import Result from './components/Result.svelte';
 
-  const shapes: string[] = ['Circle', 'Square', 'Triangle'];
+  const shapes: string[] = ['Circle', 'Heart', 'Hexagon', 'Square', 'Star', 'Triangle'];
   let shape: string = 'shape';
   let isFinishedGrowing: boolean = false;
   // ratio needs to be a string so it'll keep the 0 after the decimal point if there is one
