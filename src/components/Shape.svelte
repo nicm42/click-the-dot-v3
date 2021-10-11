@@ -173,6 +173,7 @@
     margin-block: 1em;
 
     &__svg {
+      position: absolute;
       cursor: pointer;
 
       &.clicked {
@@ -184,8 +185,6 @@
     &__helper {
       display: none; //hiding this here so we can click on the shape without the helper getting in the way
       position: absolute;
-      inset: 0;
-      margin: auto;
 
       &.show {
         display: block;
