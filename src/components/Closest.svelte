@@ -1,7 +1,9 @@
 <script lang="ts">
   import Circle from './shapes/Circle.svelte';
+  import Heart from './shapes/Heart.svelte';
   import Hexagon from './shapes/Hexagon.svelte';
   import Square from './shapes/Square.svelte';
+  import Star from './shapes/Star.svelte';
   import Triangle from './shapes/Triangle.svelte';
 
   export let shapes: string[];
@@ -45,11 +47,17 @@
             {#if shape === 'Circle'}
               <Circle />
             {/if}
+            {#if shape === 'Heart'}
+              <Heart />
+            {/if}
             {#if shape === 'Hexagon'}
               <Hexagon />
             {/if}
             {#if shape === 'Square'}
               <Square />
+            {/if}
+            {#if shape === 'Star'}
+              <Star />
             {/if}
             {#if shape === 'Triangle'}
               <Triangle />
@@ -84,6 +92,7 @@
       position: relative;
       display: grid;
       grid-template-columns: repeat(2, auto);
+      grid-template-rows: repeat(6, auto);
       justify-content: center;
       align-items: center;
       row-gap: 0.5em;
