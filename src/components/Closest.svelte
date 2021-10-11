@@ -30,46 +30,48 @@
   <h2>Closest scores</h2>
   <div class="highscores__table">
     {#each shapes as shape}
-          <svg
-            width="1em"
-            height="1em"
-            viewBox="0 0 100 100"
-            xmlns="http://www.w3.org/2000/svg"
-            role="img"
-            class="highscores__icon"
-            aria-labelledby="highscore-{shape.toLowerCase()}-title"
-            aria-describedby="highscore-{shape.toLowerCase()}-desc"
-          >
-            <title id="highscore-{shape.toLowerCase()}-title">{shape} icon</title>
-            <desc id="highscore-{shape.toLowerCase()}-desc"
-              >Icon for the score for the {shape.toLowerCase()}</desc
-            >
-            {#if shape === 'Circle'}
-              <Circle />
-            {/if}
-            {#if shape === 'Heart'}
-              <Heart />
-            {/if}
-            {#if shape === 'Hexagon'}
-              <Hexagon />
-            {/if}
-            {#if shape === 'Square'}
-              <Square />
-            {/if}
-            {#if shape === 'Star'}
-              <Star />
-            {/if}
-            {#if shape === 'Triangle'}
-              <Triangle />
-            {/if}
-          </svg>
-        {#if scores[shape] !== null && scores[shape] !== '3.0'}
-          <div
-            data-testid="closest-score"
-            class="highscores__score"
-            id="score-circle">{scores[shape]}</div
-          >
+      <svg
+        width="1em"
+        height="1em"
+        viewBox="0 0 100 100"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        class="highscores__icon"
+        aria-labelledby="highscore-{shape.toLowerCase()}-title"
+        aria-describedby="highscore-{shape.toLowerCase()}-desc"
+      >
+        <title id="highscore-{shape.toLowerCase()}-title">{shape} icon</title>
+        <desc id="highscore-{shape.toLowerCase()}-desc"
+          >Icon for the score for the {shape.toLowerCase()}</desc
+        >
+        {#if shape === 'Circle'}
+          <Circle />
         {/if}
+        {#if shape === 'Heart'}
+          <Heart />
+        {/if}
+        {#if shape === 'Hexagon'}
+          <Hexagon />
+        {/if}
+        {#if shape === 'Square'}
+          <Square />
+        {/if}
+        {#if shape === 'Star'}
+          <Star />
+        {/if}
+        {#if shape === 'Triangle'}
+          <Triangle />
+        {/if}
+      </svg>
+      {#if scores[shape] !== null && scores[shape] !== '3.0'}
+        <div
+          data-testid="closest-score"
+          class="highscores__score"
+          id="score-circle"
+        >
+          {scores[shape]}
+        </div>
+      {/if}
     {/each}
   </div>
   <button on:click={clearScores} class="highscores__clear" disabled={!isScores}
