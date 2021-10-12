@@ -15,7 +15,7 @@
   export let isFinishedGrowing: boolean;
   export let ratio: string;
   export let scores: ScoresType;
-  export let attempts: ScoresType;
+  export let attempts: AttemptsType;
   export let isReset: Boolean;
   export let initialSize: number;
 
@@ -23,7 +23,12 @@
     [key: string]: string;
   };
 
+  type AttemptsType = {
+    [key: string]: number;
+  };
+
   let clicked: boolean = false;
+  let tryAttempts: number = 0;
   let tweenDuration = getRandomIntInclusive(2000, 7000);
 
   const grow = tweened(1, {
@@ -54,6 +59,7 @@
         grow.set(3);
       } else {
         grow.pause();
+        tryAttempts += 1;
         finishedShapeTween();
       }
     }
@@ -76,6 +82,21 @@
     }
     localStorage.setItem(shape, highestScore);
     scores[shape] = highestScore;
+
+    // And do the same with attempts,
+    // except this time add to sessionStorage if it's lower
+    // and if the ratio is 2.0
+    if (ratio === '2.0') {
+      let lowAttempt: number = Number(sessionStorage.getItem(shape));
+      let lowestAttempt = tryAttempts;
+      if (lowAttempt) {
+        lowestAttempt = tryAttempts < lowAttempt ? tryAttempts : lowAttempt;
+      }
+      sessionStorage.setItem(shape, lowestAttempt.toString());
+      attempts[shape] = lowestAttempt;
+      // Reset tryAttempts for the next go
+      tryAttempts = 0;
+    }
   };
 
   // If isReset is true, then it means something has been pressed to isReset the shape

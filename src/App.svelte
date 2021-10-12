@@ -27,13 +27,17 @@
     [key: string]: string;
   };
 
+  type AttemptsType = {
+    [key: string]: number;
+  };
+
   let scores: ScoresType = shapes.reduce(
     (score, shape) =>
       Object.assign(score, { [shape]: localStorage.getItem(shape) }),
     {}
   );
 
-  let attempts: ScoresType = shapes.reduce(
+  let attempts: AttemptsType = shapes.reduce(
     (attempt, shape) =>
       Object.assign(attempt, { [shape]: localStorage.getItem(shape) }),
     {}
