@@ -32,6 +32,12 @@
       Object.assign(score, { [shape]: localStorage.getItem(shape) }),
     {}
   );
+
+  let attempts: ScoresType = shapes.reduce(
+    (attempt, shape) =>
+      Object.assign(attempt, { [shape]: localStorage.getItem(shape) }),
+    {}
+  );
 </script>
 
 <svelte:head>
@@ -54,6 +60,7 @@
     bind:isFinishedGrowing
     bind:ratio
     bind:scores
+    bind:attempts
     bind:isReset
     bind:initialSize
   />

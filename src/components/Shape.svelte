@@ -11,11 +11,12 @@
   import getRandomIntInclusive from '../utils/getRandomIntInclusive';
 
   export let shape: string;
-  export let isReset: Boolean;
 
   export let isFinishedGrowing: boolean;
   export let ratio: string;
   export let scores: ScoresType;
+  export let attempts: ScoresType;
+  export let isReset: Boolean;
   export let initialSize: number;
 
   type ScoresType = {
