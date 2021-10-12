@@ -63,15 +63,17 @@
           <Triangle />
         {/if}
       </svg>
-      {#if scores[shape] !== null && scores[shape] !== '3.0'}
-        <div
-          data-testid="closest-score"
-          class="highscores__score"
-          id="score-circle"
-        >
-          {scores[shape]}
-        </div>
-      {/if}
+      <div>
+        {#if scores[shape] !== null && scores[shape] !== '3.0'}
+          <div
+            data-testid="closest-score"
+            class="highscores__score"
+            id="score-circle"
+          >
+            {scores[shape]}
+          </div>
+        {/if}
+      </div>
     {/each}
   </div>
   <button on:click={clearScores} class="highscores__clear" disabled={!isScores}
