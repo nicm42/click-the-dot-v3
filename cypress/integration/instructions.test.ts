@@ -20,6 +20,45 @@ describe('Instructions tests', () => {
     cy.findByText('Click or press spacebar on the circle.').should('exist');
   });
 
+  it('Instructions change when select changes to heart', () => {
+    cy.findByText('Select a shape.').should('exist');
+    cy.findByText('Click or press spacebar on the shape.').should('exist');
+    cy.findByText(
+      "Click or press spacebar again when it's twice the size."
+    ).should('exist');
+
+    // Square
+    cy.findByTestId('select').select('Heart').should('have.value', 'Heart');
+    cy.findByText('Select a shape.').should('not.exist');
+    cy.findByText('Click or press spacebar on the heart.').should('exist');
+  });
+
+  it('Instructions change when select changes to hexagon', () => {
+    cy.findByText('Select a shape.').should('exist');
+    cy.findByText('Click or press spacebar on the shape.').should('exist');
+    cy.findByText(
+      "Click or press spacebar again when it's twice the size."
+    ).should('exist');
+
+    // Square
+    cy.findByTestId('select').select('Hexagon').should('have.value', 'Hexagon');
+    cy.findByText('Select a shape.').should('not.exist');
+    cy.findByText('Click or press spacebar on the hexagon.').should('exist');
+  });
+
+  it('Instructions change when select changes to star', () => {
+    cy.findByText('Select a shape.').should('exist');
+    cy.findByText('Click or press spacebar on the shape.').should('exist');
+    cy.findByText(
+      "Click or press spacebar again when it's twice the size."
+    ).should('exist');
+
+    // Square
+    cy.findByTestId('select').select('Star').should('have.value', 'Star');
+    cy.findByText('Select a shape.').should('not.exist');
+    cy.findByText('Click or press spacebar on the star.').should('exist');
+  });
+
   it('Instructions change when select changes to square', () => {
     cy.findByText('Select a shape.').should('exist');
     cy.findByText('Click or press spacebar on the shape.').should('exist');

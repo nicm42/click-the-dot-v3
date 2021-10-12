@@ -12,6 +12,9 @@ describe('Instructions tests', () => {
     cy.findByRole('button', { name: /Clear scores/i }).should('exist');
     cy.findByRole('button', { name: /Clear scores/i }).should('be.disabled');
     cy.findByTitle('Circle icon').should('exist');
+    cy.findByTitle('Heart icon').should('exist');
+    cy.findByTitle('Hexagon icon').should('exist');
+    cy.findByTitle('Star icon').should('exist');
     cy.findByTitle('Square icon').should('exist');
     cy.findByTitle('Triangle icon').should('exist');
     cy.findByTestId('closest-score').should('not.exist');
@@ -20,11 +23,11 @@ describe('Instructions tests', () => {
     cy.findAllByTestId('circle').should('have.length', 3);
     cy.findAllByTestId('circle')
       .first()
-      .then(($circle1) => {
+      .then(() => {
         cy.findAllByTestId('circle')
           .first()
           .click()
-          .then(($circle) => {
+          .then(() => {
             cy.findAllByTestId('circle').first().click();
             cy.findByTestId('closest-score').should('exist');
             cy.window()
