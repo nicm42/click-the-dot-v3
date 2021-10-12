@@ -28,6 +28,39 @@ test('Text is correct when shape is a circle', () => {
   ).toBeInTheDocument();
 });
 
+test('Text is correct when shape is a heart', () => {
+  render(Instructions, { shape: 'Heart' });
+  expect(screen.queryByText('Select a shape.')).not.toBeInTheDocument();
+  expect(
+    screen.getByText('Click or press spacebar on the heart.')
+  ).toBeInTheDocument();
+  expect(
+    screen.getByText("Click or press spacebar again when it's twice the size.")
+  ).toBeInTheDocument();
+});
+
+test('Text is correct when shape is a hexagon', () => {
+  render(Instructions, { shape: 'Hexagon' });
+  expect(screen.queryByText('Select a shape.')).not.toBeInTheDocument();
+  expect(
+    screen.getByText('Click or press spacebar on the hexagon.')
+  ).toBeInTheDocument();
+  expect(
+    screen.getByText("Click or press spacebar again when it's twice the size.")
+  ).toBeInTheDocument();
+});
+
+test('Text is correct when shape is a star', () => {
+  render(Instructions, { shape: 'Star' });
+  expect(screen.queryByText('Select a shape.')).not.toBeInTheDocument();
+  expect(
+    screen.getByText('Click or press spacebar on the star.')
+  ).toBeInTheDocument();
+  expect(
+    screen.getByText("Click or press spacebar again when it's twice the size.")
+  ).toBeInTheDocument();
+});
+
 test('Text is correct when shape is a square', () => {
   render(Instructions, { shape: 'Square' });
   expect(screen.queryByText('Select a shape.')).not.toBeInTheDocument();
