@@ -5,6 +5,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
+    "server": "npx nodemon src/server/server.ts",
     "start": "sirv public --no-clear",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "fix": "npx eslint --fix \"{,!(node_modules|public)/**/}*.{ts,svelte}\"",
@@ -25,6 +26,8 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/svelte": "^3.0.3",
     "@tsconfig/svelte": "^2.0.1",
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.10.6",
     "autoprefixer": "^10.3.4",
     "babel-jest": "^27.2.4",
     "cypress": "^8.5.0",
@@ -35,6 +38,7 @@
     "eslint-plugin-prettier": "^3.4.1",
     "eslint-plugin-svelte3": "^3.2.0",
     "jest": "^27.2.4",
+    "nodemon": "^2.0.13",
     "postcss": "^8.3.6",
     "prettier": "^2.3.2",
     "prettier-plugin-svelte": "^2.4.0",
@@ -49,10 +53,13 @@
     "svelte-jester": "^2.1.5",
     "svelte-preprocess": "^4.9.8",
     "ts-jest": "^27.0.5",
+    "ts-node": "^10.3.0",
     "tslib": "^2.0.0",
     "typescript": "^4.3.5"
   },
   "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
     "sirv-cli": "^1.0.0"
   }
 }
