@@ -16,6 +16,7 @@
   export let ratio: string;
   export let scores: ScoresType;
   export let attempts: AttemptsType;
+  export let attemptsCount: AttemptsType;
   export let isReset: Boolean;
   export let initialSize: number;
 
@@ -28,7 +29,6 @@
   };
 
   let clicked: boolean = false;
-  let tryAttempts: number = 0;
   let tweenDuration = getRandomIntInclusive(2000, 7000);
 
   const grow = tweened(1, {
@@ -59,7 +59,7 @@
         grow.set(3);
       } else {
         grow.pause();
-        tryAttempts += 1;
+        attemptsCount[shape] += 1;
         finishedShapeTween();
       }
     }
@@ -88,14 +88,14 @@
     // and if the ratio is 2.0
     if (ratio === '2.0') {
       let lowAttempt: number = Number(sessionStorage.getItem(shape));
-      let lowestAttempt = tryAttempts;
+      let lowestAttempt = attemptsCount[shape];
       if (lowAttempt) {
-        lowestAttempt = tryAttempts < lowAttempt ? tryAttempts : lowAttempt;
+        lowestAttempt = attemptsCount[shape] < lowAttempt ? attemptsCount[shape] : lowAttempt;
       }
       sessionStorage.setItem(shape, lowestAttempt.toString());
       attempts[shape] = lowestAttempt;
       // Reset tryAttempts for the next go
-      tryAttempts = 0;
+      attemptsCount[shape] = 0;
     }
   };
 
