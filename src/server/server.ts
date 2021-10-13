@@ -1,7 +1,9 @@
 import express, { Request, Response } from 'express';
 //const path = require('path');
-const mongoose = require('mongoose');
 require('dotenv').config();
+
+const mongoose = require('mongoose');
+const Shape = require('../models/shape');
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -22,6 +24,30 @@ mongoose.connect(process.env.MONGO_URI, {
 
 app.get('/', async (req: Request, res: Response) => {
   res.send('Sending res');
+})
+
+app.get('/get', async (req: Request, res: Response) => {
+  const shape = new Shape({
+    name: 'Nic2',
+    attempts: 3
+  });
+  shape.save()
+    .then((result: any) => {
+      res.send(result)
+    })
+    .catch((err: any) => {
+      console.log(err)
+    })
+})
+
+app.get('/all', async (req: Request, res: Response) => {
+  Shape.find()
+    .then((result: any) => {
+      res.send(result)
+    })
+    .catch((err: any) => {
+      console.log(err)
+    })
 })
 
 /* module.exports = app.listen(port, () => {
