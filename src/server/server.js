@@ -1,11 +1,9 @@
-import express, { Request, Response } from 'express';
-//const path = require('path');
 require('dotenv').config();
-
+const express = require('express');
 var cors = require("cors");
 const mongoose = require('mongoose');
 const Shape = require('../models/shape');
-var cors = require("cors");
+
 const app = express();
 const port = process.env.PORT || 8000;
 
@@ -13,10 +11,10 @@ const port = process.env.PORT || 8000;
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
-}).then((result: any) => app.listen(port, () => {
+}).then((result) => app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`);
 }))
-  .catch((err: any) => console.log(err))
+  .catch((err) => console.log(err))
 
 // Any other request goes to index
 /* app.get('*', function (req, res) {
@@ -25,35 +23,31 @@ mongoose.connect(process.env.MONGO_URI, {
 
 app.use(cors());
 
-app.get('/', async (req: Request, res: Response) => {
+app.get('/', async (req, res) => {
   res.send('Sending res');
 })
 
-app.get('/get', async (req: Request, res: Response) => {
+app.get('/get', async (req, res) => {
   const shape = new Shape({
     name: 'Nic2',
     attempts: 3
   });
   shape.save()
-    .then((result: any) => {
+    .then((result) => {
       res.send(result)
     })
-    .catch((err: any) => {
+    .catch((err) => {
       console.log(err)
     })
 })
 
-app.get('/all', async (req: Request, res: Response) => {
+app.get('/all', async (req, res) => {
   Shape.find()
-    .then((result: any) => {
+    .then((result) => {
       console.log(result)
       res.json(result)
     })
-    .catch((err: any) => {
+    .catch((err) => {
       console.log(err)
     })
 })
-
-/* module.exports = app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}`);
-}); */
