@@ -2,9 +2,10 @@ import express, { Request, Response } from 'express';
 //const path = require('path');
 require('dotenv').config();
 
+var cors = require("cors");
 const mongoose = require('mongoose');
 const Shape = require('../models/shape');
-
+var cors = require("cors");
 const app = express();
 const port = process.env.PORT || 8000;
 
@@ -21,6 +22,8 @@ mongoose.connect(process.env.MONGO_URI, {
 /* app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, '..', '..', 'build', 'index.html'));
 }); */
+
+app.use(cors());
 
 app.get('/', async (req: Request, res: Response) => {
   res.send('Sending res');
@@ -43,7 +46,8 @@ app.get('/get', async (req: Request, res: Response) => {
 app.get('/all', async (req: Request, res: Response) => {
   Shape.find()
     .then((result: any) => {
-      res.send(result)
+      console.log(result)
+      res.json(result)
     })
     .catch((err: any) => {
       console.log(err)

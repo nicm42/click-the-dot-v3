@@ -1,6 +1,6 @@
 <script lang="ts">
   import { tweened } from '../utils/pausableTween';
-  import { linear } from 'svelte/easing';
+  import { linear } from 'svelte/easing';  //import axios from 'axios';
 
   import Circle from './shapes/Circle.svelte';
   import Heart from './shapes/Heart.svelte';
@@ -97,7 +97,19 @@
       // Reset tryAttempts for the next go
       attemptsCount[shape] = 0;
     }
+
+    highscores();
   };
+
+  const highscores = async () => { 
+    try {
+      const response = await fetch('http://localhost:8000/all');
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   // If isReset is true, then it means something has been pressed to isReset the shape
   // we can use the pausableTween to set transform scale back to original
