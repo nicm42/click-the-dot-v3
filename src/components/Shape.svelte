@@ -103,7 +103,8 @@
 
   const highscores = async () => { 
     try {
-      const response = await fetch('http://localhost:8000/all');
+      const link = 'http://localhost:8000/';
+      const response = await fetch(link + shape);
       const data = await response.json();
       console.log(data);
     } catch (error) {
