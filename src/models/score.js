@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const shapeSchema = new Schema({
+const scoreSchema = new Schema({
   shape: {
     type: String,
     required: true
@@ -16,6 +16,6 @@ const shapeSchema = new Schema({
   }
 });
 
-const Shape = mongoose.model('Shape', shapeSchema);
+const Score = mongoose.model('Score', scoreSchema);
 
-module.exports = Shape;
+module.exports = Score;

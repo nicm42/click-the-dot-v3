@@ -11,7 +11,6 @@
   import getRandomIntInclusive from '../utils/getRandomIntInclusive';
 
   export let shape: string;
-
   export let isFinishedGrowing: boolean;
   export let ratio: string;
   export let scores: ScoresType;
@@ -19,6 +18,8 @@
   export let attemptsCount: AttemptsType;
   export let isReset: Boolean;
   export let initialSize: number;
+
+  const port = 8000;
 
   type ScoresType = {
     [key: string]: string;
@@ -103,10 +104,33 @@
 
   const highscores = async () => { 
     try {
-      const link = 'http://localhost:8000/';
-      const response = await fetch(link + shape);
-      const data = await response.json();
-      console.log(data);
+      const link = 'http://localhost:';
+      const route = '/getscores';
+      //const response = await fetch(link + port + route);
+      //const data = await response.json();
+      const data = [
+        {
+          _id: "6169d0519f7f643056967cb5",
+          shape: 'Circle',
+          name: 'Nic',
+          score: '10'
+        },
+        {
+          _id: "6169d0779f7f643056967cb6",
+          shape: 'Circle',
+          name: 'Nic2',
+          score: '5'
+        },
+        {
+          _id: "6169d0919f7f643056967cb7",
+          shape: 'Square',
+          name: 'Nic',
+          score: '3'
+        }
+      ];
+      //console.log(data);
+      const shapeData = data.filter((key: string) => key.shape === shape);
+      console.log(shapeData);
     } catch (error) {
       console.log(error);
     }
