@@ -1,6 +1,6 @@
 <script lang="ts">
   import { tweened } from '../utils/pausableTween';
-  import { linear } from 'svelte/easing';  //import axios from 'axios';
+  import { linear } from 'svelte/easing'; 
 
   import Circle from './shapes/Circle.svelte';
   import Heart from './shapes/Heart.svelte';
@@ -18,8 +18,7 @@
   export let attemptsCount: AttemptsType;
   export let isReset: Boolean;
   export let initialSize: number;
-
-  const port = 8000;
+  export let showScores: boolean;
 
   type ScoresType = {
     [key: string]: string;
@@ -99,42 +98,10 @@
       attemptsCount[shape] = 0;
     }
 
-    highscores();
+    // Now show high scores
+    // TODO only do this when ratio is 2.0
+    showScores = true;
   };
-
-  const highscores = async () => { 
-    try {
-      const link = 'http://localhost:';
-      const route = '/getscores';
-      //const response = await fetch(link + port + route);
-      //const data = await response.json();
-      const data = [
-        {
-          _id: "6169d0519f7f643056967cb5",
-          shape: 'Circle',
-          name: 'Nic',
-          score: '10'
-        },
-        {
-          _id: "6169d0779f7f643056967cb6",
-          shape: 'Circle',
-          name: 'Nic2',
-          score: '5'
-        },
-        {
-          _id: "6169d0919f7f643056967cb7",
-          shape: 'Square',
-          name: 'Nic',
-          score: '3'
-        }
-      ];
-      //console.log(data);
-      const shapeData = data.filter((key: string) => key.shape === shape);
-      console.log(shapeData);
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   // If isReset is true, then it means something has been pressed to isReset the shape
   // we can use the pausableTween to set transform scale back to original

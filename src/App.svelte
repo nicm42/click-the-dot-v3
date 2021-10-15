@@ -4,6 +4,7 @@
   import Shape from './components/Shape.svelte';
   import Closest from './components/Closest.svelte';
   import Result from './components/Result.svelte';
+  import Scores from './components/Scores.svelte';
 
   const shapes: string[] = [
     'Circle',
@@ -21,7 +22,8 @@
   // and only convert it to a number if we need to do maths on it
   let ratio: string = '3.0';
   let initialSize: number = 100;
-  let isReset: Boolean = false;
+  let isReset: boolean = false;
+  let showScores: boolean = false;
 
   type ScoresType = {
     [key: string]: string;
@@ -74,11 +76,15 @@
     bind:attemptsCount
     bind:isReset
     bind:initialSize
+    bind:showScores
   />
   {#if isFinishedGrowing}
     <Result {ratio} bind:isReset />
   {/if}
   <Closest {shapes} {scores} />
+  {#if showScores}
+    <Scores {shape} bind:showScores />
+  {/if} 
 </main>
 
 <style lang="scss">
