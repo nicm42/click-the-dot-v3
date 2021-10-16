@@ -1,25 +1,5 @@
 <script lang="ts">
-  // Dummy data so we don't have to go to the database all the time
-  const data = [
-    {
-      _id: "6169d0519f7f643056967cb5",
-      shape: 'Circle',
-      name: 'Nic',
-      score: 10
-    },
-    {
-      _id: "6169d0779f7f643056967cb6",
-      shape: 'Circle',
-      name: 'Nic2',
-      score: 5
-    },
-    {
-      _id: "6169d0919f7f643056967cb7",
-      shape: 'Square',
-      name: 'Nic',
-      score: 3
-    }
-  ];
+  import * as data from '../dummyScores.json';
 
   export let shape: string;
   export let showScores: boolean;
@@ -33,8 +13,9 @@
       const route = '/getscores';
       //const response = await fetch(link + port + route);
       //const data = await response.json();
-      //console.log(data);
-      shapeData = data.filter((key: string) => key.shape === shape);
+      console.log(data.default);
+      //shapeData = data.filter((key: string) => key.shape === shape);
+      shapeData = data.default.filter((key: string) => key.shape === shape);
       console.log(shapeData);
       //showScores = false;
     } catch (error) {
