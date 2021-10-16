@@ -83,7 +83,7 @@
     bind:isShowingScores
   />
   {#if isFinishedGrowing}
-    <Result {ratio} bind:isReset />
+    <Result {ratio} bind:isReset bind:isShowingScores />
   {/if}
   <Closest {shapes} {scores} />
   {#if isShowingScores}
@@ -151,10 +151,8 @@
 
   .overlay {
     content:"";
-    position:absolute;
+    position:fixed;
     inset: 0;
-    width: 100%;
-    height: 100%;
     background-color: rgba(0, 0, 0, 0.25);
     pointer-events: none;
     z-index: 1;
