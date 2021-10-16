@@ -20,8 +20,9 @@
       shapeData = data.default.filter((key: string) => key.shape === shape);
       console.log(shapeData);
       // Sort it by score order, so 1 is first
-      sortedData = shapeData.sort((a, b) => a.score - b.score);
-      console.log(sortedData);
+      // But we only want to show the first 10
+      sortedData = shapeData.sort((a, b) => a.score - b.score).slice(0, 10);
+      console.log(sortedData)
     } catch (error) {
       console.log(error);
     }
