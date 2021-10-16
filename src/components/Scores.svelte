@@ -6,6 +6,7 @@
 
   const port = 8000;
   let shapeData: {_id: string, shape: string, name: string, score: number}[] = [];
+  let sortedData: {_id: string, shape: string, name: string, score: number}[] = [];
 
   const highscores = async () => { 
     try {
@@ -13,11 +14,14 @@
       const route = '/getscores';
       //const response = await fetch(link + port + route);
       //const data = await response.json();
-      console.log(data.default);
+      //console.log(data.default);
+      // Get the data from this shape only
       //shapeData = data.filter((key: string) => key.shape === shape);
       shapeData = data.default.filter((key: string) => key.shape === shape);
       console.log(shapeData);
-      //showScores = false;
+      // Sort it by score order, so 1 is first
+      sortedData = shapeData.sort((a, b) => a.score - b.score);
+      console.log(sortedData);
     } catch (error) {
       console.log(error);
     }
@@ -27,7 +31,7 @@
 </script>
 
 <div class="scores">
-  {#each shapeData as data}
+  {#each sortedData as data}
     <div class="scores__name">{data.name}</div>
     <div class="scores__score">{data.score}</div>
   {/each}
