@@ -32,7 +32,7 @@
   highscores();
 </script>
 
-<div class="scores">
+<div in:fade={{ delay: 500 }} class="scores">
   <h2 class="scores__header">Fewest attempts for {shape}</h2>
   <table class="scores__table">
     {#each sortedData as data}
@@ -49,7 +49,6 @@
     position: absolute;
     width: max-content;
     max-width: 80vw;
-    max-height: 80vh;
     inset-inline-start: 50%;
     inset-block-start: 2em;
     padding: 1em;
@@ -69,8 +68,8 @@
       border-collapse: collapse;
     }
 
-    &__row:not(:first-of-type) {
-      border-block-start: 1px solid var(--secondaryColour);
+    &__row {
+      border-block-end: 1px solid var(--secondaryColour);
     }
 
     &__element {

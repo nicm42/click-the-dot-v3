@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { fade } from 'svelte/transition';
+
   export let ratio: string;
   export let isReset: Boolean;
 
@@ -14,7 +16,7 @@
   };
 </script>
 
-<div class="result">
+<div in:fade class="result">
   <p class="result__text">
     {resultTextStart}
   </p>
