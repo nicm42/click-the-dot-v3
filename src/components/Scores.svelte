@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { fade } from 'svelte/transition';
   import * as data from '../dummyScores.json';
 
   export let shape: string;
@@ -32,28 +33,52 @@
 </script>
 
 <div class="scores">
-  {#each sortedData as data}
-    <div class="scores__name">{data.name}</div>
-    <div class="scores__score">{data.score}</div>
-  {/each}
+  <h2 class="scores__header">Fewest attempts for {shape}</h2>
+  <table class="scores__table">
+    {#each sortedData as data}
+      <tr class="scores__row">
+        <td class="scores__name scores__element">{data.name}:</td>
+        <td class="scores__score scores__element">{data.score}</td>
+      </tr>
+    {/each}
+  </table>
 </div>
 
 <style lang="scss">
   .scores {
     position: absolute;
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    grid-auto-rows: min-content;
-    justify-content: center;
-    align-items: center;
-    row-gap: 0.5em;
-    column-gap: 0.25em;
-    width: 80vw;
-    height: 80vh;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    width: max-content;
+    max-width: 80vw;
+    max-height: 80vh;
+    inset-inline-start: 50%;
+    inset-block-start: 2em;
+    padding: 1em;
+    transform: translateX(-50%);
     background-color: white;
     outline: 1px solid black;
+
+    &__header {
+      margin-block-start: 0;
+      color: var(--primaryColour);
+    }
+
+    &__table {
+      position: relative;
+      inset-inline-start: 50%;
+      transform: translateX(-50%);
+      border-collapse: collapse;
+    }
+
+    &__row:not(:first-of-type) {
+      border-block-start: 1px solid var(--secondaryColour);
+    }
+
+    &__element {
+      padding: 0.5em;
+    }
+
+    &__name {
+      text-align: end;
+    }
   }
 </style>
