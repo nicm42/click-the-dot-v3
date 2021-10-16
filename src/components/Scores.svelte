@@ -1,41 +1,12 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
-  import { clickOutside } from '../utils/clickOutside';
-    
-  import * as data from '../dummyScores.json';
+  import { clickOutside } from '../utils/clickOutside';    
+  import getHighScores from '../utils/getHighScores';
 
   export let shape: string;
   export let isShowingScores: boolean;
 
-  const port = 8000;
-  //let shapeData: {_id: string, shape: string, name: string, score: number}[] = [];
   let sortedData: {_id: string, shape: string, name: string, score: number}[] = [];
-
-  const getHighScores = async () => { 
-    //try {
-      const link = 'http://localhost:';
-      const route = '/getscores';
-      //const response = await fetch(link + port + route);
-      //const data = await response.json();
-      //console.log(data.default);
-      // Get the data from this shape only
-      //shapeData = data.filter((key: string) => key.shape === shape);
-      const shapeData = data.default.filter((key: string) => key.shape === shape);
-      console.log(shapeData);
-      // Sort it by score order, so 1 is first
-      // But we only want to show the first 10
-      sortedData = shapeData.sort((a: any, b: any) => a.score - b.score).slice(0, 10);
-      console.log(sortedData);
-      
-      //if(response.ok) {
-        return sortedData;
-      //} else {
-        //throw new Error();
-      //}
-    //} catch (error) {
-      //console.log(error);
-    //}
-  }
 
   const handleKeyPress = (e: KeyboardEvent): void => {
     if (e.key === 'Escape') {
@@ -51,7 +22,7 @@
   const addDots = () => loadingMessage += '.';
   setInterval(addDots, 1000);
 
-  const highScores = getHighScores();
+  const highScores = getHighScores(shape);
 </script>
 
 <svelte:window on:keydown={handleKeyPress}/>
