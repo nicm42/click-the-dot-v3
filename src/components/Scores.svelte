@@ -1,5 +1,7 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
+  import { clickOutside } from '../utils/clickOutside';
+    
   import * as data from '../dummyScores.json';
 
   export let shape: string;
@@ -36,8 +38,8 @@
   highscores();
 </script>
 
-<div in:fade={{ delay: 500 }} class="scores">
-  <button class="scores__close" on:click={closeScores}>x</button>
+<div in:fade={{ delay: 500 }} class="scores"  use:clickOutside on:click_outside={closeScores}>
+  <button class="scores__close" title="Close" on:click={closeScores}>x</button>
   <h2 class="scores__header">Fewest attempts for {shape}</h2>
   <table class="scores__table">
     {#each sortedData as data}
