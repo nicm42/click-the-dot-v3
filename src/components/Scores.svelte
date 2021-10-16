@@ -67,8 +67,10 @@
     inset-block-start: 2em;
     padding: 1em;
     transform: translateX(-50%);
-    background-color: white;
-    outline: 1px solid black;
+    background-color: var(--backgroundColour);
+    border-radius: var(--borderRadius);
+    box-shadow: var(--boxShadow);
+    z-index: 2; // So it goes on top of overlay
 
     &__close {
       position: absolute;
@@ -80,6 +82,11 @@
       font-weight: 700;
       font-size: 1.5rem;
       box-shadow: none;
+
+      &:focus,
+      &:hover {
+        transform: scale(1.1);
+      }
 
       &:active {
         background-color: transparent;

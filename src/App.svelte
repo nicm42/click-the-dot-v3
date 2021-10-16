@@ -63,6 +63,10 @@
   <title>Click the Shape</title>
 </svelte:head>
 
+{#if showScores}
+  <div class="overlay"></div>
+{/if}
+
 <main>
   <h1>Click the Shape</h1>
   <Instructions {shape} />
@@ -97,6 +101,8 @@
     --shapeColour: hsl(353, 100%, 74%);
 
     --elementGap: 0.33em;
+    --borderRadius: 0.2em;
+    --boxShadow: 0 0.3em 0.75em -0.3em rgba(0, 0, 0, 0.5);
   }
 
   :global(body) {
@@ -133,13 +139,24 @@
     position: relative;
     margin-block-start: 0.5em;
     border: 0;
-    border-radius: 0.2em;
-    box-shadow: 0 0.3em 0.75em -0.3em rgba(0, 0, 0, 0.5);
+    border-radius: var(--borderRadius);
+    box-shadow: var(--boxShadow);
     cursor: pointer;
 
     &:active {
       inset-block-start: 0.125rem;
       box-shadow: none;
     }
+  }
+
+  .overlay {
+    content:"";
+    position:absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+    pointer-events: none;
+    z-index: 1;
   }
 </style>
