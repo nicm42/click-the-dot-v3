@@ -1,6 +1,6 @@
 import * as data from '../dummyScores.json';
 
-const getHighScores = async (shape) => {
+const getHighScores = async (shape: string): Promise<any> => {
   const link = 'http://localhost:';
   const port = 8000;
   const route = '/getscores';
@@ -8,13 +8,13 @@ const getHighScores = async (shape) => {
   //const data = await response.json();
   //console.log(data.default);
   // Get the data from this shape only
-  //shapeData = data.filter((key: string) => key.shape === shape);
-  const shapeData = data.default.filter((key) => key.shape === shape);
+  //shapeData = data.filter((key: any) => key.shape === shape);
+  const shapeData = data.default.filter((key: any) => key.shape === shape);
   console.log(shapeData);
   // Sort it by score order, so 1 is first
   // But we only want to show the first 10
   let sortedData = shapeData
-    .sort((a, b) => a.score - b.score)
+    .sort((a: any, b: any) => a.score - b.score)
     .slice(0, 10);
   console.log(sortedData);
 

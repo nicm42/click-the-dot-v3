@@ -6,7 +6,7 @@
   export let shape: string;
   export let isShowingScores: boolean;
 
-  let sortedData: {_id: string, shape: string, name: string, score: number}[] = [];
+  //let sortedData: {_id: string, shape: string, name: string, score: number}[] = [];
 
   const handleKeyPress = (e: KeyboardEvent): void => {
     if (e.key === 'Escape') {
