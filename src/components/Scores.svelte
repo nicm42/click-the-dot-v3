@@ -8,11 +8,11 @@
   export let isShowingScores: boolean;
 
   const port = 8000;
-  let shapeData: {_id: string, shape: string, name: string, score: number}[] = [];
+  //let shapeData: {_id: string, shape: string, name: string, score: number}[] = [];
   let sortedData: {_id: string, shape: string, name: string, score: number}[] = [];
 
-  const highscores = async () => { 
-    try {
+  const getHighScores = async () => { 
+    //try {
       const link = 'http://localhost:';
       const route = '/getscores';
       //const response = await fetch(link + port + route);
@@ -20,15 +20,21 @@
       //console.log(data.default);
       // Get the data from this shape only
       //shapeData = data.filter((key: string) => key.shape === shape);
-      shapeData = data.default.filter((key: string) => key.shape === shape);
+      const shapeData = data.default.filter((key: string) => key.shape === shape);
       console.log(shapeData);
       // Sort it by score order, so 1 is first
       // But we only want to show the first 10
-      sortedData = shapeData.sort((a, b) => a.score - b.score).slice(0, 10);
-      console.log(sortedData)
-    } catch (error) {
-      console.log(error);
-    }
+      sortedData = shapeData.sort((a: any, b: any) => a.score - b.score).slice(0, 10);
+      console.log(sortedData);
+      
+      //if(response.ok) {
+        return sortedData;
+      //} else {
+        //throw new Error();
+      //}
+    //} catch (error) {
+      //console.log(error);
+    //}
   }
 
   const handleKeyPress = (e: KeyboardEvent): void => {
@@ -41,23 +47,37 @@
     isShowingScores = false;
   }
 
-  highscores();
+  let loadingMessage: string = 'Loading scores';
+  const addDots = () => loadingMessage += '.';
+  setInterval(addDots, 1000);
+
+  const highScores = getHighScores();
 </script>
 
 <svelte:window on:keydown={handleKeyPress}/>
 <div in:fade={{ delay: 500 }} out:fade class="scores"  use:clickOutside on:click_outside={closeScores}>
   <button class="scores__close" title="Close" on:click={closeScores}>x</button>
   <h2 class="scores__title">Fewest attempts for {shape}</h2>
-  <table class="scores__table">
-    <th class="scores__header">Name</th>
-    <th class="scores__header">Score</th>
-    {#each sortedData as data}
-      <tr class="scores__row">
-        <td class="scores__element">{data.name}</td>
-        <td class="scores__element">{data.score}</td>
-      </tr>
-    {/each}
-  </table>
+  {#await highScores}
+    <p>{loadingMessage}</p>
+    {:then sortedData}
+      {#if sortedData.length === 0}
+        <p>No attempts yet. Play some more and be the first!</p>
+      {:else}
+      <table class="scores__table">
+        <th class="scores__header">Name</th>
+        <th class="scores__header">Attempts</th>
+        {#each sortedData as data}
+          <tr class="scores__row">
+            <td class="scores__element">{data.name}</td>
+            <td class="scores__element">{data.score}</td>
+          </tr>
+        {/each}
+      </table>
+      {/if}
+    {:catch error}
+      <p>Can't get scores. Something went wrong :(</p>
+  {/await}
 </div>
 
 <style lang="scss">
