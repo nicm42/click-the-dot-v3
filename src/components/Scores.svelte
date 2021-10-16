@@ -45,7 +45,7 @@
 </script>
 
 <svelte:window on:keydown={handleKeyPress}/>
-<div in:fade={{ delay: 500 }} class="scores"  use:clickOutside on:click_outside={closeScores}>
+<div in:fade={{ delay: 500 }} out:fade class="scores"  use:clickOutside on:click_outside={closeScores}>
   <button class="scores__close" title="Close" on:click={closeScores}>x</button>
   <h2 class="scores__title">Fewest attempts for {shape}</h2>
   <table class="scores__table">
