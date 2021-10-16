@@ -3,7 +3,6 @@
 
   export let ratio: string;
   export let isReset: Boolean;
-  export let isShowingScores: boolean;
 
   let resultTextStart = 'Missed!';
   if (ratio === '2.0') {
@@ -21,9 +20,6 @@
     The shape is now {ratio} times its original size
   </p>
   <button class="result__button" on:click={() => isReset = true}>Try again</button>
-  {#if !isShowingScores && ratio === '2.0'}
-    <button class="result__scores" on:click={() => isShowingScores = true}>Show high scores</button>
-  {/if}
 </div>
 
 <style lang="scss">
@@ -46,18 +42,6 @@
       &:focus,
       &:active {
         background-color: var(--activeColour);
-      }
-    }
-
-    &__scores {
-      margin-inline-start: 0.5em;
-      padding: 0.5em;
-      background-color: var(--backgroundColour);
-      color: var(--primaryColour);
-
-      &:hover,
-      &:active {
-        background-color: var(--darkerBackgroundColour);
       }
     }
   }

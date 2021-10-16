@@ -8,6 +8,8 @@
 
   export let shapes: string[];
   export let scores: ScoresType;
+  export let shape: string;
+  export let isShowingScores: boolean;
 
   type ScoresType = {
     [key: string]: string;
@@ -79,6 +81,9 @@
   <button on:click={clearScores} class="highscores__clear" disabled={!isScores}
     >Clear scores</button
   >
+  {#if shape !== 'shape'}
+    <button class="highscores__show" on:click={() => isShowingScores = true}>Show high scores</button>
+  {/if}
 </div>
 
 <style lang="scss">
@@ -126,6 +131,18 @@
         pointer-events: none;
         opacity: 0.5;
         cursor: auto;
+      }
+    }
+
+    &__show {
+      display: block;
+      background-color: var(--secondaryColour);
+      color: var(--backgroundColour);
+
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: var(--activeColour);
       }
     }
   }

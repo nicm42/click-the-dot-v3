@@ -83,9 +83,9 @@
     bind:isShowingScores
   />
   {#if isFinishedGrowing}
-    <Result {ratio} bind:isReset bind:isShowingScores />
+    <Result {ratio} bind:isReset />
   {/if}
-  <Closest {shapes} {scores} />
+  <Closest {shapes} {scores} {shape} bind:isShowingScores />
   {#if isShowingScores}
     <Scores {shape} bind:isShowingScores />
   {/if} 
