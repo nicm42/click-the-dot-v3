@@ -47,12 +47,14 @@
 <svelte:window on:keydown={handleKeyPress}/>
 <div in:fade={{ delay: 500 }} class="scores"  use:clickOutside on:click_outside={closeScores}>
   <button class="scores__close" title="Close" on:click={closeScores}>x</button>
-  <h2 class="scores__header">Fewest attempts for {shape}</h2>
+  <h2 class="scores__title">Fewest attempts for {shape}</h2>
   <table class="scores__table">
+    <th class="scores__header">Name</th>
+    <th class="scores__header">Score</th>
     {#each sortedData as data}
       <tr class="scores__row">
-        <td class="scores__name scores__element">{data.name}:</td>
-        <td class="scores__score scores__element">{data.score}</td>
+        <td class="scores__element">{data.name}</td>
+        <td class="scores__element">{data.score}</td>
       </tr>
     {/each}
   </table>
@@ -93,7 +95,7 @@
       }
     }
 
-    &__header {
+    &__title {
       margin-block-start: 0;
       color: var(--primaryColour);
     }
@@ -105,16 +107,17 @@
       border-collapse: collapse;
     }
 
+    &__header {
+      padding-inline: 1em;
+      font-weight: 700;
+    }
+
     &__row {
-      border-block-end: 1px solid var(--secondaryColour);
+      border-block-start: 1px solid var(--secondaryColour);
     }
 
     &__element {
       padding: 0.5em;
-    }
-
-    &__name {
-      text-align: end;
     }
   }
 </style>
