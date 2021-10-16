@@ -29,10 +29,15 @@
     }
   }
 
+  const closeScores = () => {
+    showScores = false;
+  }
+
   highscores();
 </script>
 
 <div in:fade={{ delay: 500 }} class="scores">
+  <button class="scores__close" on:click={closeScores}>x</button>
   <h2 class="scores__header">Fewest attempts for {shape}</h2>
   <table class="scores__table">
     {#each sortedData as data}
@@ -55,6 +60,22 @@
     transform: translateX(-50%);
     background-color: white;
     outline: 1px solid black;
+
+    &__close {
+      position: absolute;
+      // Position it in the padding
+      inset-block-start: -1em;
+      inset-inline-end: 0;
+      background-color: transparent;
+      color: red;
+      font-weight: 700;
+      font-size: 1.5rem;
+      box-shadow: none;
+
+      &:active {
+        background-color: transparent;
+      }
+    }
 
     &__header {
       margin-block-start: 0;
