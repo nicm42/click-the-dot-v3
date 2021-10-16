@@ -31,6 +31,12 @@
     }
   }
 
+  const handleKeyPress = (e: KeyboardEvent): void => {
+    if (e.key === 'Escape') {
+      closeScores();
+    }
+  };
+
   const closeScores = () => {
     showScores = false;
   }
@@ -38,6 +44,7 @@
   highscores();
 </script>
 
+<svelte:window on:keydown={handleKeyPress}/>
 <div in:fade={{ delay: 500 }} class="scores"  use:clickOutside on:click_outside={closeScores}>
   <button class="scores__close" title="Close" on:click={closeScores}>x</button>
   <h2 class="scores__header">Fewest attempts for {shape}</h2>
