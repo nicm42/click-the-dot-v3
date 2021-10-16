@@ -23,7 +23,7 @@
   let ratio: string = '3.0';
   let initialSize: number = 100;
   let isReset: boolean = false;
-  let showScores: boolean = false;
+  let isShowingScores: boolean = false;
 
   type ScoresType = {
     [key: string]: string;
@@ -63,7 +63,7 @@
   <title>Click the Shape</title>
 </svelte:head>
 
-{#if showScores}
+{#if isShowingScores}
   <div class="overlay"></div>
 {/if}
 
@@ -80,14 +80,14 @@
     bind:attemptsCount
     bind:isReset
     bind:initialSize
-    bind:showScores
+    bind:isShowingScores
   />
   {#if isFinishedGrowing}
     <Result {ratio} bind:isReset />
   {/if}
   <Closest {shapes} {scores} />
-  {#if showScores}
-    <Scores {shape} bind:showScores />
+  {#if isShowingScores}
+    <Scores {shape} bind:isShowingScores />
   {/if} 
 </main>
 

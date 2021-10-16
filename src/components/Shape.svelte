@@ -18,7 +18,7 @@
   export let attemptsCount: AttemptsType;
   export let isReset: Boolean;
   export let initialSize: number;
-  export let showScores: boolean;
+  export let isShowingScores: boolean;
 
   type ScoresType = {
     [key: string]: string;
@@ -100,7 +100,7 @@
 
     // Now show high scores
     // TODO only do this when ratio is 2.0
-    showScores = true;
+    isShowingScores = true;
   };
 
   // If isReset is true, then it means something has been pressed to isReset the shape

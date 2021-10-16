@@ -5,7 +5,7 @@
   import * as data from '../dummyScores.json';
 
   export let shape: string;
-  export let showScores: boolean;
+  export let isShowingScores: boolean;
 
   const port = 8000;
   let shapeData: {_id: string, shape: string, name: string, score: number}[] = [];
@@ -38,7 +38,7 @@
   };
 
   const closeScores = () => {
-    showScores = false;
+    isShowingScores = false;
   }
 
   highscores();
