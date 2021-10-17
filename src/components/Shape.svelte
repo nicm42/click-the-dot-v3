@@ -87,13 +87,13 @@
     // except this time add to sessionStorage if it's lower
     // and if the ratio is 2.0
     if (ratio === '2.0') {
-      let lowAttempt: number = Number(sessionStorage.getItem(shape));
-      let lowestAttempt = attemptsCount[shape];
+      //let lowAttempt: number = Number(sessionStorage.getItem(shape));
+      /* let lowestAttempt = attemptsCount[shape];
       if (lowAttempt) {
         lowestAttempt = attemptsCount[shape] < lowAttempt ? attemptsCount[shape] : lowAttempt;
       }
-      sessionStorage.setItem(shape, lowestAttempt.toString());
-      attempts[shape] = lowestAttempt;
+      sessionStorage.setItem(shape, lowestAttempt.toString()); */
+      attempts[shape] = Number(sessionStorage.getItem(shape));
       // Reset tryAttempts for the next go
       attemptsCount[shape] = 0;
     }
