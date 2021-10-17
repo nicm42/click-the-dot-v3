@@ -1,6 +1,7 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
 
+  export let shape: string;
   export let ratio: string;
   export let isReset: Boolean;
 
@@ -17,7 +18,7 @@
     {resultTextStart}
   </p>
   <p class="result__text">
-    The shape is now {ratio} times its original size
+    The {shape.toLowerCase()} is now {ratio} times its original size
   </p>
   <button class="result__button" on:click={() => isReset = true}>Try again</button>
 </div>
