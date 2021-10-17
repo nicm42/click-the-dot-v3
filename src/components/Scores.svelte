@@ -2,6 +2,7 @@
   import { fade } from 'svelte/transition';
   import { clickOutside } from '../utils/clickOutside';    
   import getHighScores from '../utils/getHighScores';
+  import PostScore from './PostScore.svelte';
 
   export let shape: string;
   export let isShowingScores: boolean;
@@ -32,6 +33,7 @@
   {#await highScores}
     <p>{loadingMessage}</p>
     {:then sortedData}
+      <PostScore {shape} {sortedData} />
       {#if sortedData.length === 0}
         <p>No attempts yet. Play some more and be the first!</p>
       {:else}
