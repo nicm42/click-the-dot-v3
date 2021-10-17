@@ -1,5 +1,11 @@
-const postHighScores = async (shape, name, attempts) => {
-  const data = {
+const postHighScores = async (shape: string, name: string, attempts: number): Promise<void> => {
+  type scoreType = {
+    shape: string;
+    name: string,
+    attempts: number;
+  }
+
+  const data: scoreType = {
     shape: shape,
     name: name,
     attempts: attempts
