@@ -36,6 +36,7 @@ Otherwise, check the last attempt and if this is smaller, add this attempt to it
     <p class="post__details">Add your name to the high scores</p>
     <form class="post__form" on:submit|preventDefault={submitScore}>
       <label class="post__label" for="name">Name</label>
+      <!-- svelte-ignore a11y-autofocus -->
       <input class="post__input" type=text name="name" placeholder="Type your name" required autofocus bind:value={name} />
       <button class="post__button" type=submit>Submit</button>
     </form>
