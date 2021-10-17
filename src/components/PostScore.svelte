@@ -10,10 +10,19 @@
 
   const attempts: number = Number(sessionStorage.getItem(shape));
   let name:string = '';
+  let isFormShowing: boolean = true;
+  let isError: boolean = false;
+
+  let loadingMessage: string = 'Submitting score';
+  const addDots = () => loadingMessage += '.';
+  setInterval(addDots, 1000);
 
   const submitScore = async () => {
     isPosted = await postHighScores(shape, name, attempts);
-    console.log(isPosted);
+    isFormShowing = false;
+    if (!isPosted) {
+      isError = true;
+    }
   }
 </script>
 
@@ -22,6 +31,7 @@ Otherwise, check the last attempt and if this is smaller, add this attempt to it
 {#if sortedData.length < 10 || sortedData[9].score > attempts}
   <div in:fade={{ delay: 500 }} out:fade class="post">
     <h2 class="post__title">Congratulations</h2>
+    {#if isFormShowing}
     <p class="post__details">The {shape.toLowerCase()} is now 2.0 times its original size</p>
     <p class="post__details">Add your name to the high scores</p>
     <form class="post__form" on:submit|preventDefault={submitScore}>
@@ -29,6 +39,13 @@ Otherwise, check the last attempt and if this is smaller, add this attempt to it
       <input class="post__input" type=text name="name" placeholder="Type your name" required autofocus bind:value={name} />
       <button class="post__button" type=submit>Submit</button>
     </form>
+    {:else}
+      {#if isError}
+        <p>Can't submit score. Something went wrong :(</p>
+      {:else}
+        <p>{loadingMessage}</p>
+      {/if}
+    {/if}
   </div>
 {/if}
 
