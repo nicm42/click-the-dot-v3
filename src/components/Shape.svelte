@@ -14,7 +14,6 @@
   export let isFinishedGrowing: boolean;
   export let ratio: string;
   export let scores: ScoresType;
-  export let attempts: AttemptsType;
   export let attemptsCount: AttemptsType;
   export let isReset: Boolean;
   export let initialSize: number;
