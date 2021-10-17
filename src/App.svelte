@@ -39,12 +39,6 @@
     {}
   );
 
-  let attempts: AttemptsType = shapes.reduce(
-    (attempt, shape) =>
-      Object.assign(attempt, { [shape]: localStorage.getItem(shape) }),
-    {}
-  );
-
   let attemptsCount: AttemptsType = shapes.reduce(
     (attempt, shape) =>
       Object.assign(attempt, { [shape]: 0 }),
@@ -76,7 +70,6 @@
     bind:isFinishedGrowing
     bind:ratio
     bind:scores
-    bind:attempts
     bind:attemptsCount
     bind:isReset
     bind:initialSize
