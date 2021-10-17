@@ -93,8 +93,9 @@
         lowestAttempt = attemptsCount[shape] < lowAttempt ? attemptsCount[shape] : lowAttempt;
       }
       sessionStorage.setItem(shape, lowestAttempt.toString()); */
-      attempts[shape] = Number(sessionStorage.getItem(shape));
+      //attempts[shape] = Number(sessionStorage.getItem(shape));
       // Reset tryAttempts for the next go
+      sessionStorage.setItem(shape, attemptsCount[shape].toString());
       attemptsCount[shape] = 0;
     }
 
