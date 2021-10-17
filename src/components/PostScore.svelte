@@ -1,5 +1,6 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
+  import postHighScores from '../utils/postHighScores';
 
   export let shape: string;
   export let sortedData: {_id: string, shape: string, name: string, score: number}[];
@@ -9,9 +10,9 @@
   const attempts: number = Number(sessionStorage.getItem(shape));
   let name:string = '';
 
-  const submitScore = (e: Event) => {
-    //console.log(e);
+  const submitScore = () => {
     console.log(name);
+    postHighScores(shape, name, attempts);
   }
 </script>
 
