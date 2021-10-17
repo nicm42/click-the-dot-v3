@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
     "noImplicitAny": true,
+    "resolveJsonModule": true,
     "types": ["jest","cypress", "@testing-library/cypress"]
   },
 
-  "resolveJsonModule": true,
 
   "extends": "@tsconfig/svelte/tsconfig.json",
 
