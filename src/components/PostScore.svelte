@@ -7,11 +7,11 @@
   console.log(sortedData)
 
   const attempts: number = Number(sessionStorage.getItem(shape));
+  let name:string = '';
 
-  // If array length is less than 10, add this attempt to it
-  // Otherwise, check the last attempt and if this is smaller, add this attempt to it
-  if (sortedData.length < 10 || sortedData[9].score > attempts) {
-    
+  const submitScore = (e: Event) => {
+    //console.log(e);
+    console.log(name);
   }
 </script>
 
@@ -22,9 +22,9 @@ Otherwise, check the last attempt and if this is smaller, add this attempt to it
     <h2 class="post__title">Congratulations</h2>
     <p class="post__details">The {shape.toLowerCase()} is now 2.0 times its original size</p>
     <p class="post__details">Add your name to the high scores</p>
-    <form class="post__form">
+    <form class="post__form" on:submit|preventDefault={submitScore}>
       <label class="post__label" for="name">Name</label>
-      <input class="post__input" type=text name="name" placeholder="Type your name" />
+      <input class="post__input" type=text name="name" placeholder="Type your name" required bind:value={name} />
       <button class="post__button" type=submit>Submit</button>
     </form>
   </div>
