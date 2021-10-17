@@ -8,6 +8,8 @@
   export let isShowingScores: boolean;
 
   let isPosted: boolean = false;
+  let name: string;
+  let attempts: number;
 
   //let sortedData: {_id: string, shape: string, name: string, score: number}[] = [];
 
@@ -25,7 +27,11 @@
   const addDots = () => loadingMessage += '.';
   setInterval(addDots, 1000);
 
-  const highScores = getHighScores(shape);
+  let highScores = getHighScores(shape);
+
+  // Watch for scores being posted and get them again, so they include the new score
+  $: if (isPosted) highScores = getHighScores(shape);
+
 </script>
 
 <svelte:window on:keydown={handleKeyPress}/>
@@ -36,7 +42,7 @@
     <p>{loadingMessage}</p>
     {:then sortedData}
       {#if !isPosted}
-        <PostScore {shape} {sortedData} bind:isPosted />
+        <PostScore {shape} {sortedData} bind:isPosted bind:name bind:attempts />
       {/if}
       {#if sortedData.length === 0}
         <p>No attempts yet. Play some more and be the first!</p>

@@ -1,15 +1,15 @@
-import * as data from '../dummyScores.json';
+//import * as data from '../dummyScores.json';
 
 const getHighScores = async (shape: string): Promise<any> => {
   const link = 'http://localhost:';
   const port = 8000;
   const route = '/getscores';
-  //const response = await fetch(link + port + route);
-  //const data = await response.json();
-  //console.log(data.default);
+  const response = await fetch(link + port + route);
+  const data = await response.json();
+  console.log(data);
   // Get the data from this shape only
-  //shapeData = data.filter((key: any) => key.shape === shape);
-  const shapeData = data.default.filter((key: any) => key.shape === shape);
+  const shapeData = data.filter((key: any) => key.shape === shape);
+  //const shapeData = data.default.filter((key: any) => key.shape === shape);
   console.log(shapeData);
   // Sort it by score order, so 1 is first
   // But we only want to show the first 10
@@ -18,11 +18,11 @@ const getHighScores = async (shape: string): Promise<any> => {
     .slice(0, 10);
   console.log(sortedData);
 
-  //if(response.ok) {
-  return sortedData;
-  //} else {
-  //throw new Error();
-  //}
+  if(response.ok) {
+    return sortedData;
+  } else {
+    throw new Error();
+  }
 };
 
 export default getHighScores;

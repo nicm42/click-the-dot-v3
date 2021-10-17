@@ -14,21 +14,20 @@ const postHighScores = async (shape: string, name: string, attempts: number): Pr
   const link = 'http://localhost:';
   const port = 8000;
   const route = '/postscores';
-  /* const response = await fetch(link + port + route, {
+  const response = await fetch(link + port + route, {
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
         'Content-Type': 'application/json'
     }
-  }); */
-  /* if (response.ok) {
+  });
+  if (response.ok) {
     console.log('Score added');
     return true;
   } else {
     return false;
-  } */
+  }
 
-  return true;
 };
 
 export default postHighScores;
