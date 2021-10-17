@@ -18,7 +18,7 @@ const getHighScores = async (shape: string): Promise<any> => {
     .slice(0, 10);
   console.log(sortedData);
 
-  if(response.ok) {
+  if (response.ok) {
     return sortedData;
   } else {
     throw new Error();

@@ -82,7 +82,9 @@
     >Clear scores</button
   >
   {#if shape !== 'shape'}
-    <button class="highscores__show" on:click={() => isShowingScores = true}>Show high scores</button>
+    <button class="highscores__show" on:click={() => (isShowingScores = true)}
+      >Show high scores</button
+    >
   {/if}
 </div>
 

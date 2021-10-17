@@ -1,6 +1,6 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
-  import { clickOutside } from '../utils/clickOutside';    
+  import { clickOutside } from '../utils/clickOutside';
   import getHighScores from '../utils/getHighScores';
   import PostScore from './PostScore.svelte';
 
@@ -21,32 +21,37 @@
 
   const closeScores = () => {
     isShowingScores = false;
-  }
+  };
 
   let loadingMessage: string = 'Loading scores';
-  const addDots = () => loadingMessage += '.';
+  const addDots = () => (loadingMessage += '.');
   setInterval(addDots, 1000);
 
   let highScores = getHighScores(shape);
 
   // Watch for scores being posted and get them again, so they include the new score
   $: if (isPosted) highScores = getHighScores(shape);
-
 </script>
 
-<svelte:window on:keydown={handleKeyPress}/>
-<div in:fade={{ delay: 500 }} out:fade class="scores"  use:clickOutside on:click_outside={closeScores}>
+<svelte:window on:keydown={handleKeyPress} />
+<div
+  in:fade={{ delay: 500 }}
+  out:fade
+  class="scores"
+  use:clickOutside
+  on:click_outside={closeScores}
+>
   <button class="scores__close" title="Close" on:click={closeScores}>x</button>
   <h2 class="scores__title">Fewest attempts for {shape}</h2>
   {#await highScores}
     <p>{loadingMessage}</p>
-    {:then sortedData}
-      {#if !isPosted}
-        <PostScore {shape} {sortedData} bind:isPosted bind:name bind:attempts />
-      {/if}
-      {#if sortedData.length === 0}
-        <p>No attempts yet. Play some more and be the first!</p>
-      {:else}
+  {:then sortedData}
+    {#if !isPosted}
+      <PostScore {shape} {sortedData} bind:isPosted bind:name bind:attempts />
+    {/if}
+    {#if sortedData.length === 0}
+      <p>No attempts yet. Play some more and be the first!</p>
+    {:else}
       <table class="scores__table">
         <th class="scores__header">Name</th>
         <th class="scores__header">Attempts</th>
@@ -57,9 +62,9 @@
           </tr>
         {/each}
       </table>
-      {/if}
-    {:catch error}
-      <p>Can't get scores. Something went wrong :(</p>
+    {/if}
+  {:catch error}
+    <p>Can't get scores. Something went wrong :(</p>
   {/await}
 </div>
 

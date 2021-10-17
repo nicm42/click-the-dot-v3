@@ -7,7 +7,14 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/svelte';
 import Shape from './Shape.svelte';
 
 test('Circles are there', () => {
-  const scores = { Circle: 1.2, Heart: 2.4, Hexagon: 2.8, Star: 1.6, Square: 1.8, Triangle: 3.0 };
+  const scores = {
+    Circle: 1.2,
+    Heart: 2.4,
+    Hexagon: 2.8,
+    Star: 1.6,
+    Square: 1.8,
+    Triangle: 3.0,
+  };
   render(Shape, {
     shape: 'Circle',
     isFinishedGrowing: false,
@@ -20,7 +27,14 @@ test('Circles are there', () => {
 });
 
 test('Squares are there', () => {
-  const scores = { Circle: 1.2, Heart: 2.4, Hexagon: 2.8, Star: 1.6, Square: 1.8, Triangle: 3.0 };
+  const scores = {
+    Circle: 1.2,
+    Heart: 2.4,
+    Hexagon: 2.8,
+    Star: 1.6,
+    Square: 1.8,
+    Triangle: 3.0,
+  };
   render(Shape, {
     shape: 'Square',
     isFinishedGrowing: false,
@@ -33,7 +47,14 @@ test('Squares are there', () => {
 });
 
 test('Hearts are there', () => {
-  const scores = { Circle: 1.2, Heart: 2.4, Hexagon: 2.8, Star: 1.6, Square: 1.8, Triangle: 3.0 };
+  const scores = {
+    Circle: 1.2,
+    Heart: 2.4,
+    Hexagon: 2.8,
+    Star: 1.6,
+    Square: 1.8,
+    Triangle: 3.0,
+  };
   render(Shape, {
     shape: 'Heart',
     isFinishedGrowing: false,
@@ -46,7 +67,14 @@ test('Hearts are there', () => {
 });
 
 test('Hexagons are there', () => {
-  const scores = { Circle: 1.2, Heart: 2.4, Hexagon: 2.8, Star: 1.6, Square: 1.8, Triangle: 3.0 };
+  const scores = {
+    Circle: 1.2,
+    Heart: 2.4,
+    Hexagon: 2.8,
+    Star: 1.6,
+    Square: 1.8,
+    Triangle: 3.0,
+  };
   render(Shape, {
     shape: 'Hexagon',
     isFinishedGrowing: false,
@@ -59,7 +87,14 @@ test('Hexagons are there', () => {
 });
 
 test('Stars are there', () => {
-  const scores = { Circle: 1.2, Heart: 2.4, Hexagon: 2.8, Star: 1.6, Square: 1.8, Triangle: 3.0 };
+  const scores = {
+    Circle: 1.2,
+    Heart: 2.4,
+    Hexagon: 2.8,
+    Star: 1.6,
+    Square: 1.8,
+    Triangle: 3.0,
+  };
   render(Shape, {
     shape: 'Star',
     isFinishedGrowing: false,
@@ -72,7 +107,14 @@ test('Stars are there', () => {
 });
 
 test('Triangles are there', () => {
-  const scores = { Circle: 1.2, Heart: 2.4, Hexagon: 2.8, Star: 1.6, Square: 1.8, Triangle: 3.0 };
+  const scores = {
+    Circle: 1.2,
+    Heart: 2.4,
+    Hexagon: 2.8,
+    Star: 1.6,
+    Square: 1.8,
+    Triangle: 3.0,
+  };
   render(Shape, {
     shape: 'Triangle',
     isFinishedGrowing: false,
@@ -85,7 +127,14 @@ test('Triangles are there', () => {
 });
 
 test('Initial set up', () => {
-  const scores = { Circle: 1.2, Heart: 2.4, Hexagon: 2.8, Star: 1.6, Square: 1.8, Triangle: 3.0 };
+  const scores = {
+    Circle: 1.2,
+    Heart: 2.4,
+    Hexagon: 2.8,
+    Star: 1.6,
+    Square: 1.8,
+    Triangle: 3.0,
+  };
   render(Shape, {
     shape: 'Circle',
     isFinishedGrowing: false,
@@ -99,7 +148,14 @@ test('Initial set up', () => {
 });
 
 test('State after finished growing', () => {
-  const scores = { Circle: 1.2, Heart: 2.4, Hexagon: 2.8, Star: 1.6, Square: 1.8, Triangle: 3.0 };
+  const scores = {
+    Circle: 1.2,
+    Heart: 2.4,
+    Hexagon: 2.8,
+    Star: 1.6,
+    Square: 1.8,
+    Triangle: 3.0,
+  };
   render(Shape, {
     shape: 'Circle',
     isFinishedGrowing: true,
@@ -113,7 +169,14 @@ test('State after finished growing', () => {
 });
 
 test('Shape grows on click', async () => {
-  const scores = { Circle: 1.2, Heart: 2.4, Hexagon: 2.8, Star: 1.6, Square: 1.8, Triangle: 3.0 };
+  const scores = {
+    Circle: 1.2,
+    Heart: 2.4,
+    Hexagon: 2.8,
+    Star: 1.6,
+    Square: 1.8,
+    Triangle: 3.0,
+  };
   render(Shape, {
     shape: 'Circle',
     isFinishedGrowing: false,
@@ -133,7 +196,14 @@ test('Shape grows on click', async () => {
 });
 
 test('Shape stops growing on second click', async () => {
-  const scores = { Circle: 1.2, Heart: 2.4, Hexagon: 2.8, Star: 1.6, Square: 1.8, Triangle: 3.0 };
+  const scores = {
+    Circle: 1.2,
+    Heart: 2.4,
+    Hexagon: 2.8,
+    Star: 1.6,
+    Square: 1.8,
+    Triangle: 3.0,
+  };
   render(Shape, {
     shape: 'Circle',
     isFinishedGrowing: false,
@@ -154,7 +224,14 @@ test('Shape stops growing on second click', async () => {
 });
 
 test('Shape grows on space press', async () => {
-  const scores = { Circle: 1.2, Heart: 2.4, Hexagon: 2.8, Star: 1.6, Square: 1.8, Triangle: 3.0 };
+  const scores = {
+    Circle: 1.2,
+    Heart: 2.4,
+    Hexagon: 2.8,
+    Star: 1.6,
+    Square: 1.8,
+    Triangle: 3.0,
+  };
   render(Shape, {
     shape: 'Circle',
     isFinishedGrowing: false,
@@ -174,7 +251,14 @@ test('Shape grows on space press', async () => {
 });
 
 test('Shape stops growing on second space press', async () => {
-  const scores = { Circle: 1.2, Heart: 2.4, Hexagon: 2.8, Star: 1.6, Square: 1.8, Triangle: 3.0 };
+  const scores = {
+    Circle: 1.2,
+    Heart: 2.4,
+    Hexagon: 2.8,
+    Star: 1.6,
+    Square: 1.8,
+    Triangle: 3.0,
+  };
   render(Shape, {
     shape: 'Circle',
     isFinishedGrowing: false,
@@ -203,7 +287,14 @@ test('Shape stops growing on second space press', async () => {
 });
 
 test('localStorage is only updated if new score is closer to 2.0', async () => {
-  const scores = { Circle: 1.2, Heart: 2.4, Hexagon: 2.8, Star: 1.6, Square: 1.8, Triangle: 3.0 };
+  const scores = {
+    Circle: 1.2,
+    Heart: 2.4,
+    Hexagon: 2.8,
+    Star: 1.6,
+    Square: 1.8,
+    Triangle: 3.0,
+  };
   render(Shape, {
     shape: 'Circle',
     isFinishedGrowing: false,

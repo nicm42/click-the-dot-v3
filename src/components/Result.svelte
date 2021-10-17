@@ -20,7 +20,9 @@
   <p class="result__text">
     The {shape.toLowerCase()} is now {ratio} times its original size
   </p>
-  <button class="result__button" on:click={() => isReset = true}>Try again</button>
+  <button class="result__button" on:click={() => (isReset = true)}
+    >Try again</button
+  >
 </div>
 
 <style lang="scss">

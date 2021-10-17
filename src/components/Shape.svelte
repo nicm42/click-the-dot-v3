@@ -1,6 +1,6 @@
 <script lang="ts">
   import { tweened } from '../utils/pausableTween';
-  import { linear } from 'svelte/easing'; 
+  import { linear } from 'svelte/easing';
 
   import Circle from './shapes/Circle.svelte';
   import Heart from './shapes/Heart.svelte';

@@ -3,18 +3,23 @@
   import postHighScores from '../utils/postHighScores';
 
   export let shape: string;
-  export let sortedData: {_id: string, shape: string, name: string, score: number}[];
+  export let sortedData: {
+    _id: string;
+    shape: string;
+    name: string;
+    score: number;
+  }[];
   export let isPosted: boolean;
   export let attempts: number = Number(sessionStorage.getItem(shape));
-  export let name:string = '';
+  export let name: string = '';
 
-  console.log(sortedData)
+  console.log(sortedData);
 
   let isFormShowing: boolean = true;
   let isError: boolean = false;
 
   let loadingMessage: string = 'Submitting score';
-  const addDots = () => loadingMessage += '.';
+  const addDots = () => (loadingMessage += '.');
   setInterval(addDots, 1000);
 
   const submitScore = async () => {
@@ -23,7 +28,7 @@
     if (!isPosted) {
       isError = true;
     }
-  }
+  };
 </script>
 
 <!-- If array length is less than 10, add this attempt to it
@@ -32,20 +37,28 @@ Otherwise, check the last attempt and if this is smaller, add this attempt to it
   <div in:fade={{ delay: 500 }} out:fade class="post">
     <h2 class="post__title">Congratulations</h2>
     {#if isFormShowing}
-    <p class="post__details">The {shape.toLowerCase()} is now 2.0 times its original size</p>
-    <p class="post__details">Add your name to the high scores</p>
-    <form class="post__form" on:submit|preventDefault={submitScore}>
-      <label class="post__label" for="name">Name</label>
-      <!-- svelte-ignore a11y-autofocus -->
-      <input class="post__input" type=text name="name" placeholder="Type your name" required autofocus bind:value={name} />
-      <button class="post__button" type=submit>Submit</button>
-    </form>
+      <p class="post__details">
+        The {shape.toLowerCase()} is now 2.0 times its original size
+      </p>
+      <p class="post__details">Add your name to the high scores</p>
+      <form class="post__form" on:submit|preventDefault={submitScore}>
+        <label class="post__label" for="name">Name</label>
+        <!-- svelte-ignore a11y-autofocus -->
+        <input
+          class="post__input"
+          type="text"
+          name="name"
+          placeholder="Type your name"
+          required
+          autofocus
+          bind:value={name}
+        />
+        <button class="post__button" type="submit">Submit</button>
+      </form>
+    {:else if isError}
+      <p>Can't submit score. Something went wrong :(</p>
     {:else}
-      {#if isError}
-        <p>Can't submit score. Something went wrong :(</p>
-      {:else}
-        <p>{loadingMessage}</p>
-      {/if}
+      <p>{loadingMessage}</p>
     {/if}
   </div>
 {/if}
@@ -100,5 +113,5 @@ Otherwise, check the last attempt and if this is smaller, add this attempt to it
         background-color: var(--activeColour);
       }
     }
-}
+  }
 </style>

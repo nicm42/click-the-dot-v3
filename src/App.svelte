@@ -40,15 +40,18 @@
   );
 
   let attemptsCount: AttemptsType = shapes.reduce(
-    (attempt, shape) =>
-      Object.assign(attempt, { [shape]: 0 }),
+    (attempt, shape) => Object.assign(attempt, { [shape]: 0 }),
     {}
   );
 </script>
 
 <svelte:head>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin="anonymous"
+  />
   <link
     href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap"
     rel="stylesheet"
@@ -58,7 +61,7 @@
 </svelte:head>
 
 {#if isShowingScores}
-  <div class="overlay"></div>
+  <div class="overlay" />
 {/if}
 
 <main>
@@ -81,7 +84,7 @@
   <Closest {shapes} {scores} {shape} bind:isShowingScores />
   {#if isShowingScores}
     <Scores {shape} bind:isShowingScores />
-  {/if} 
+  {/if}
 </main>
 
 <style lang="scss">
@@ -143,8 +146,8 @@
   }
 
   .overlay {
-    content:"";
-    position:fixed;
+    content: '';
+    position: fixed;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.25);
     pointer-events: none;

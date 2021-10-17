@@ -8,7 +8,14 @@ import Closest from './Closest.svelte';
 
 test('Text is all there', () => {
   const shapes = ['Circle', 'Heart', 'Hexagon', 'Star', 'Square', 'Triangle'];
-  const scores = { Circle: 1.2, Heart: 2.4, Hexagon: 2.8, Star: 1.6, Square: 1.8, Triangle: 3.0 };
+  const scores = {
+    Circle: 1.2,
+    Heart: 2.4,
+    Hexagon: 2.8,
+    Star: 1.6,
+    Square: 1.8,
+    Triangle: 3.0,
+  };
   render(Closest, { shapes: shapes, scores: scores });
   expect(screen.getByText('1.2')).toBeInTheDocument();
   expect(screen.getByText('2.4')).toBeInTheDocument();
@@ -23,7 +30,14 @@ test('Text is all there', () => {
 
 test('Shapes are all there', () => {
   const shapes = ['Circle', 'Heart', 'Hexagon', 'Star', 'Square', 'Triangle'];
-  const scores = { Circle: 1.2, Heart: 2.4, Hexagon: 2.8, Star: 1.6, Square: 1.8, Triangle: 3.0 };
+  const scores = {
+    Circle: 1.2,
+    Heart: 2.4,
+    Hexagon: 2.8,
+    Star: 1.6,
+    Square: 1.8,
+    Triangle: 3.0,
+  };
   render(Closest, { shapes: shapes, scores: scores });
   expect(screen.getByTestId('circle')).toBeInTheDocument();
   expect(screen.getByTestId('heart')).toBeInTheDocument();
