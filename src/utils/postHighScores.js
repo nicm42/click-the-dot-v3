@@ -2,7 +2,7 @@ const postHighScores = async (shape, name, attempts) => {
   const data = {
     shape: shape,
     name: name,
-    score: attempts
+    attempts: attempts
   }
 
   const link = 'http://localhost:';
@@ -14,8 +14,8 @@ const postHighScores = async (shape, name, attempts) => {
     headers: {
         'Content-Type': 'application/json'
     }
-});
-  console.log(response.json());
+  });
+  console.log(response);
 };
 
 export default postHighScores;

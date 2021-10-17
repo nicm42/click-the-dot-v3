@@ -11,7 +11,6 @@
   let name:string = '';
 
   const submitScore = () => {
-    console.log(name);
     postHighScores(shape, name, attempts);
   }
 </script>

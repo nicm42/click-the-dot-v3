@@ -30,31 +30,6 @@ app.get('/', async (req, res) => {
   res.send('Sending res');
 })
 
-/* app.get('/get', async (req, res) => {
-  const shape = new Shape({
-    name: 'Nic2',
-    attempts: 3
-  });
-  shape.save()
-    .then((result) => {
-      res.send(result)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-})
-
-app.get('/all', async (req, res) => {
-  Shape.find()
-    .then((result) => {
-      console.log(result)
-      res.json(result)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-}) */
-
 app.get('/getscores', async (req, res) => {
   Score.find()
     .then((result) => {
@@ -67,14 +42,11 @@ app.get('/getscores', async (req, res) => {
 })
 
 app.post('/postscores', async (req, res) => {
-  console.log('Posting scores')
-  console.log(req.body);
-  //Score.save(req.body);
   const score = new Score();
   score.shape = req.body.shape;
   score.name = req.body.name;
-  score.attempts = req.body.score;
-  score.save().then((result) => {
+  score.attempts = req.body.attempts;
+  score.save().then(() => {
     console.log('Score added')
   })
   .catch((err) => {
