@@ -4,14 +4,16 @@
 
   export let shape: string;
   export let sortedData: {_id: string, shape: string, name: string, score: number}[];
+  export let isPosted;
 
   console.log(sortedData)
 
   const attempts: number = Number(sessionStorage.getItem(shape));
   let name:string = '';
 
-  const submitScore = () => {
-    postHighScores(shape, name, attempts);
+  const submitScore = async () => {
+    isPosted = await postHighScores(shape, name, attempts);
+    console.log(isPosted);
   }
 </script>
 

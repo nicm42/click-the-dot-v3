@@ -22,8 +22,7 @@ mongoose.connect(process.env.MONGO_URI, {
   res.sendFile(path.join(__dirname, '..', '..', 'build', 'index.html'));
 }); */
 
-//app.use(cors());
-app.options('*', cors());
+app.use(cors());
 app.use(express.json());
 
 app.get('/', async (req, res) => {
@@ -46,10 +45,12 @@ app.post('/postscores', async (req, res) => {
   score.shape = req.body.shape;
   score.name = req.body.name;
   score.attempts = req.body.attempts;
-  score.save().then(() => {
-    console.log('Score added')
-  })
-  .catch((err) => {
-    console.log(err)
-  })
+  score.save()
+    .then((result) => {
+      console.log('Score added');
+      res.json(result)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 })

@@ -7,6 +7,8 @@
   export let shape: string;
   export let isShowingScores: boolean;
 
+  let isPosted: boolean = false;
+
   //let sortedData: {_id: string, shape: string, name: string, score: number}[] = [];
 
   const handleKeyPress = (e: KeyboardEvent): void => {
@@ -33,7 +35,9 @@
   {#await highScores}
     <p>{loadingMessage}</p>
     {:then sortedData}
-      <PostScore {shape} {sortedData} />
+      {#if !isPosted}
+        <PostScore {shape} {sortedData} bind:isPosted />
+      {/if}
       {#if sortedData.length === 0}
         <p>No attempts yet. Play some more and be the first!</p>
       {:else}

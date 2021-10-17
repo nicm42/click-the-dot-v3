@@ -1,4 +1,4 @@
-const postHighScores = async (shape: string, name: string, attempts: number): Promise<void> => {
+const postHighScores = async (shape: string, name: string, attempts: number): Promise<boolean> => {
   type scoreType = {
     shape: string;
     name: string,
@@ -21,7 +21,12 @@ const postHighScores = async (shape: string, name: string, attempts: number): Pr
         'Content-Type': 'application/json'
     }
   });
-  console.log(response);
+  if (response.ok) {
+    console.log('Score added');
+    return true;
+  } else {
+    return false;
+  }
 };
 
 export default postHighScores;
