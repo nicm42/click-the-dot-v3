@@ -55,7 +55,7 @@
         {#each sortedData as data}
           <tr class="scores__row">
             <td class="scores__element">{data.name}</td>
-            <td class="scores__element">{data.score}</td>
+            <td class="scores__element">{data.attempts}</td>
           </tr>
         {/each}
       </table>

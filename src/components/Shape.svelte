@@ -96,11 +96,9 @@
       // Reset tryAttempts for the next go
       sessionStorage.setItem(shape, attemptsCount[shape].toString());
       attemptsCount[shape] = 0;
+      // Now show high scores
+      isShowingScores = true;
     }
-
-    // Now show high scores
-    // TODO only do this when ratio is 2.0
-    isShowingScores = true;
   };
 
   // If isReset is true, then it means something has been pressed to isReset the shape
