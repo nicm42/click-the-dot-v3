@@ -83,7 +83,7 @@
   {/if}
   <Closest {shapes} {scores} {shape} bind:isShowingScores />
   {#if isShowingScores}
-    <Scores {shape} bind:isShowingScores />
+    <Scores {shape} {isFinishedGrowing} bind:isShowingScores />
   {/if}
 </main>
 
@@ -121,7 +121,7 @@
         '. instructions'
         'select shape'
         'closest shape'
-        '. result';
+        'closest result';
     }
     place-content: center;
     column-gap: 4em;
