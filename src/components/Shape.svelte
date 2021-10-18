@@ -192,10 +192,6 @@
       position: absolute;
       cursor: pointer;
 
-      &:focus {
-        outline: 1px dotted black;
-      }
-
     &.clicked {
         pointer-events: none;
         cursor: auto;
