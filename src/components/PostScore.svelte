@@ -10,11 +10,11 @@
     score: number;
   }[];
   export let isPosted: boolean;
-  export let attempts: number = Number(sessionStorage.getItem(shape));
   export let name: string = '';
 
   console.log(sortedData);
 
+  const attempts: number = Number(sessionStorage.getItem(shape));
   let isFormShowing: boolean = true;
   let isError: boolean = false;
 

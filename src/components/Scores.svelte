@@ -9,9 +9,6 @@
 
   let isPosted: boolean = false;
   let name: string;
-  let attempts: number;
-
-  //let sortedData: {_id: string, shape: string, name: string, score: number}[] = [];
 
   const handleKeyPress = (e: KeyboardEvent): void => {
     if (e.key === 'Escape') {
@@ -47,7 +44,7 @@
     <p>{loadingMessage}</p>
   {:then sortedData}
     {#if !isPosted}
-      <PostScore {shape} {sortedData} bind:isPosted bind:name bind:attempts />
+      <PostScore {shape} {sortedData} bind:isPosted bind:name />
     {/if}
     {#if sortedData.length === 0}
       <p>No attempts yet. Play some more and be the first!</p>
@@ -64,6 +61,7 @@
       </table>
     {/if}
   {:catch error}
+    {console.log(error)}
     <p>Can't get scores. Something went wrong :(</p>
   {/await}
 </div>
