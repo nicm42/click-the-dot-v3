@@ -140,8 +140,7 @@
     cursor: pointer;
 
 
-    &:focus,
-    &:hover {
+    &:focus {
       outline: 2px solid black;
     }
       
