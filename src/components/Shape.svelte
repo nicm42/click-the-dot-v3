@@ -86,17 +86,9 @@
     // except this time add to sessionStorage if it's lower
     // and if the ratio is 2.0
     if (ratio === '2.0') {
-      //let lowAttempt: number = Number(sessionStorage.getItem(shape));
-      /* let lowestAttempt = attemptsCount[shape];
-      if (lowAttempt) {
-        lowestAttempt = attemptsCount[shape] < lowAttempt ? attemptsCount[shape] : lowAttempt;
-      }
-      sessionStorage.setItem(shape, lowestAttempt.toString()); */
-      //attempts[shape] = Number(sessionStorage.getItem(shape));
-      // Reset tryAttempts for the next go
       sessionStorage.setItem(shape, attemptsCount[shape].toString());
-      attemptsCount[shape] = 0;
-      // Now show high scores
+      attemptsCount[shape] = 0; // Reset tryAttempts for the next go
+      // Now we can show the high scores
       isShowingScores = true;
     }
   };
