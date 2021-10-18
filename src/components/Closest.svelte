@@ -116,6 +116,7 @@
       font-size: 0.9rem;
       color: var(--primaryColour);
 
+      &:focus,
       &:hover,
       &:active {
         background-color: var(--darkerBackgroundColour);
