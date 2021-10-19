@@ -48,6 +48,7 @@ Otherwise, check the last attempt and if this is smaller, add this attempt to it
           class="post__input"
           type="text"
           name="name"
+          id="name"
           placeholder="Type your name"
           required
           autofocus
