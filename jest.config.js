@@ -16,4 +16,5 @@ module.exports = {
     "svelte"
   ],
   testPathIgnorePatterns: ["<rootDir>/cypress/"],
+  setupFilesAfterEnv: ['./src/jest.setup.js'],
 }
