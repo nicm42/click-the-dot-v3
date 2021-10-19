@@ -61,7 +61,6 @@
       </table>
     {/if}
   {:catch error}
-    {console.log(error)}
     <p>Can't get scores. Something went wrong :(</p>
   {/await}
 </div>
