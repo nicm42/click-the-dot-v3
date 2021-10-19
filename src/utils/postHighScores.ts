@@ -17,7 +17,7 @@ const postHighScores = async (
 
   const link = 'http://localhost:';
   const port = 8000;
-  const route = '/postscores';
+  const route = '/api/postscores';
   const response = await fetch(link + port + route, {
     method: 'POST',
     body: JSON.stringify(data),

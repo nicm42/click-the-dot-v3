@@ -3,7 +3,7 @@
 const getHighScores = async (shape: string): Promise<any> => {
   const link = 'http://localhost:';
   const port = 8000;
-  const route = '/getscores';
+  const route = '/api/getscores';
   const response = await fetch(link + port + route);
   const data = await response.json();
   console.log(data);

@@ -17,19 +17,10 @@ mongoose.connect(process.env.MONGO_URI, {
 }))
   .catch((err) => console.log(err))
 
-// Any other request goes to index
-/* app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, '..', '..', 'build', 'index.html'));
-}); */
-
 app.use(cors());
 app.use(express.json());
 
-app.get('/', async (req, res) => {
-  res.send('Sending res');
-})
-
-app.get('/getscores', async (req, res) => {
+app.get('/api/getscores', async (req, res) => {
   Score.find()
     .then((result) => {
       console.log(result)
@@ -40,7 +31,7 @@ app.get('/getscores', async (req, res) => {
     })
 })
 
-app.post('/postscores', async (req, res) => {
+app.post('/api/postscores', async (req, res) => {
   const score = new Score();
   score.shape = req.body.shape;
   score.name = req.body.name;
