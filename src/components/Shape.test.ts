@@ -15,13 +15,23 @@ test('Circles are there', () => {
     Square: 1.8,
     Triangle: 3.0,
   };
+  const attempts = {
+    Circle: 1,
+    Heart: 2,
+    Hexgon: 3,
+    Star: 4,
+    Square: 5,
+    Triangle: 6
+  }
   render(Shape, {
     shape: 'Circle',
     isFinishedGrowing: false,
     ratio: 2.0,
     scores: scores,
+    attemptsCount: 1,
     isReset: false,
     initialSize: '100px',
+    isShowingScores: false
   });
   expect(screen.getAllByTestId('circle')).toHaveLength(2);
 });
@@ -35,13 +45,23 @@ test('Squares are there', () => {
     Square: 1.8,
     Triangle: 3.0,
   };
+  const attempts = {
+    Circle: 1,
+    Heart: 2,
+    Hexgon: 3,
+    Star: 4,
+    Square: 5,
+    Triangle: 6
+  }
   render(Shape, {
     shape: 'Square',
     isFinishedGrowing: false,
     ratio: 2.0,
     scores: scores,
+    attemptsCount: attempts,
     isReset: false,
     initialSize: '100px',
+    isShowingScores: false
   });
   expect(screen.getAllByTestId('square')).toHaveLength(2);
 });
@@ -55,13 +75,23 @@ test('Hearts are there', () => {
     Square: 1.8,
     Triangle: 3.0,
   };
+  const attempts = {
+    Circle: 1,
+    Heart: 2,
+    Hexgon: 3,
+    Star: 4,
+    Square: 5,
+    Triangle: 6
+  }
   render(Shape, {
     shape: 'Heart',
     isFinishedGrowing: false,
     ratio: 2.0,
     scores: scores,
+    attemptsCount: attempts,
     isReset: false,
     initialSize: '100px',
+    isShowingScores: false
   });
   expect(screen.getAllByTestId('heart')).toHaveLength(2);
 });
@@ -75,13 +105,23 @@ test('Hexagons are there', () => {
     Square: 1.8,
     Triangle: 3.0,
   };
+  const attempts = {
+    Circle: 1,
+    Heart: 2,
+    Hexgon: 3,
+    Star: 4,
+    Square: 5,
+    Triangle: 6
+  }
   render(Shape, {
     shape: 'Hexagon',
     isFinishedGrowing: false,
     ratio: 2.0,
     scores: scores,
+    attemptsCount: attempts,
     isReset: false,
     initialSize: '100px',
+    isShowingScores: false
   });
   expect(screen.getAllByTestId('hexagon')).toHaveLength(2);
 });
@@ -95,13 +135,23 @@ test('Stars are there', () => {
     Square: 1.8,
     Triangle: 3.0,
   };
+  const attempts = {
+    Circle: 1,
+    Heart: 2,
+    Hexgon: 3,
+    Star: 4,
+    Square: 5,
+    Triangle: 6
+  }
   render(Shape, {
     shape: 'Star',
     isFinishedGrowing: false,
     ratio: 2.0,
     scores: scores,
+    attemptsCount: attempts,
     isReset: false,
     initialSize: '100px',
+    isShowingScores: false
   });
   expect(screen.getAllByTestId('star')).toHaveLength(2);
 });
@@ -115,13 +165,23 @@ test('Triangles are there', () => {
     Square: 1.8,
     Triangle: 3.0,
   };
+  const attempts = {
+    Circle: 1,
+    Heart: 2,
+    Hexgon: 3,
+    Star: 4,
+    Square: 5,
+    Triangle: 6
+  }
   render(Shape, {
     shape: 'Triangle',
     isFinishedGrowing: false,
     ratio: 2.0,
     scores: scores,
+    attemptsCount: attempts,
     isReset: false,
     initialSize: '100px',
+    isShowingScores: false
   });
   expect(screen.getAllByTestId('triangle')).toHaveLength(2);
 });
@@ -135,13 +195,23 @@ test('Initial set up', () => {
     Square: 1.8,
     Triangle: 3.0,
   };
+  const attempts = {
+    Circle: 1,
+    Heart: 2,
+    Hexgon: 3,
+    Star: 4,
+    Square: 5,
+    Triangle: 6
+  }
   render(Shape, {
     shape: 'Circle',
     isFinishedGrowing: false,
     ratio: 2.0,
     scores: scores,
+    attemptsCount: attempts,
     isReset: false,
     initialSize: '100px',
+    isShowingScores: false
   });
   expect(screen.getByTestId('shape-svg')).not.toHaveClass('clicked');
   expect(screen.getByTestId('helper-svg')).not.toBeVisible();
@@ -156,13 +226,23 @@ test('State after finished growing', () => {
     Square: 1.8,
     Triangle: 3.0,
   };
+  const attempts = {
+    Circle: 1,
+    Heart: 2,
+    Hexgon: 3,
+    Star: 4,
+    Square: 5,
+    Triangle: 6
+  }
   render(Shape, {
     shape: 'Circle',
     isFinishedGrowing: true,
     ratio: 2.0,
     scores: scores,
+    attemptsCount: attempts,
     isReset: false,
     initialSize: '100px',
+    isShowingScores: false
   });
   expect(screen.getByTestId('shape-svg')).toHaveClass('clicked');
   expect(screen.getByTestId('helper-svg')).toBeVisible();
@@ -177,13 +257,23 @@ test('Shape grows on click', async () => {
     Square: 1.8,
     Triangle: 3.0,
   };
+  const attempts = {
+    Circle: 1,
+    Heart: 2,
+    Hexgon: 3,
+    Star: 4,
+    Square: 5,
+    Triangle: 6
+  }
   render(Shape, {
     shape: 'Circle',
     isFinishedGrowing: false,
     ratio: 2.0,
     scores: scores,
+    attemptsCount: attempts,
     isReset: false,
     initialSize: '100px',
+    isShowingScores: false
   });
   expect(screen.getByTestId('shape-svg')).not.toHaveClass('clicked');
   expect(screen.getByTestId('shape-svg')).toHaveStyle('transform: scale(1)');
@@ -204,13 +294,23 @@ test('Shape stops growing on second click', async () => {
     Square: 1.8,
     Triangle: 3.0,
   };
+  const attempts = {
+    Circle: 1,
+    Heart: 2,
+    Hexgon: 3,
+    Star: 4,
+    Square: 5,
+    Triangle: 6
+  }
   render(Shape, {
     shape: 'Circle',
     isFinishedGrowing: false,
     ratio: 2.0,
     scores: scores,
+    attemptsCount: attempts,
     isReset: false,
     initialSize: '100px',
+    isShowingScores: false
   });
   expect(screen.getByTestId('shape-svg')).not.toHaveClass('clicked');
   expect(screen.getByTestId('shape-svg')).toHaveStyle('transform: scale(1)');
@@ -232,13 +332,23 @@ test('Shape grows on space press', async () => {
     Square: 1.8,
     Triangle: 3.0,
   };
+  const attempts = {
+    Circle: 1,
+    Heart: 2,
+    Hexgon: 3,
+    Star: 4,
+    Square: 5,
+    Triangle: 6
+  }
   render(Shape, {
     shape: 'Circle',
     isFinishedGrowing: false,
     ratio: 2.0,
     scores: scores,
+    attemptsCount: attempts,
     isReset: false,
     initialSize: '100px',
+    isShowingScores: false
   });
   expect(screen.getByTestId('shape-svg')).not.toHaveClass('clicked');
   expect(screen.getByTestId('shape-svg')).toHaveStyle('transform: scale(1)');
@@ -259,13 +369,23 @@ test('Shape stops growing on second space press', async () => {
     Square: 1.8,
     Triangle: 3.0,
   };
+  const attempts = {
+    Circle: 1,
+    Heart: 2,
+    Hexgon: 3,
+    Star: 4,
+    Square: 5,
+    Triangle: 6
+  }
   render(Shape, {
     shape: 'Circle',
     isFinishedGrowing: false,
     ratio: 2.0,
     scores: scores,
+    attemptsCount: attempts,
     isReset: false,
     initialSize: '100px',
+    isShowingScores: false
   });
   expect(screen.getByTestId('shape-svg')).not.toHaveClass('clicked');
   expect(screen.getByTestId('shape-svg')).toHaveStyle('transform: scale(1)');
@@ -295,13 +415,23 @@ test('localStorage is only updated if new score is closer to 2.0', async () => {
     Square: 1.8,
     Triangle: 3.0,
   };
+  const attempts = {
+    Circle: 1,
+    Heart: 2,
+    Hexgon: 3,
+    Star: 4,
+    Square: 5,
+    Triangle: 6
+  }
   render(Shape, {
     shape: 'Circle',
     isFinishedGrowing: false,
     ratio: 2.0,
     scores: scores,
+    attemptsCount: attempts,
     isReset: false,
     initialSize: '100px',
+    isShowingScores: false
   });
   fireEvent.click(screen.getAllByTestId('circle')[0]);
   waitFor(() => expect(localStorage.getItem('Circle')).not.toBe('3.0'));
