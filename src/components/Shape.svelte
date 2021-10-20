@@ -89,9 +89,8 @@
       sessionStorage.setItem(shape, attemptsCount[shape].toString());
       attemptsCount[shape] = 0; // Reset tryAttempts for the next go
       // Now we can show the high scores
-      
+      isShowingScores = true;
     }
-    isShowingScores = true;
   };
 
   // If isReset is true, then it means something has been pressed to isReset the shape

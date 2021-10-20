@@ -15,10 +15,12 @@ const postHighScores = async (
     attempts: attempts,
   };
 
-  const link = 'http://localhost:';
+  const place = 'http://localhost:';
   const port = 8000;
   const route = '/api/postscores';
-  const response = await fetch(link + port + route, {
+  //const link = place + port + route; //for dev
+  const link = route; //for production
+  const response = await fetch(link, {
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
@@ -26,7 +28,7 @@ const postHighScores = async (
     },
   });
   if (response.ok) {
-    console.log('Score added');
+    //console.log('Score added');
     return true;
   } else {
     return false;

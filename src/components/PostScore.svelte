@@ -12,7 +12,7 @@
   export let isPosted: boolean;
   export let name: string = '';
 
-  console.log(sortedData);
+  //console.log(sortedData);
 
   const attempts: number = Number(sessionStorage.getItem(shape));
   let isFormShowing: boolean = true;
