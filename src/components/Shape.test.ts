@@ -21,8 +21,8 @@ test('Circles are there', () => {
     Hexgon: 3,
     Star: 4,
     Square: 5,
-    Triangle: 6
-  }
+    Triangle: 6,
+  };
   render(Shape, {
     shape: 'Circle',
     isFinishedGrowing: false,
@@ -31,7 +31,7 @@ test('Circles are there', () => {
     attemptsCount: 1,
     isReset: false,
     initialSize: '100px',
-    isShowingScores: false
+    isShowingScores: false,
   });
   expect(screen.getAllByTestId('circle')).toHaveLength(2);
 });
@@ -51,8 +51,8 @@ test('Squares are there', () => {
     Hexgon: 3,
     Star: 4,
     Square: 5,
-    Triangle: 6
-  }
+    Triangle: 6,
+  };
   render(Shape, {
     shape: 'Square',
     isFinishedGrowing: false,
@@ -61,7 +61,7 @@ test('Squares are there', () => {
     attemptsCount: attempts,
     isReset: false,
     initialSize: '100px',
-    isShowingScores: false
+    isShowingScores: false,
   });
   expect(screen.getAllByTestId('square')).toHaveLength(2);
 });
@@ -81,8 +81,8 @@ test('Hearts are there', () => {
     Hexgon: 3,
     Star: 4,
     Square: 5,
-    Triangle: 6
-  }
+    Triangle: 6,
+  };
   render(Shape, {
     shape: 'Heart',
     isFinishedGrowing: false,
@@ -91,7 +91,7 @@ test('Hearts are there', () => {
     attemptsCount: attempts,
     isReset: false,
     initialSize: '100px',
-    isShowingScores: false
+    isShowingScores: false,
   });
   expect(screen.getAllByTestId('heart')).toHaveLength(2);
 });
@@ -111,8 +111,8 @@ test('Hexagons are there', () => {
     Hexgon: 3,
     Star: 4,
     Square: 5,
-    Triangle: 6
-  }
+    Triangle: 6,
+  };
   render(Shape, {
     shape: 'Hexagon',
     isFinishedGrowing: false,
@@ -121,7 +121,7 @@ test('Hexagons are there', () => {
     attemptsCount: attempts,
     isReset: false,
     initialSize: '100px',
-    isShowingScores: false
+    isShowingScores: false,
   });
   expect(screen.getAllByTestId('hexagon')).toHaveLength(2);
 });
@@ -141,8 +141,8 @@ test('Stars are there', () => {
     Hexgon: 3,
     Star: 4,
     Square: 5,
-    Triangle: 6
-  }
+    Triangle: 6,
+  };
   render(Shape, {
     shape: 'Star',
     isFinishedGrowing: false,
@@ -151,7 +151,7 @@ test('Stars are there', () => {
     attemptsCount: attempts,
     isReset: false,
     initialSize: '100px',
-    isShowingScores: false
+    isShowingScores: false,
   });
   expect(screen.getAllByTestId('star')).toHaveLength(2);
 });
@@ -171,8 +171,8 @@ test('Triangles are there', () => {
     Hexgon: 3,
     Star: 4,
     Square: 5,
-    Triangle: 6
-  }
+    Triangle: 6,
+  };
   render(Shape, {
     shape: 'Triangle',
     isFinishedGrowing: false,
@@ -181,7 +181,7 @@ test('Triangles are there', () => {
     attemptsCount: attempts,
     isReset: false,
     initialSize: '100px',
-    isShowingScores: false
+    isShowingScores: false,
   });
   expect(screen.getAllByTestId('triangle')).toHaveLength(2);
 });
@@ -201,8 +201,8 @@ test('Initial set up', () => {
     Hexgon: 3,
     Star: 4,
     Square: 5,
-    Triangle: 6
-  }
+    Triangle: 6,
+  };
   render(Shape, {
     shape: 'Circle',
     isFinishedGrowing: false,
@@ -211,7 +211,7 @@ test('Initial set up', () => {
     attemptsCount: attempts,
     isReset: false,
     initialSize: '100px',
-    isShowingScores: false
+    isShowingScores: false,
   });
   expect(screen.getByTestId('shape-svg')).not.toHaveClass('clicked');
   expect(screen.getByTestId('helper-svg')).not.toBeVisible();
@@ -232,8 +232,8 @@ test('State after finished growing', () => {
     Hexgon: 3,
     Star: 4,
     Square: 5,
-    Triangle: 6
-  }
+    Triangle: 6,
+  };
   render(Shape, {
     shape: 'Circle',
     isFinishedGrowing: true,
@@ -242,7 +242,7 @@ test('State after finished growing', () => {
     attemptsCount: attempts,
     isReset: false,
     initialSize: '100px',
-    isShowingScores: false
+    isShowingScores: false,
   });
   expect(screen.getByTestId('shape-svg')).toHaveClass('clicked');
   expect(screen.getByTestId('helper-svg')).toBeVisible();
@@ -263,8 +263,8 @@ test('Shape grows on click', async () => {
     Hexgon: 3,
     Star: 4,
     Square: 5,
-    Triangle: 6
-  }
+    Triangle: 6,
+  };
   render(Shape, {
     shape: 'Circle',
     isFinishedGrowing: false,
@@ -273,7 +273,7 @@ test('Shape grows on click', async () => {
     attemptsCount: attempts,
     isReset: false,
     initialSize: '100px',
-    isShowingScores: false
+    isShowingScores: false,
   });
   expect(screen.getByTestId('shape-svg')).not.toHaveClass('clicked');
   expect(screen.getByTestId('shape-svg')).toHaveStyle('transform: scale(1)');
@@ -300,8 +300,8 @@ test('Shape stops growing on second click', async () => {
     Hexgon: 3,
     Star: 4,
     Square: 5,
-    Triangle: 6
-  }
+    Triangle: 6,
+  };
   render(Shape, {
     shape: 'Circle',
     isFinishedGrowing: false,
@@ -310,7 +310,7 @@ test('Shape stops growing on second click', async () => {
     attemptsCount: attempts,
     isReset: false,
     initialSize: '100px',
-    isShowingScores: false
+    isShowingScores: false,
   });
   expect(screen.getByTestId('shape-svg')).not.toHaveClass('clicked');
   expect(screen.getByTestId('shape-svg')).toHaveStyle('transform: scale(1)');
@@ -338,8 +338,8 @@ test('Shape grows on space press', async () => {
     Hexgon: 3,
     Star: 4,
     Square: 5,
-    Triangle: 6
-  }
+    Triangle: 6,
+  };
   render(Shape, {
     shape: 'Circle',
     isFinishedGrowing: false,
@@ -348,7 +348,7 @@ test('Shape grows on space press', async () => {
     attemptsCount: attempts,
     isReset: false,
     initialSize: '100px',
-    isShowingScores: false
+    isShowingScores: false,
   });
   expect(screen.getByTestId('shape-svg')).not.toHaveClass('clicked');
   expect(screen.getByTestId('shape-svg')).toHaveStyle('transform: scale(1)');
@@ -375,8 +375,8 @@ test('Shape stops growing on second space press', async () => {
     Hexgon: 3,
     Star: 4,
     Square: 5,
-    Triangle: 6
-  }
+    Triangle: 6,
+  };
   render(Shape, {
     shape: 'Circle',
     isFinishedGrowing: false,
@@ -385,7 +385,7 @@ test('Shape stops growing on second space press', async () => {
     attemptsCount: attempts,
     isReset: false,
     initialSize: '100px',
-    isShowingScores: false
+    isShowingScores: false,
   });
   expect(screen.getByTestId('shape-svg')).not.toHaveClass('clicked');
   expect(screen.getByTestId('shape-svg')).toHaveStyle('transform: scale(1)');
@@ -421,8 +421,8 @@ test('localStorage is only updated if new score is closer to 2.0', async () => {
     Hexgon: 3,
     Star: 4,
     Square: 5,
-    Triangle: 6
-  }
+    Triangle: 6,
+  };
   render(Shape, {
     shape: 'Circle',
     isFinishedGrowing: false,
@@ -431,7 +431,7 @@ test('localStorage is only updated if new score is closer to 2.0', async () => {
     attemptsCount: attempts,
     isReset: false,
     initialSize: '100px',
-    isShowingScores: false
+    isShowingScores: false,
   });
   fireEvent.click(screen.getAllByTestId('circle')[0]);
   waitFor(() => expect(localStorage.getItem('Circle')).not.toBe('3.0'));

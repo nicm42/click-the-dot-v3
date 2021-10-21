@@ -187,12 +187,12 @@
     min-height: 300px; // biggest shape when 3 times the size
     min-width: 300px; // biggest shape when 3 times the size
     margin-block: 1em;
-      
+
     &__svg {
       position: absolute;
       cursor: pointer;
 
-    &.clicked {
+      &.clicked {
         pointer-events: none;
         cursor: auto;
       }

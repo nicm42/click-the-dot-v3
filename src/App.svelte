@@ -139,11 +139,10 @@
     box-shadow: var(--boxShadow);
     cursor: pointer;
 
-
     &:focus {
       outline: 2px solid black;
     }
-      
+
     &:active {
       inset-block-start: 0.125rem;
       box-shadow: none;

@@ -7,34 +7,49 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/svelte';
 import PostScore from './PostScore.svelte';
 
 test('Text is all there', () => {
-  const sortedData = [{
+  const sortedData = [
+    {
+      shape: 'Circle',
+      name: 'Nic',
+      attempts: 1,
+    },
+  ];
+  render(PostScore, {
     shape: 'Circle',
+    sortedData: sortedData,
+    isPosted: false,
     name: 'Nic',
-    attempts: 1
-  }]
-  render(PostScore, { shape: 'Circle', sortedData: sortedData, isPosted: false, name: 'Nic' });
+  });
   expect(screen.getByText('Congratulations')).toBeInTheDocument();
-  expect(screen.getByText('The circle is now 2.0 times its original size')).toBeInTheDocument();
+  expect(
+    screen.getByText('The circle is now 2.0 times its original size')
+  ).toBeInTheDocument();
   expect(screen.getByRole('textbox')).toBeInTheDocument();
   expect(screen.getByLabelText('Name')).toBeInTheDocument();
-  expect(screen.getByText('Add your name to the high scores')).toBeInTheDocument();
-    expect(
-    screen.getByRole('button', { name: /Submit/i })
+  expect(
+    screen.getByText('Add your name to the high scores')
   ).toBeInTheDocument();
-
+  expect(screen.getByRole('button', { name: /Submit/i })).toBeInTheDocument();
 });
 
 test('Submitting should show loading message', () => {
-  const sortedData = [{
+  const sortedData = [
+    {
+      shape: 'Circle',
+      name: 'Nic',
+      attempts: 1,
+    },
+  ];
+  render(PostScore, {
     shape: 'Circle',
+    sortedData: sortedData,
+    isPosted: false,
     name: 'Nic',
-    attempts: 1
-  }]
-  render(PostScore, { shape: 'Circle', sortedData: sortedData, isPosted: false, name: 'Nic' });
+  });
   const input = screen.getByRole('textbox');
-  fireEvent.change(input, {target: { value: 'test' } });
+  fireEvent.change(input, { target: { value: 'test' } });
   expect(input).toHaveValue('test');
-  const button = screen.getByRole('button', { name: /Submit/i })
+  const button = screen.getByRole('button', { name: /Submit/i });
   fireEvent.click(button);
   expect(screen.getByText('Submitting score')).toBeInTheDocument();
 });
