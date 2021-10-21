@@ -1,4 +1,11 @@
 /node_modules/
 /public/build/
+/coverage
 
 .DS_Store
+.env
+
+cypress/videos
+cypress/screenshots
+
+todo
