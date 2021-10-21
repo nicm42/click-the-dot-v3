@@ -89,9 +89,13 @@ Otherwise, check the last attempt and if this is smaller, add this attempt to it
 
     &__form {
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
+      flex-direction: column;
       gap: 0.5em;
+
+      @media (min-width: 35rem) {
+        flex-direction: row;
+        align-items: center;
+      }
     }
 
     &__label {
