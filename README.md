@@ -19,8 +19,8 @@ This game existed before, in jQuery. I wanted to learn Svelte, so starting with 
 
 ## Screenshots
 
-TBC
-<!-- ![Screenshot](screenshot.png) -->
+![Screenshot](screenshot-desktop.png)
+![Screenshot](screenshot-mobile.png)
 
 ## Technologies
 
@@ -45,7 +45,7 @@ A game where the shape grows on click and you have to click on it again when you
 
 ## Setup
 
-To view this project visit the [demo](TBC) or download the files, open a terminal in that folder and install locally using npm:
+To view this project visit the [demo](https://click-the-shape.herokuapp.com/) or download the files, open a terminal in that folder and install locally using npm:
 
 ```
 npm install
