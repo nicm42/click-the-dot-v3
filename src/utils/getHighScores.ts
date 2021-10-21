@@ -4,8 +4,8 @@ const getHighScores = async (shape: string): Promise<any> => {
   const place = 'http://localhost:';
   const port = 8000;
   const route = '/api/getscores';
-  //const link = place + port + route; //for dev
-  const link = route; //for production
+  const link = place + port + route; //for dev
+  //const link = route; //for production
   const response = await fetch(link);
   const data = await response.json();
   //console.log(data);
@@ -16,9 +16,9 @@ const getHighScores = async (shape: string): Promise<any> => {
   // Sort it by score order, so 1 is first
   // But we only want to show the first 10
   let sortedData = shapeData
-    .sort((a: any, b: any) => a.score - b.score)
+    .sort((a: any, b: any) => a.attempts - b.attempts)
     .slice(0, 10);
-  //console.log(sortedData);
+  console.log(sortedData);
 
   if (response.ok) {
     return sortedData;
