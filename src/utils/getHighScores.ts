@@ -18,7 +18,7 @@ const getHighScores = async (shape: string): Promise<any> => {
   let sortedData = shapeData
     .sort((a: any, b: any) => a.attempts - b.attempts)
     .slice(0, 10);
-  console.log(sortedData);
+  //console.log(sortedData);
 
   if (response.ok) {
     return sortedData;
