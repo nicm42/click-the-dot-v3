@@ -6,7 +6,7 @@ import '@testing-library/jest-dom';
 import { render, screen, fireEvent, waitFor } from '@testing-library/svelte';
 import PostScore from './PostScore.svelte';
 
-test('Text is all there', () => {
+test.only('Text is all there', () => {
   const sortedData = [
     {
       shape: 'Circle',
@@ -22,7 +22,7 @@ test('Text is all there', () => {
   });
   expect(screen.getByText('Congratulations')).toBeInTheDocument();
   expect(
-    screen.getByText('The circle is now 2.0 times its original size')
+    screen.getByText('You got the circle to be twice its original size in 0 attempts')
   ).toBeInTheDocument();
   expect(screen.getByRole('textbox')).toBeInTheDocument();
   expect(screen.getByLabelText('Name')).toBeInTheDocument();
