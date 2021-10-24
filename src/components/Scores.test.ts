@@ -3,7 +3,7 @@
  */
 
 import '@testing-library/jest-dom';
-import { render, screen, fireEvent, waitFor } from '@testing-library/svelte';
+import { render, screen } from '@testing-library/svelte';
 import Scores from './Scores.svelte';
 
 test('Initial text is all there', () => {
