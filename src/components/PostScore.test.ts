@@ -6,7 +6,7 @@ import '@testing-library/jest-dom';
 import { render, screen, fireEvent, waitFor } from '@testing-library/svelte';
 import PostScore from './PostScore.svelte';
 
-test.only('Text is all there', () => {
+test('Text is all there', () => {
   const sortedData = [
     {
       shape: 'Circle',
@@ -51,5 +51,5 @@ test('Submitting should show loading message', () => {
   expect(input).toHaveValue('test');
   const button = screen.getByRole('button', { name: /Submit/i });
   fireEvent.click(button);
-  expect(screen.getByText('Submitting score')).toBeInTheDocument();
+  waitFor(() => expect(screen.getByText('Submitting score')).toBeInTheDocument());
 });
