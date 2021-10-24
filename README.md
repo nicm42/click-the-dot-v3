@@ -64,7 +64,7 @@ npm run server
 
 ## Status
 
-Project is: _in progress_
+Project is: _finished_
 
 ## Contact
 

@@ -22,7 +22,7 @@ test('Text is all there', () => {
   });
   expect(screen.getByText('Congratulations')).toBeInTheDocument();
   expect(
-    screen.getByText('The circle is now 2.0 times its original size')
+    screen.getByText('You got the circle to be twice its original size in 0 attempts')
   ).toBeInTheDocument();
   expect(screen.getByRole('textbox')).toBeInTheDocument();
   expect(screen.getByLabelText('Name')).toBeInTheDocument();
@@ -51,5 +51,5 @@ test('Submitting should show loading message', () => {
   expect(input).toHaveValue('test');
   const button = screen.getByRole('button', { name: /Submit/i });
   fireEvent.click(button);
-  expect(screen.getByText('Submitting score')).toBeInTheDocument();
+  waitFor(() => expect(screen.getByText('Submitting score')).toBeInTheDocument());
 });

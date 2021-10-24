@@ -12,8 +12,6 @@
   export let isPosted: boolean;
   export let name: string = '';
 
-  //console.log(sortedData);
-
   const attempts: number = Number(sessionStorage.getItem(shape));
   let isFormShowing: boolean = true;
   let isError: boolean = false;
@@ -38,7 +36,7 @@ Otherwise, check the last attempt and if this is smaller, add this attempt to it
     <h2 class="post__title">Congratulations</h2>
     {#if isFormShowing}
       <p class="post__details">
-        The {shape.toLowerCase()} is now 2.0 times its original size
+        You got the {shape.toLowerCase()} to be twice its original size in {attempts} attempts
       </p>
       <p class="post__details">Add your name to the high scores</p>
       <form class="post__form" on:submit|preventDefault={submitScore}>
