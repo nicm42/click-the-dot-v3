@@ -45,7 +45,7 @@ A game where the shape grows on click and you have to click on it again when you
 
 ## Setup
 
-To view this project visit the [demo](https://click-the-shape.herokuapp.com/) or download the files, open a terminal in that folder and install locally using npm:
+To view this project visit the [demo](https://click-the-shape.onrender.com/) or download the files, open a terminal in that folder and install locally using npm:
 
 ```
 npm install
