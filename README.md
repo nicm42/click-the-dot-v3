@@ -45,7 +45,9 @@ A game where the shape grows on click and you have to click on it again when you
 
 ## Setup
 
-To view this project visit the [demo](https://click-the-shape.onrender.com/) or download the files, open a terminal in that folder and install locally using npm:
+To view this project visit the [demo](https://click-the-shape.onrender.com/). Note the free tier MongoDB database has expired, so the high scores feature will not work. Also it's hosted on a free tier of Render so will take 30 seconds to start up.
+
+Or download the files, open a terminal in that folder and install locally using npm:
 
 ```
 npm install
